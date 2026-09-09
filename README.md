@@ -8,20 +8,45 @@ TCC INS · NOOON Preview Program 신청 페이지입니다.
 
 ```
 nooon-landing/
-├─ index.html          랜딩페이지 (여기만 고치면 됩니다)
-├─ assets/
-│   ├─ intro.mp4       소개 영상
-│   └─ poster.jpg      영상 재생 전 표지 이미지
+├─ src/                  ← 여기를 수정합니다
+│   ├─ index.html        본문 (히어로 · 각 섹션 · 신청 폼)
+│   └─ partials/
+│       ├─ header.html   상단 고정 헤더
+│       ├─ faq.html      자주 묻는 질문
+│       └─ footer.html   하단 푸터
+├─ build.js              조각들을 합쳐 index.html 을 만드는 스크립트
+├─ index.html            ⚠️ 자동 생성물 — 직접 수정 금지
+├─ assets/               영상 · 이미지
 ├─ api/
-│   └─ apply.js        신청 폼 접수 · 사내 메일 API 전달
+│   └─ apply.js          신청 폼 접수 · 사내 메일 API 전달
 ├─ package.json
-├─ vercel.json         캐시 · URL 설정
-├─ .env.example        환경변수 예시 (모두 선택 사항)
+├─ vercel.json           캐시 · URL 설정
+├─ .env.example          환경변수 예시 (모두 선택 사항)
 └─ README.md
 ```
 
-**수정할 일이 있으면 대부분 `index.html` 하나만 열면 됩니다.**
-HTML·CSS·JS가 한 파일에 다 들어 있고, 색상은 파일 상단 `:root` 에 모여 있습니다.
+### 어디를 고쳐야 하나
+
+| 고칠 곳 | 파일 |
+|---|---|
+| 히어로 문구 · 각 섹션 내용 · 신청 폼 | `src/index.html` |
+| 상단 고정 헤더 (로고 · 신청 버튼) | `src/partials/header.html` |
+| 자주 묻는 질문 | `src/partials/faq.html` |
+| 하단 푸터 (주소 · 연락처) | `src/partials/footer.html` |
+| 디자인 · 색상 | `src/index.html` 상단 `<style>` 의 `:root` |
+
+### 고친 뒤에는 빌드합니다
+
+```bash
+npm run build
+```
+
+`src/` 의 조각들이 합쳐져 루트의 `index.html` 이 다시 만들어집니다.
+그다음 `git add -A → commit → push` 하면 Vercel 이 자동 배포합니다.
+
+> ⚠️ **루트의 `index.html` 은 직접 고치지 마십시오.**
+> 자동 생성물이라 다음 빌드 때 덮어써집니다. 파일 맨 위에도 경고가 붙어 있습니다.
+> 빌드를 깜빡하더라도 커밋 직전에 자동으로 다시 만들어지도록 훅이 걸려 있습니다.
 
 ---
 
@@ -29,7 +54,7 @@ HTML·CSS·JS가 한 파일에 다 들어 있고, 색상은 파일 상단 `:root
 
 ### 방법 A — 가장 간단 (추천)
 
-VS Code 확장 **Live Server** 설치 후, `index.html` 우클릭 → **Open with Live Server**.
+VS Code 확장 **Live Server** 설치 후, `index.html` 우클릭 → **Open with Live Server**. (빌드된 파일을 봅니다)
 저장할 때마다 브라우저가 자동으로 새로고침됩니다.
 
 > 단, 이 방법으로는 신청 폼 전송이 동작하지 않습니다. 화면만 확인할 때 사용하세요.
