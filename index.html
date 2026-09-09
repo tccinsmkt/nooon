@@ -229,9 +229,21 @@ section{padding:78px 0}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--orange)}
 .field textarea{min-height:190px;resize:vertical;line-height:1.65}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.agree{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--ink-2);margin:20px 0}
 .agree input{width:16px;height:16px;margin-top:2px;flex:0 0 auto;accent-color:var(--orange)}
-.agree a{color:var(--ink);text-decoration:underline}
+.agree-block{margin:20px 0}
+.agree{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink);margin:0}
+.privacy{margin-top:9px;margin-left:25px}
+.privacy summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:5px;
+  font-size:13px;color:var(--orange-dark);font-weight:700}
+.privacy summary::-webkit-details-marker{display:none}
+.privacy summary::after{content:"▼";font-size:9px;line-height:1}
+.privacy[open] summary::after{content:"▲"}
+.privacy-body{margin-top:11px;padding:16px 18px;background:var(--bg-2);
+  border:1px solid var(--line);border-radius:8px;font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.privacy-body p{margin:0 0 4px}
+.privacy-body p.t{font-weight:800;color:var(--ink);font-size:13.5px;margin-bottom:9px}
+.privacy-body p.h{font-weight:700;color:var(--ink);margin:11px 0 4px}
+.privacy-body b{color:var(--ink);font-weight:700}
 .form-card .btn{width:100%}
 .btn[disabled],.btn[disabled]:hover{background:#C3CCD5;cursor:not-allowed}
 .cond{list-style:none;margin-top:28px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;overflow:hidden}
@@ -737,11 +749,39 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       <input type="text" name="website" tabindex="-1" autocomplete="off"
              style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
 
-      <label class="agree">
-        <input type="checkbox" id="agreeChk" name="agree" required>
-        <span>개인정보 수집·이용에 동의합니다. 수집 정보는 상담 목적으로만 사용됩니다.
-        <a href="#privacy">자세히 보기</a></span>
-      </label>
+      <div class="agree-block">
+        <label class="agree">
+          <input type="checkbox" id="agreeChk" name="agree" required>
+          <span>개인정보 수집 및 이용에 동의합니다. <span class="req">*</span></span>
+        </label>
+
+        <details class="privacy">
+          <summary>내용보기</summary>
+          <div class="privacy-body">
+            <p class="t">개인정보 수집 및 이용 동의</p>
+            <p>(주)TCC INS는 귀하의 무료 체험 신청에 대한 원활한 상담 및 답변 제공을 위해
+               아래와 같이 개인정보를 수집 및 이용합니다.</p>
+
+            <p class="h">1. 개인정보 수집 항목</p>
+            <p><b>필수항목:</b> 회사명, 담당자명, 연락처</p>
+            <p><b>선택항목:</b> 이메일, 기타 기재 내용</p>
+
+            <p class="h">2. 수집 및 이용 목적</p>
+            <p>무료 체험 신청 접수 및 상담, 현장 확인 일정 협의</p>
+            <p>상담을 위한 본인 식별 및 원활한 의사소통 경로 확보</p>
+
+            <p class="h">3. 개인정보의 보유 및 이용 기간</p>
+            <p>원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.</p>
+            <p>단, 관계법령 및 내부 방침에 의해 보존할 필요가 있는 경우 아래 기간 동안 보관합니다.</p>
+            <p><b>보존 항목:</b> 신청 기록 및 상담 내용</p>
+            <p><b>보존 기간:</b> 3년</p>
+
+            <p class="h">4. 동의 거부 권리 및 불이익</p>
+            <p>귀하는 개인정보 수집 및 이용에 거부할 권리가 있습니다.
+               단, 필수항목 수집에 거부하실 경우 신청 및 서비스 이용이 제한될 수 있습니다.</p>
+          </div>
+        </details>
+      </div>
 
       <button class="btn btn-lg" type="submit" disabled>무료 체험 신청</button>
     </form>
