@@ -4,12 +4,25 @@
 //
 //  동작
 //   1. 입력값 검증 (필수 항목 · 스팸 차단)
-//   2. 담당자에게 접수 메일 발송 (SMTP)
+//   2. 사내 메일 API(insbox)로 접수 내용 전달 → sales@tccins.co.kr
 //   3. 서버 로그 기록 (Vercel 대시보드 > Logs 에서 확인 가능)
 //
-//  환경변수는 .env.example 참고. 미설정 시에도 500 대신 로그만 남기고
-//  정상 응답하도록 되어 있어, 메일 설정 전에도 폼 테스트가 가능합니다.
+//  [SMTP 미사용]
+//  TCC INS 홈페이지(hp 프로젝트)와 동일하게 사내 메일 API를 사용한다.
+//  SMTP 계정 · 앱 비밀번호 · 환경변수가 일절 필요 없으며,
+//  발송 경로가 회사 인프라 안에서 끝난다.
+//  참고 구현: hp/src/app/contact/page.tsx, hp/src/app/contact/mail-builder.ts
+//
+//  발송 실패 시에는 200이 아니라 502를 돌려준다.
+//  (실패를 성공으로 표시하면 신청이 조용히 유실된다)
 // ────────────────────────────────────────────────────────────────
+
+const MAIL_API = 'https://insbox-api.tccins.co.kr/api/mail/add';
+const MAIL_DOMAIN = process.env.MAIL_DOMAIN || 'tccsteel.com';
+const MAIL_TO = (process.env.MAIL_TO || 'sales@tccins.co.kr')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
 
 const REQUIRED = ['company', 'name', 'phone'];
 
@@ -22,7 +35,10 @@ const LABELS = {
 };
 
 function esc(v = '') {
-  return String(v).replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]));
+  return String(v).replace(
+    /[<>&"']/g,
+    (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c])
+  );
 }
 
 export default async function handler(req, res) {
@@ -53,61 +69,61 @@ export default async function handler(req, res) {
 
   const now = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 
-  const rows = ['company', 'name', 'phone', 'email', 'msg']
-    .map((k) => {
-      const v = String(body[k] || '').trim();
-      if (!v) return '';
-      return `<tr>
-        <th style="text-align:left;padding:10px 14px;background:#F5F7F9;border:1px solid #DFE4EA;white-space:nowrap;vertical-align:top">${LABELS[k]}</th>
-        <td style="padding:10px 14px;border:1px solid #DFE4EA;white-space:pre-wrap">${esc(v)}</td>
-      </tr>`;
-    })
-    .join('');
+  // 메일 본문 — insbox API는 HTML 문자열을 그대로 받는다
+  const lines = ['NOOON 무료 체험 신청이 접수되었습니다.', ''];
 
-  const html = `
-  <div style="font-family:-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#16202B">
-    <h2 style="font-size:18px;margin:0 0 4px">NOOON 무료 체험 신청 접수</h2>
-    <p style="color:#7A8798;font-size:13px;margin:0 0 16px">${now}</p>
-    <table style="border-collapse:collapse;font-size:14px;width:100%;max-width:640px">${rows}</table>
-  </div>`;
+  lines.push('[기본 정보]');
+  lines.push(`회사명: ${esc(body.company)}`);
+  lines.push(`담당자명: ${esc(body.name)}`);
+  lines.push(`연락처: ${esc(body.phone)}`);
+  if (body.email) lines.push(`이메일: ${esc(body.email)}`);
+  lines.push('');
 
-  // 서버 로그 — 메일 설정 전에도 Vercel Logs 에서 확인 가능
-  console.log('[NOOON 신청]', JSON.stringify({ at: now, ...body, website: undefined }));
-
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_TO, MAIL_FROM } = process.env;
-
-  // 받는 주소 — 환경변수 미지정 시 영업 대표 주소로 발송
-  const TO = MAIL_TO || 'sales@tccins.co.kr';
-
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
-    // 메일 환경변수 미설정 — 접수는 성공 처리하고 로그만 남김
-    console.warn('[NOOON] SMTP 환경변수 미설정 — 메일을 보내지 않았습니다.');
-    return res.status(200).json({ ok: true, mailed: false });
+  if (String(body.msg || '').trim()) {
+    lines.push('[기타 내용]');
+    lines.push(esc(body.msg));
+    lines.push('');
   }
 
+  lines.push('[접수 정보]');
+  lines.push(`접수 일시: ${now} (KST)`);
+  lines.push('개인정보 동의: 동의함');
+  lines.push('유입 경로: NOOON 무료 체험 랜딩페이지');
+
+  const contents = lines.map((l) => l.replace(/\n/g, '<br>')).join('<br>');
+
+  // 서버 로그 — Vercel Logs 에서 확인 가능
+  console.log('[NOOON 신청]', JSON.stringify({ at: now, ...body, website: undefined }));
+
+  const payload = {
+    domain: MAIL_DOMAIN,
+    title: `[NOOON 무료 체험 신청] ${body.company} · ${body.name}`,
+    contents,
+    sendEmail: '',
+    toReceivers: MAIL_TO,
+  };
+
   try {
-    const nodemailer = (await import('nodemailer')).default;
-    const port = Number(SMTP_PORT || 465);
+    const form = new FormData();
+    form.append('item', new Blob([JSON.stringify(payload)], { type: 'application/json' }));
 
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port,
-      secure: port === 465,
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
-    });
+    const r = await fetch(MAIL_API, { method: 'POST', body: form });
 
-    await transporter.sendMail({
-      from: MAIL_FROM || SMTP_USER,
-      to: TO,
-      replyTo: body.email || undefined,
-      subject: `[NOOON 무료 체험 신청] ${body.company} · ${body.name}`,
-      html,
-    });
+    if (!r.ok) {
+      const detail = await r.text().catch(() => '');
+      console.error('[NOOON] 메일 API 응답 오류:', r.status, detail.slice(0, 500));
+      return res.status(502).json({
+        ok: false,
+        message: '접수 처리 중 오류가 발생했습니다.<br>sales@tccins.co.kr 또는 02-2639-1756으로 연락 주십시오.',
+      });
+    }
 
     return res.status(200).json({ ok: true, mailed: true });
   } catch (err) {
     console.error('[NOOON] 메일 발송 실패:', err);
-    // 고객에게는 접수 실패로 보이지 않게 — 로그에는 남아 있음
-    return res.status(200).json({ ok: true, mailed: false });
+    return res.status(502).json({
+      ok: false,
+      message: '접수 처리 중 오류가 발생했습니다.<br>sales@tccins.co.kr 또는 02-2639-1756으로 연락 주십시오.',
+    });
   }
 }

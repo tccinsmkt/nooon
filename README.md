@@ -13,10 +13,10 @@ nooon-landing/
 │   ├─ intro.mp4       소개 영상
 │   └─ poster.jpg      영상 재생 전 표지 이미지
 ├─ api/
-│   └─ apply.js        신청 폼 접수 · 메일 발송
+│   └─ apply.js        신청 폼 접수 · 사내 메일 API 전달
 ├─ package.json
 ├─ vercel.json         캐시 · URL 설정
-├─ .env.example        메일 설정 예시
+├─ .env.example        환경변수 예시 (모두 선택 사항)
 └─ README.md
 ```
 
@@ -76,25 +76,35 @@ git push -u origin main
 
 ---
 
-## 5. 신청 메일 설정
+## 5. 신청 메일 발송
 
-폼으로 들어온 신청서를 메일로 받으려면 환경변수를 등록해야 합니다.
+**별도 설정이 필요 없습니다.** 배포만 하면 바로 동작합니다.
 
-**Vercel 대시보드 → 프로젝트 → Settings → Environment Variables**
+접수된 신청서는 **사내 메일 API(insbox)** 를 통해 `sales@tccins.co.kr` 로 발송됩니다.
+TCC INS 홈페이지(`tccins/hp`)의 문의 폼과 동일한 경로입니다.
 
-| Key | 값 | 비고 |
+```
+폼 제출 → /api/apply → https://insbox-api.tccins.co.kr/api/mail/add → sales@tccins.co.kr
+```
+
+SMTP 계정 · 앱 비밀번호 · 환경변수가 **일절 필요하지 않습니다.**
+발송 경로가 회사 인프라 안에서 끝나므로 담당자가 바뀌어도 영향이 없습니다.
+
+### 받는 주소를 바꾸려면
+
+Vercel → Settings → Environment Variables 에 아래를 등록하고 **Redeploy** 합니다. (선택 사항)
+
+| Key | 기본값 | 설명 |
 |---|---|---|
-| `SMTP_HOST` | 메일 서버 주소 | 메일 관리자에게 문의 |
-| `SMTP_PORT` | `465` | 587인 경우도 있음 |
-| `SMTP_USER` | `sales@tccins.co.kr` | 보내는 계정 |
-| `SMTP_PASS` | 비밀번호 | 앱 비밀번호일 수 있음 |
-| `MAIL_TO` | `sales@tccins.co.kr` | 받을 주소, 쉼표로 여러 명 가능 |
-| `MAIL_FROM` | `NOOON 신청 <sales@tccins.co.kr>` | 생략 가능 |
+| `MAIL_TO` | `sales@tccins.co.kr` | 받을 주소. 쉼표로 여러 명 지정 가능 |
+| `MAIL_DOMAIN` | `tccsteel.com` | 사내 메일 API 의 domain 파라미터 |
 
-등록 후 **Deployments → 최신 배포 → Redeploy** 를 눌러야 적용됩니다.
+### 발송에 실패하면
 
-> **설정 전에도 페이지는 정상 동작합니다.**
-> 메일만 안 나갈 뿐, 신청 내용은 Vercel **Logs** 에 기록되니 확인할 수 있습니다.
+신청자 화면에 **전화 · 이메일 안내가 표시됩니다.**
+실패를 성공으로 표시하면 신청이 조용히 유실되므로, 의도적으로 오류를 드러냅니다.
+원인은 Vercel **Logs** 에서 `[NOOON] 메일` 로 검색하면 확인할 수 있습니다.
+신청 내용 자체는 실패 여부와 무관하게 `[NOOON 신청]` 으로 로그에 남습니다.
 
 ---
 
