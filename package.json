@@ -2,7 +2,7 @@
   "name": "nooon-landing",
   "version": "1.0.0",
   "private": true,
-  "description": "NOOON 무료 신청 랜딩페이지 — TCC INS",
+  "description": "NOOON 무료 체험 신청 랜딩페이지 — TCC INS",
   "scripts": {
     "dev": "vercel dev",
     "start": "vercel dev"

@@ -1,5 +1,5 @@
 // ────────────────────────────────────────────────────────────────
-//  NOOON 무료 신청 접수 — Vercel Serverless Function
+//  NOOON 무료 체험 신청 접수 — Vercel Serverless Function
 //  POST /api/apply
 //
 //  동작
@@ -66,7 +66,7 @@ export default async function handler(req, res) {
 
   const html = `
   <div style="font-family:-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#16202B">
-    <h2 style="font-size:18px;margin:0 0 4px">NOOON 무료 신청 접수</h2>
+    <h2 style="font-size:18px;margin:0 0 4px">NOOON 무료 체험 신청 접수</h2>
     <p style="color:#7A8798;font-size:13px;margin:0 0 16px">${now}</p>
     <table style="border-collapse:collapse;font-size:14px;width:100%;max-width:640px">${rows}</table>
   </div>`;
@@ -100,7 +100,7 @@ export default async function handler(req, res) {
       from: MAIL_FROM || SMTP_USER,
       to: TO,
       replyTo: body.email || undefined,
-      subject: `[NOOON 무료 신청] ${body.company} · ${body.name}`,
+      subject: `[NOOON 무료 체험 신청] ${body.company} · ${body.name}`,
       html,
     });
 

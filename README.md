@@ -1,4 +1,4 @@
-# NOOON 무료 신청 랜딩페이지
+# NOOON 무료 체험 신청 랜딩페이지
 
 TCC INS · NOOON Preview Program 신청 페이지입니다.
 
@@ -52,7 +52,7 @@ vercel dev
 cd nooon-landing
 git init
 git add .
-git commit -m "NOOON 무료 신청 랜딩페이지"
+git commit -m "NOOON 무료 체험 신청 랜딩페이지"
 git branch -M main
 git remote add origin https://github.com/조직명/nooon-landing.git
 git push -u origin main

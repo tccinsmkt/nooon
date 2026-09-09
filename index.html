@@ -3,36 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NOOON 무료 신청 | 본 구축 전 현장 검증 · TCC INS</title>
-<meta name="description" content="창고 내 특정 구역을 대상으로 실제 촬영 또는 3D 스캔을 진행해, 우리 현장에서 어디까지 인식되는지와 적정 카메라 배치를 먼저 검증합니다. 비용은 발생하지 않습니다.">
+<title>NOOON 무료 체험 | 내 창고를 먼저 돌려보세요 · TCC INS</title>
+<meta name="description" content="24~48시간의 실제 현장 영상과 현재 재고·생산·출하계획으로, NOOON이 내 창고의 앞으로 72시간을 미리 돌려봅니다. 비용도 도입 의무도 없습니다.">
 
 <!--
 ════════════════════════════════════════════════════════════════
-  NOOON 무료 신청 랜딩 (v7.0)
+  NOOON 무료 체험 랜딩 (v8.0)
 
-  [v6 → v7 — 2026-09-07 회의 반영]
-  · 무료 체험의 정의를 Pre-POC(사전 검증)로 명확화
-    → 완성된 시스템을 보여주는 자리가 아니라,
-      "이 현장에서 이 정도까지 인식되고, 이런 카메라 배치가 적절하며,
-       본 구축 시 이런 형태가 가능하다"를 증명하는 절차
-  · 검증 범위를 창고 전체가 아닌 특정 구역 단위로 명시
-  · 검증 방식 두 가지(실제 촬영 / 3D 스캔 시뮬레이션)를 소개하되
-    선택은 NOOON Team이 현장 특성에 따라 판단
-  · 산출물을 "본 구축 근거"(인식 범위·카메라 배치·수량 산정)로 재정의
-  · 30일치 등 확정되지 않은 기간 수치는 본문에서 제외
+  [v7 → v8 — 대표님 방향 반영]
+  · 중심 메시지 변경
+    (구) "NOOON이 귀사 창고에서 작동하는지 확인해 보세요"
+    (신) "현재의 창고를 보고, 앞으로의 창고를 미리 돌려봅니다"
+    → 단순 AI CCTV 체험이 아니라, 내 데이터를 넣어
+      NOOON Intelligence를 경험하는 서비스로 포지셔닝
+  · 제품 소개 페이지가 아님. 30초 안에 아래 셋만 전달한다.
+    ① 내 창고를 실제로 촬영한다
+    ② 내 재고·생산·출하계획으로 앞으로의 운영을 가상으로 돌린다
+    ③ NOOON이 무엇을 보고·기록하고·예측하는지 내 현장 기준으로 본다
+  · 두 방식은 병행이 아니라 택 1. 현장 확인 후 NOOON Team이 선택한다.
+    → HERO 흐름도도 3단계(INPUT → METHOD 택1 → OUTPUT)로 맞춤
+  · 서사 구조 — 갈등 비트(.tension)를 HERO 직후에 신설
+    발단(HERO) → 갈등(창고는 늘 지나간 뒤에 알게 됩니다)
+    → 전환(이틀만 찍습니다) → 절정(아직 오지 않은 72시간)
+    → 완화(준비물) → 결말(3종 산출물 + 여기서 멈추셔도 됩니다)
+  · 시뮬레이션 구간: 기본 72시간을 전면 서사로 고정,
+    30일은 "최대 30일까지 확장 가능" 각주(.fn)로만 처리
+    → 각주 위치 3곳: WHAT YOU EXPERIENCE ③ / SAMPLE INTELLIGENCE / 신청 조건표 · FAQ
 
-  [의도적으로 제외] 제품 구성 / 가격 / 카메라 사양 / 설치 방식 등 구현 상세
+  [의도적으로 제외] AI 모델 상세 / 카메라 사양 / Edge Computing /
+    WMS 전체 기능 / OCR / API·Connector / Architecture / 전체 모듈 / POC 세부정책
   ──────────────────────────────────────────────────────────────
   [확정 후 기재] — 페이지 내 .todo 로 표시
-  · 신청 후 연락까지의 기간, 결과 제공 리드타임
+  · 신청 후 연락까지의 기간, 결과 제공 리드타임 (PROCESS 하단)
   · 촬영 영상 저장 위치 · 접근 권한자 · 폐기 시점
-  · 3D 스캔 데이터 제공 범위 및 형식
   · 화면 3종 외부 공개 가능 여부
 
-  [SAMPLE 표기] Intelligence 예시 수치는 본 구축 시 제공 범위이며 SAMPLE 로 명시
-  [개발 연동] #applyForm 전송 로직 / .shot 화면 삽입 / #privacy 링크
+  [SAMPLE 표기] #sample 타임라인 수치는 전부 SAMPLE. 실제 산출값 아님.
+  [개발 연동] #applyForm 전송 로직 / .shot 이미지 교체 / #privacy 링크
   [배포] GitHub → Vercel. 폼 전송은 /api/apply (Serverless Function).
-  [에셋] assets/intro.mp4 · assets/poster.jpg
+  [에셋] assets/intro.mp4 · assets/poster.jpg · assets/shot-01~03.jpg
 ════════════════════════════════════════════════════════════════
 -->
 
@@ -57,7 +66,7 @@ a{color:inherit}
 .eyebrow{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.1em;color:var(--orange);margin-bottom:14px}
 h2{font-size:clamp(25px,3.2vw,35px);font-weight:900;letter-spacing:-.035em;line-height:1.3}
 h3{font-size:18px;font-weight:800;letter-spacing:-.02em}
-.lead{color:var(--ink-2);font-size:16.5px;margin-top:13px;word-break:keep-all}
+.lead{color:var(--ink-2);font-size:16.5px;margin-top:13px;word-break:keep-all;max-width:72ch}
 section{padding:78px 0}
 .sec-alt{background:var(--bg-2);border-block:1px solid var(--line)}
 .sec-dark{background:var(--navy-900);color:#fff}
@@ -253,7 +262,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   section{padding:56px 0}
   .hero{padding-top:62px}
   .hero-note{padding-bottom:66px}
-  .how,.exp,.split,.why3{grid-template-columns:1fr}
+  .how,.exp,.split,.why3,.ways{grid-template-columns:1fr}
   .need{grid-template-columns:repeat(2,1fr)}
   .proc{grid-template-columns:repeat(2,1fr)}
   .how{gap:30px}
@@ -286,6 +295,59 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   .faq summary{font-size:15.5px;padding-right:34px}
   footer .wrap{gap:22px}
 }
+
+/* ══ v8 추가 ══════════════════════════════════════════ */
+/* HERO 4단계 흐름 */
+.flow{display:flex;align-items:stretch;justify-content:center;margin-top:40px}
+.flow .st{flex:1 1 0;min-width:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:10px;padding:18px 12px;text-align:center}
+.flow .st .n{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--orange-soft);margin-bottom:7px}
+.flow .st .l{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.025em;line-height:1.4}
+.flow .ar{flex:0 0 auto;display:flex;align-items:center;padding:0 9px;color:var(--orange-soft);font-size:17px;font-weight:900}
+.flow .st.pick{background:rgba(255,106,19,.12);border-color:rgba(255,106,19,.5)}
+.flow .st .or{display:block;font-size:11.5px;font-weight:800;letter-spacing:.06em;
+  color:var(--orange-soft);margin:5px 0}
+
+/* 갈등 비트 */
+.tension{background:var(--navy-900);color:#fff;padding:76px 0;text-align:center}
+.tension p{font-size:clamp(16.5px,2vw,19.5px);color:rgba(255,255,255,.76);line-height:1.9;max-width:58ch;margin:0 auto}
+.tension .punch{margin-top:28px;font-size:clamp(22px,3.1vw,33px);font-weight:900;color:#fff;
+  letter-spacing:-.042em;line-height:1.35;max-width:none}
+
+/* 절정 마무리 문장 */
+.climax{margin-top:34px;text-align:center;font-size:clamp(20px,2.8vw,30px);font-weight:900;
+  color:#fff;letter-spacing:-.04em;line-height:1.35}
+
+/* 각주 */
+.fn{margin-top:13px;font-size:13px;color:var(--ink-3);line-height:1.65}
+.sec-dark .fn{color:rgba(255,255,255,.5)}
+.exp .fn{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+
+/* Intelligence 항목 chip */
+.chips-head{margin-top:30px;font-size:13px;font-weight:900;letter-spacing:.08em;color:var(--orange-soft)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips span{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);border-radius:999px;
+  padding:8px 14px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.82)}
+
+/* 6단계 프로세스 */
+.proc.p6{grid-template-columns:repeat(6,1fr)}
+
+@media (max-width:1024px){ .proc.p6{grid-template-columns:repeat(3,1fr)} }
+@media (max-width:860px){
+  .flow{flex-direction:column;gap:0}
+  .flow .ar{transform:rotate(90deg);padding:7px 0;justify-content:center}
+  .tl{grid-template-columns:repeat(2,1fr)}
+  .who{grid-template-columns:1fr}
+  .tension{padding:56px 0}
+}
+@media (max-width:640px){
+  .hero .sub br,.lead br{display:none}
+}
+@media (max-width:560px){
+  .tl{grid-template-columns:1fr}
+  .need,.get{grid-template-columns:1fr}
+  .proc,.proc.p6{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -293,124 +355,57 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 <div class="topbar">
   <div class="wrap">
     <div class="logo"><img src="assets/nooon-logo.svg" alt="NOOON" width="110" height="24"><small>· TCC INS</small></div>
-    <a class="btn" href="#apply">무료 신청</a>
+    <a class="btn" href="#apply">무료 체험 신청</a>
   </div>
 </div>
 
-<!-- ══════ HERO ══════ -->
+<!-- ══════ 1. HERO ══════ -->
 <div class="hero">
   <div class="wrap">
-    <span class="eyebrow" style="color:var(--orange-soft)">NOOON PREVIEW PROGRAM</span>
-    <h1>도입 전, 현장 적용 가능성을<br>먼저 확인하세요.</h1>
+    <span class="eyebrow" style="color:var(--orange-soft)">NOOON FREE TRIAL</span>
+    <h1>당신의 창고를<br>Nooon으로 먼저 돌려보세요.</h1>
     <p class="sub">
-      창고 내 <b>특정 구역</b>을 대상으로 실제 촬영 또는 3D 스캔을 진행해,<br>
-      <b>무엇이 어디까지 인식되는지</b>와 <b>어떤 카메라 배치가 적절한지</b>를 검증합니다.
+      <b>24~48시간의 실제 현장 영상</b>과 <b>현재 재고 · 생산 · 출하계획</b>을 기반으로,<br>
+      이 현장에 맞는 방식을 선택해 Nooon이 무엇을 읽고 무엇을 예측할 수 있는지 확인하십니다.
     </p>
-    <div class="hero-cta"><a class="btn btn-lg" href="#apply">무료 신청</a></div>
-    <p class="hero-note">비용이 발생하지 않으며, 검증 결과 확인 후 도입 여부는 자유롭게 결정하실 수 있습니다.</p>
+
+    <div class="flow">
+      <div class="st"><div class="n">INPUT</div><div class="l">실제 현장 영상<br>현재 재고 · 계획</div></div>
+      <div class="ar">›</div>
+      <div class="st pick">
+        <div class="n">METHOD · 택 1</div>
+        <div class="l">현장 AI 인식<span class="or">또는</span>운영 Simulation</div>
+      </div>
+      <div class="ar">›</div>
+      <div class="st"><div class="n">OUTPUT</div><div class="l">Nooon<br>Intelligence Preview</div></div>
+    </div>
+
+    <div class="hero-cta"><a class="btn btn-lg" href="#apply">무료 체험 신청하기</a></div>
+    <p class="hero-note">비용은 발생하지 않으며, 결과 확인 후 도입 여부는 자유롭게 결정하실 수 있습니다.</p>
   </div>
 </div>
 
-<!-- ══════ 무료 신청이란 ══════ -->
-<section id="about">
+<!-- ══════ 갈등 — 왜 이 체험이 필요한가 ══════ -->
+<div class="tension">
   <div class="wrap">
-    <span class="eyebrow">PRE-POC</span>
-    <h2>완성된 시스템을 보여드리는 자리가 아닙니다</h2>
-    <p class="lead">
-      본 구축을 결정하기 전에, 귀사 현장에서 실제로 무엇이 가능한지 확인하는 사전 검증 절차입니다.
+    <p>
+      지금 이 순간에도 창고 안에서는 파렛트가 움직이고 있습니다.<br>
+      누가 무엇을 어디로 옮겼는지, 그 대부분은 기록되지 않습니다.<br>
+      그래서 내일 A Zone이 꽉 차는지, 모레 오후에 작업이 몰리는지는 닥쳐봐야 압니다.
     </p>
-
-    <div class="define">
-      <div class="q">이 절차에서 증명하는 것</div>
-      <p>
-        “이 현장에서는 이 정도까지 인식할 수 있고, 이런 카메라 배치가 적절하며,
-        본 구축 시 이런 형태의 시스템이 가능하다.”
-      </p>
-      <p class="sm">
-        따라서 검증 결과는 본 구축 시 필요한 <b>카메라 수량 · 설치 위치 · 비용 산정의 근거</b>로 그대로 사용됩니다.
-      </p>
-    </div>
+    <div class="punch">창고는 늘, 지나간 뒤에 알게 됩니다.</div>
   </div>
-</section>
+</div>
 
-<!-- ══════ 진행 프로세스 ══════ -->
-<section class="sec-alt" id="flow">
-  <div class="wrap">
-    <span class="eyebrow">HOW IT PROCEEDS</span>
-    <h2>진행 프로세스</h2>
-    <p class="lead">신청해 주시면 저희가 먼저 현장을 확인한 뒤, 어떤 방식으로 진행할지 NOOON&nbsp;Team이 결정합니다.</p>
-
-    <div class="proc">
-      <div class="p">
-        <div class="no">01</div>
-        <div class="t">신청 · 현장 확인</div>
-        <div class="d">담당자가 연락드려 대상 구역과 일정을 협의합니다</div>
-      </div>
-      <div class="p">
-        <div class="no">02</div>
-        <div class="t">검증 방식 결정</div>
-        <div class="d">현장 구조와 사각지대를 확인해 촬영과 스캔 중 적합한 방식을 정합니다</div>
-      </div>
-      <div class="p">
-        <div class="no">03</div>
-        <div class="t">현장 촬영 · 스캔</div>
-        <div class="d">협의된 구역을 대상으로 진행합니다</div>
-      </div>
-      <div class="p">
-        <div class="no">04</div>
-        <div class="t">AI 검증 · 분석</div>
-        <div class="d">인식 가능 범위와 적정 카메라 배치를 확인합니다</div>
-      </div>
-      <div class="p">
-        <div class="no">05</div>
-        <div class="t">결과 · 구축 제안</div>
-        <div class="d">검증 결과를 설명드리고 본 구축 방향을 함께 제안합니다</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ 검증 범위 ══════ -->
-<section id="scope">
-  <div class="wrap">
-    <span class="eyebrow">SCOPE</span>
-    <h2>창고 전체가 아니라, 한 구역부터 시작합니다</h2>
-    <p class="lead">
-      처음부터 창고 전체를 대상으로 하지 않습니다.<br>
-      대표성이 있는 구역이나 가장 문제가 되는 영역 하나를 정해 검증하고, 그 결과를 근거로 확대 범위를 판단합니다.
-    </p>
-
-    <div class="exp">
-      <div class="item">
-        <div class="num">1</div>
-        <h3>대상 구역은 함께 정합니다</h3>
-        <p>현장 확인 단계에서 어느 구역을 검증할지 협의합니다.</p>
-        <ul>
-          <li>재고 이동이 가장 많은 구역</li>
-          <li>실사 오차가 반복되는 구역</li>
-          <li>사각지대가 많아 확인이 어려운 구역</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="num">2</div>
-        <h3>부담을 최소화합니다</h3>
-        <p>현장 운영을 멈추지 않으며, 준비하실 것은 촬영 협조와 보유 자료뿐입니다.</p>
-        <ul>
-          <li>현장은 평소대로 운영</li>
-          <li>작업 방식 변경 없음</li>
-          <li>별도 시스템 개발 불필요</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ HOW IT WORKS (영상) ══════ -->
-<section class="sec-alt" id="how">
+<!-- ══════ 2. HOW IT WORKS ══════ -->
+<section id="how">
   <div class="wrap">
     <span class="eyebrow">HOW IT WORKS</span>
-    <h2>NOOON이 현장을 어떻게 읽는지 먼저 보십시오</h2>
-    <p class="lead">아래 영상은 NOOON이 실제 현장에서 재고와 이동을 어떻게 인식하고 기록하는지 보여줍니다.</p>
+    <h2>이틀만 찍습니다</h2>
+    <p class="lead">
+      그래서 순서를 바꿔 봅니다. 이틀의 영상과 사흘의 계획이면 충분합니다.<br>
+      Nooon이 그 안에서 재고의 이동을 읽어내거나, 아직 오지 않은 시간을 돌려봅니다.
+    </p>
 
     <div class="how">
       <div class="how-media">
@@ -423,96 +418,257 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       <ul class="io">
         <li>
           <div class="k">INPUT</div>
-          <strong>대상 구역의 촬영본 또는 3D 스캔 데이터</strong>
-          <p>협의된 구역을 촬영하거나 스캔하고, 보유하고 계신 재고·위치 정보와 운영 기준을 함께 받습니다.</p>
+          <strong>24~48시간 영상 · 현재 재고 · 3일 계획</strong>
+          <p>대상 구역을 촬영하고, 보유하고 계신 재고·위치 정보와 생산·출하계획을 함께 받습니다.</p>
         </li>
         <li>
           <div class="k">PROCESS</div>
-          <strong>인식 검증 · 배치 검토 · 시뮬레이션</strong>
-          <p>어디까지 인식되는지 확인하고, 어떤 위치와 화각이 적절한지 검토합니다.</p>
+          <strong>현장에 맞는 방식으로 · 인식 검증 또는 Simulation</strong>
+          <p>현장을 확인한 뒤 적합한 방식을 선택해, 실제 인식 검증 또는 운영 Simulation을 진행합니다.</p>
         </li>
         <li>
           <div class="k">OUTPUT</div>
-          <strong>검증 결과 · 카메라 배치안 · 구축 제안</strong>
-          <p>결과를 정리해 설명드리고, 본 구축을 진행할 경우의 구성과 범위를 제안합니다.</p>
+          <strong>선택된 방식의 결과 · Intelligence Preview</strong>
+          <p>귀사 현장에서 나온 결과입니다. 다른 창고의 예시 자료가 아닙니다.</p>
         </li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ══════ 받는 것 ══════ -->
-<section id="get">
+<!-- ══════ 3. WHAT YOU EXPERIENCE ══════ -->
+<!--  주의: 이 섹션은 "다 해준다"로 읽히면 안 됨.
+      두 가지 방식을 제시하되, 둘 중 어느 쪽으로 진행할지는
+      현장 확인 후 NOOON Team이 선택한다는 점을 반드시 함께 노출.
+      (두 방식 병행을 기본값으로 읽히게 쓰지 말 것)  -->
+<section class="sec-alt" id="experience">
   <div class="wrap">
-    <span class="eyebrow">WHAT YOU GET</span>
-    <h2>본 구축을 판단할 근거를 받습니다</h2>
-    <p class="lead">귀사 현장에서 나온 결과이며, 다른 현장의 예시 자료가 아닙니다.</p>
+    <span class="eyebrow">WHAT YOU EXPERIENCE</span>
+    <h2>두 가지 방식 중 하나로 진행합니다</h2>
+    <p class="lead">
+      하나는 지금 현장에서 실제로 일어난 일을 읽는 것,<br>
+      다른 하나는 아직 오지 않은 시간을 돌려보는 것입니다.
+    </p>
 
-    <div class="get">
-      <div class="card">
-        <div class="tag">01</div>
-        <h3>인식 검증 결과</h3>
-        <div class="cap">이 현장에서 무엇이 어디까지 인식되는가</div>
-        <p>실제 영상 또는 스캔 데이터에서 재고·사람·지게차가 어떻게 인식되는지 화면으로 확인합니다.</p>
-        <div class="shot filled"><img src="assets/shot-01.jpg" alt="창고 영상에서 팔레트·지게차·작업자가 인식된 결과 화면" loading="lazy" width="1000" height="667"></div>
+    <div class="ways">
+      <div class="way">
+        <div class="k">방식 1 · ACTUAL</div>
+        <h3>현장을 실제로 읽습니다</h3>
+        <p>촬영된 영상에서 Nooon이 무엇을 어떻게 인식하는지, 귀사 화면으로 확인하십니다.</p>
+        <ul>
+          <li>제품 · 재고 인식</li>
+          <li>위치 인식</li>
+          <li>입고 · 이동 · 적치 · 출고</li>
+          <li>실제 작업 동선</li>
+        </ul>
       </div>
-      <div class="card">
-        <div class="tag">02</div>
-        <h3>카메라 배치안</h3>
-        <div class="cap">어디에 몇 대를 어떤 화각으로</div>
-        <p>검증 결과를 바탕으로 적정 설치 위치와 화각, 필요한 수량을 제시합니다.</p>
-        <div class="shot filled"><img src="assets/shot-02.jpg" alt="3D 도면 위에 카메라 설치 위치와 화각을 표시한 배치안" loading="lazy" width="1000" height="667"></div>
+
+      <div class="way">
+        <div class="k">방식 2 · SIMULATION</div>
+        <h3>앞으로를 돌려봅니다</h3>
+        <p>현재 재고와 위치로 창고를 재현한 뒤, 생산 · 입고 · 출하계획을 적용해 앞으로의 운영을 돌려봅니다.</p>
+        <ul>
+          <li>3D Mirroring — 지금 내 창고의 상태</li>
+          <li>재고 변화 추이 · 구역별 점유율</li>
+          <li>선행 이동 발생 지점</li>
+        </ul>
+        <p class="fn">기본 72시간이며, 제공해 주시는 계획 자료의 범위에 따라 <b>최대 30일까지 확장 가능</b>합니다.</p>
       </div>
-      <div class="card">
-        <div class="tag">03</div>
-        <h3>본 구축 제안</h3>
-        <div class="cap">도입 시 어떤 형태가 되는가</div>
-        <p>확대 범위와 시스템 구성, 산정 근거를 정리해 제안드립니다.</p>
-        <div class="shot filled"><img src="assets/shot-03.jpg" alt="NOOON 관제 화면 — 실시간 모니터링과 재고 현황 대시보드" loading="lazy" width="1000" height="667"></div>
+    </div>
+
+    <div class="note-bar">
+      <b>두 가지 중 이 현장에 적합한 방식을 선택합니다.</b><br>
+      창고 구조 · 적치 방식 · 사각지대 · 보유하고 계신 자료를 먼저 확인한 뒤,
+      어느 방식으로 진행할지 Nooon&nbsp;Team이 판단해 협의드립니다.
+      두 방식이 항상 함께 제공되는 것은 아닙니다.
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 4. SAMPLE INTELLIGENCE — 절정 ══════ -->
+<section class="sec-dark" id="sample">
+  <div class="wrap">
+    <div class="sample-head">
+      <span class="eyebrow" style="margin-bottom:0">SAMPLE INTELLIGENCE</span>
+      <span class="badge-sample">SAMPLE</span>
+    </div>
+    <h2 style="margin-top:14px">앞으로 72시간을 미리 봅니다</h2>
+    <p class="lead">여기까지가 실제로 있었던 일입니다.<br>그리고 이제, 아직 오지 않은 72시간입니다.</p>
+
+    <div class="tl">
+      <div class="col now">
+        <div class="when">TODAY</div>
+        <div class="clock">09:00</div>
+        <dl>
+          <div><dt>현재 재고</dt><dd>1,248 EA</dd></div>
+          <div><dt>창고 점유율</dt><dd>67%</dd></div>
+        </dl>
+      </div>
+      <div class="col">
+        <div class="when">DAY</div>
+        <div class="clock">+1</div>
+        <dl>
+          <div><dt>생산 입고</dt><dd class="up">+173</dd></div>
+          <div><dt>출하</dt><dd class="dn">−92</dd></div>
+          <div><dt>예상 Handling</dt><dd>148 회</dd></div>
+        </dl>
+      </div>
+      <div class="col">
+        <div class="when">DAY</div>
+        <div class="clock">+2</div>
+        <dl>
+          <div><dt>A Zone 점유율</dt><dd class="hi">91%</dd></div>
+          <div><dt>출하대상 선행이동</dt><dd>12 건 예상</dd></div>
+        </dl>
+      </div>
+      <div class="col">
+        <div class="when">DAY</div>
+        <div class="clock">+3</div>
+        <dl>
+          <div><dt>출하 집중</dt><dd class="hi">14:00–16:00</dd></div>
+          <div><dt>예상 작업량</dt><dd>Peak</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <p class="tl-note">위 수치는 이해를 돕기 위한 SAMPLE이며, 실제 결과는 귀사 현장 데이터와 계획 자료를 기준으로 산출됩니다.</p>
+    <p class="fn">시뮬레이션 구간은 기본 72시간이며, 계획 자료의 범위에 따라 최대 30일까지 확장 가능합니다.</p>
+
+    <div class="chips-head">Intelligence Preview에서 확인하실 수 있는 항목</div>
+    <div class="chips">
+      <span>예상 재고 변화</span><span>공간 CAPA 변화</span><span>예상 Handling 수</span>
+      <span>불필요 재이동 가능성</span><span>시간대별 작업 집중</span><span>출하 준비 이동량</span>
+      <span>FIFO / LOT Risk</span><span>예상 지게차 작업량</span>
+    </div>
+    <p class="fn">위 항목은 Nooon 상시 운영 시 제공되는 분석의 일부이며, 체험 단계에서는 확보된 데이터 범위 안에서 Preview로 제공됩니다.</p>
+
+    <div class="climax">이 창고는 아직, 이 사흘을 겪지 않았습니다.</div>
+  </div>
+</section>
+
+<!-- ══════ 5. 근거 구분 ══════ -->
+<section id="basis">
+  <div class="wrap">
+    <span class="eyebrow">결과의 근거 구분</span>
+    <h2>실측과 Simulation을 구분합니다</h2>
+    <p class="lead">
+      이틀의 촬영으로 창고 전체를 다 안다고 말하지 않습니다.<br>
+      어디까지가 실제로 관측된 내용이고, 어디부터가 계산된 예상인지 결과물에 표시합니다.
+    </p>
+    <div class="split">
+      <div class="b a">
+        <div class="lbl">ACTUAL</div>
+        <h3>실제 관측</h3>
+        <p>24~48시간의 실제 영상에서 확인된 내용입니다.</p>
+      </div>
+      <div class="b">
+        <div class="lbl">SIMULATION</div>
+        <h3>계산된 예상</h3>
+        <p>제공해 주신 재고 · 계획 · 운영 Rule을 기반으로 계산된 예상 결과입니다.</p>
+      </div>
+      <div class="b">
+        <div class="lbl">INTELLIGENCE PREVIEW</div>
+        <h3>상시 운영 시 제공 범위</h3>
+        <p>Nooon을 장기 운영할 경우 제공 가능한 분석의 Preview입니다.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════ 준비물 ══════ -->
+<!-- ══════ 6. WHAT WE NEED ══════ -->
 <section class="sec-alt" id="need">
   <div class="wrap">
     <span class="eyebrow">WHAT WE NEED</span>
-    <h2>준비해 주실 것은 이것뿐입니다</h2>
-    <p class="lead">별도의 시스템 개발이나 데이터 가공은 필요하지 않습니다.</p>
+    <h2>준비하실 것은 네 가지뿐입니다</h2>
+    <p class="lead">이 사흘을 보기 위해 별도의 시스템 개발이나 데이터 가공은 필요하지 않습니다.<br>현장 운영도 멈추지 않습니다.</p>
 
     <div class="need">
-      <div class="box"><h3>현장</h3><ul><li>대상 구역 촬영 · 스캔 협조</li><li>출입 협조</li></ul></div>
+      <div class="box"><h3>현장</h3><ul><li>24~48시간 촬영 협조</li><li>출입 협조</li></ul></div>
       <div class="box"><h3>기본 자료</h3><ul><li>창고 Layout</li><li>현재 재고 및 위치</li></ul></div>
-      <div class="box"><h3>계획 자료</h3><ul><li>생산 · 입고 · 출하 계획</li><li>작업지시 내용</li></ul></div>
+      <div class="box"><h3>계획 자료</h3><ul><li>약 3일의 생산 · 입고 · 출하 계획</li></ul></div>
       <div class="box"><h3>운영 기준</h3><ul><li>적치 · 출하 Rule</li><li>FIFO 등 기본 운영 원칙</li></ul></div>
     </div>
 
     <div class="need-note">
       자료가 완벽하지 않아도 됩니다.
-      <span>보유하고 계신 수준에서 NOOON&nbsp;Team이 함께 구성합니다.</span>
+      <span>보유하고 계신 수준에서 Nooon&nbsp;Team이 함께 구성합니다.</span>
     </div>
   </div>
 </section>
 
-<!-- ══════ 근거 구분 ══════ -->
-<section id="basis">
+<!-- ══════ 7. WHAT YOU GET ══════ -->
+<section id="get">
   <div class="wrap">
-    <span class="eyebrow">결과의 근거 구분</span>
-    <h2>실측과 시뮬레이션을 구분해 제공합니다</h2>
-    <p class="lead">
-      짧은 기간의 검증으로 창고 전체를 판단할 수는 없습니다.
-      어디까지가 실제로 관측된 내용이고 어디부터가 계산된 예상인지 결과물에 표시합니다.
-    </p>
-    <div class="split">
-      <div class="b a"><div class="lbl">ACTUAL</div><h3>실제 관측</h3><p>촬영된 영상에서 실제로 확인된 내용입니다.</p></div>
-      <div class="b"><div class="lbl">SIMULATION</div><h3>계산된 예상</h3><p>3D 스캔 공간과 제공해 주신 자료를 기반으로 계산된 예상 결과입니다.</p></div>
-      <div class="b"><div class="lbl">FULL OPERATION</div><h3>본 구축 시 제공 범위</h3><p>NOOON을 실제로 운영할 경우 제공 가능한 분석의 범위입니다.</p></div>
+    <span class="eyebrow">WHAT YOU GET</span>
+    <h2>세 가지가 남습니다</h2>
+    <p class="lead">체험이 끝나면 귀사 현장에서 나온 결과가 남습니다. 다른 현장의 예시 자료가 아닙니다.</p>
+
+    <div class="get">
+      <div class="card">
+        <div class="tag">01</div>
+        <h3>Nooon Reality Replay</h3>
+        <div class="cap">내 현장에서 Nooon이 실제로 본 것</div>
+        <p>실제 작업 영상 위에서 재고 · 사람 · 지게차가 어떻게 인식되고, 이동이 어떻게 기록되는지 확인합니다.</p>
+        <div class="shot filled"><img src="assets/shot-01.jpg" alt="창고 영상에서 팔레트·지게차·작업자가 인식된 결과 화면" loading="lazy" width="1000" height="667"></div>
+      </div>
+      <div class="card">
+        <div class="tag">02</div>
+        <h3>Nooon Warehouse Simulation</h3>
+        <div class="cap">내 창고의 앞으로 72시간</div>
+        <p>현재 재고와 생산 · 출하계획, 운영 Rule을 기반으로 앞으로의 창고 운영을 돌려본 결과입니다.</p>
+        <div class="shot filled"><img src="assets/shot-02.jpg" alt="현재 재고와 계획을 기반으로 앞으로 72시간을 시뮬레이션한 화면" loading="lazy" width="1000" height="667"></div>
+      </div>
+      <div class="card">
+        <div class="tag">03</div>
+        <h3>Nooon Intelligence Preview</h3>
+        <div class="cap">상시 운영하면 알 수 있는 것</div>
+        <p>재고 · 공간 · 이동 · 작업량 · Risk에 대한 분석을 Preview 형태로 정리해 드립니다.</p>
+        <div class="shot filled"><img src="assets/shot-03.jpg" alt="NOOON 관제 화면 — 재고·공간·작업량 Intelligence 대시보드" loading="lazy" width="1000" height="667"></div>
+      </div>
+    </div>
+
+    <div class="export-note">
+      <b>그리고 여기서 멈추셔도 됩니다.</b>
+      비용도, 도입 의무도 없습니다. 결과를 확인하신 뒤 진행 여부는 자유롭게 판단하시면 됩니다.
     </div>
   </div>
 </section>
 
-<!-- ══════ WHY ══════ -->
+<!-- ══════ 8. WHO SHOULD TRY ══════ -->
+<section class="sec-alt" id="who">
+  <div class="wrap">
+    <span class="eyebrow">WHO SHOULD TRY</span>
+    <h2>이런 창고에 맞습니다</h2>
+    <ul class="who">
+      <li><span class="ck">✓</span>지게차 중심으로 운영되는 창고</li>
+      <li><span class="ck">✓</span>PDA · 수기 입력이 많은 창고</li>
+      <li><span class="ck">✓</span>실제 위치와 시스템 재고가 자주 달라지는 창고</li>
+      <li><span class="ck">✓</span>평치 · 적층 · 블록 적치 비중이 높은 창고</li>
+      <li><span class="ck">✓</span>출고를 위해 재고를 자주 옮기는 창고</li>
+      <li><span class="ck">✓</span>WMS는 있지만 현장의 움직임까지는 보이지 않는 창고</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════ 9. PROCESS ══════ -->
+<section id="flow">
+  <div class="wrap">
+    <span class="eyebrow">PROCESS</span>
+    <h2>진행 절차</h2>
+    <p class="lead">신청해 주시면 담당자가 연락드려 대상 구역과 일정을 협의합니다.</p>
+
+    <div class="proc p6">
+      <div class="p"><div class="no">01</div><div class="t">신청</div><div class="d">연락처만 남겨 주시면 됩니다</div></div>
+      <div class="p"><div class="no">02</div><div class="t">현장 확인 · 판단</div><div class="d">구조와 자료를 확인해 진행 범위를 정합니다</div></div>
+      <div class="p"><div class="no">03</div><div class="t">24~48h 촬영</div><div class="d">현장은 평소대로 운영하시면 됩니다</div></div>
+      <div class="p"><div class="no">04</div><div class="t">자료 수집</div><div class="d">재고 · 계획 · 운영 Rule을 함께 받습니다</div></div>
+      <div class="p"><div class="no">05</div><div class="t">Replay &amp; Simulation</div><div class="d">선택된 방식으로 결과를 산출합니다</div></div>
+      <div class="p"><div class="no">06</div><div class="t">결과 Review</div><div class="d">회의실에서 함께 보며 설명드립니다</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WHY NOOON ══════ -->
 <section class="sec-dark" id="why">
   <div class="wrap">
     <span class="eyebrow">WHY NOOON</span>
@@ -525,18 +681,28 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   </div>
 </section>
 
-<!-- ══════ 폼 ══════ -->
+<!-- ══════ 최종 CTA ══════ -->
+<div class="cta">
+  <div class="wrap">
+    <h2>당신의 창고로<br>Nooon을 먼저 경험해 보세요.</h2>
+    <p>현재의 창고를 보고,<br>앞으로의 창고를 미리 돌려봅니다.</p>
+    <a class="btn btn-lg" href="#apply">Nooon 무료 체험 신청</a>
+  </div>
+</div>
+
+<!-- ══════ 신청 폼 ══════ -->
 <section class="form-sec" id="apply">
   <div class="wrap">
-    <span class="eyebrow">무료 신청</span>
-    <h2>무료 신청</h2>
+    <span class="eyebrow">APPLY</span>
+    <h2>무료 체험 신청</h2>
     <p class="lead">아래 항목을 남겨 주시면 담당자가 연락드립니다.</p>
 
     <ul class="cond">
       <li><span class="k">비용</span><div>없음</div></li>
       <li><span class="k">도입 의무</span><div>없음</div></li>
-      <li><span class="k">검증 범위</span><div>창고 내 특정 구역부터</div></li>
-      <li><span class="k">받는 결과</span><div>인식 검증 결과 · 카메라 배치안 · 본 구축 제안</div></li>
+      <li><span class="k">촬영 범위</span><div>창고 내 특정 구역, 24~48시간</div></li>
+      <li><span class="k">Simulation</span><div>기본 72시간 <b>(계획 자료 범위에 따라 최대 30일까지 확장 가능)</b></div></li>
+      <li><span class="k">받는 결과</span><div>Reality Replay · Warehouse Simulation · Intelligence Preview</div></li>
     </ul>
 
     <form class="form-card" id="applyForm" method="post" action="#">
@@ -562,7 +728,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       </div>
       <div class="field">
         <label for="msg">기타</label>
-        <textarea id="msg" name="msg" placeholder="창고 유형과 규모, 주요 적재 품목, 지게차 운용 대수, 검증하고 싶은 구역, 보유하고 계신 자료, 현재 겪고 계신 문제 등 자유롭게 기재해 주십시오."></textarea>
+        <textarea id="msg" name="msg" placeholder="창고 유형과 규모, 주요 적재 품목, 지게차 운용 대수, 촬영을 원하시는 구역, 보유하고 계신 자료, 현재 겪고 계신 문제 등 자유롭게 기재해 주십시오."></textarea>
       </div>
 
       <!-- 스팸 방지용 숨김 필드 — 사람은 보이지 않음 -->
@@ -575,7 +741,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
         <a href="#privacy">자세히 보기</a></span>
       </label>
 
-      <button class="btn btn-lg" type="submit" disabled>무료 신청</button>
+      <button class="btn btn-lg" type="submit" disabled>무료 체험 신청</button>
     </form>
 
     <div class="contact-box">
@@ -594,28 +760,36 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
     <h2>자주 묻는 질문</h2>
     <div class="faq">
       <details open>
-        <summary>무료 신청으로 완성된 시스템을 볼 수 있습니까?</summary>
-        <p>아닙니다. 본 구축 전에 이 현장에서 무엇이 어디까지 가능한지 확인하는 사전 검증 절차입니다. 인식 가능 범위, 적정 카메라 배치, 본 구축 시 예상되는 시스템 형태를 확인하실 수 있습니다.</p>
+        <summary>무료 체험으로 정확히 무엇을 받게 됩니까?</summary>
+        <p>세 가지입니다. 귀사 현장 영상에서 Nooon이 실제로 인식한 내용(Reality Replay), 현재 재고와 계획을 기반으로 앞으로의 창고 운영을 돌려본 결과(Warehouse Simulation), 그리고 Nooon을 상시 운영할 때 얻게 되는 분석의 Preview(Intelligence Preview)입니다. 모두 귀사 현장 데이터로 만들어집니다. 다만 세 가지를 어느 깊이까지 제공할 수 있는지는 현장 구조와 보유 자료에 따라 달라지며, 현장 확인 단계에서 범위를 먼저 협의드립니다.</p>
       </details>
       <details>
-        <summary>창고 전체를 대상으로 합니까?</summary>
-        <p>아닙니다. 대표성이 있는 구역이나 가장 문제가 되는 영역 하나를 정해 검증합니다. 그 결과를 근거로 확대 범위를 함께 판단합니다.</p>
+        <summary>두 가지 방식이 모두 제공됩니까?</summary>
+        <p>아닙니다. 실제 인식(ACTUAL)과 Simulation 중 이 현장에 적합한 방식을 선택해 진행합니다. 창고 구조, 적치 방식, 사각지대, 보유하고 계신 자료를 먼저 확인한 뒤 어느 방식으로 진행할지 Nooon&nbsp;Team이 판단해 협의드립니다.</p>
       </details>
       <details>
-        <summary>검증을 받으면 도입해야 합니까?</summary>
-        <p>아닙니다. 도입 여부를 판단하기 위한 절차이며, 결과 확인 후 진행하지 않으셔도 됩니다. 검증 단계에서 발생하는 비용도 없습니다.</p>
+        <summary>Simulation은 며칠까지 볼 수 있습니까?</summary>
+        <p>기본은 72시간입니다. 제공해 주시는 생산·입고·출하계획의 범위에 따라 최대 30일까지 확장할 수 있습니다. 다만 기간이 길어질수록 계획 자료의 정확도가 결과에 크게 영향을 미칩니다.</p>
+      </details>
+      <details>
+        <summary>촬영을 위해 현장 운영을 멈춰야 합니까?</summary>
+        <p>필요하지 않습니다. 24~48시간 동안 현장은 평소대로 운영하시면 되며, 작업 방식을 변경하실 필요가 없습니다. 별도의 시스템 개발이나 PDA 도입도 필요하지 않습니다.</p>
       </details>
       <details>
         <summary>자료가 정리되어 있지 않은데 신청할 수 있습니까?</summary>
-        <p>가능합니다. 보유하고 계신 수준에서 시작하며, 부족한 부분은 NOOON&nbsp;Team이 함께 구성합니다. 자료 정리를 위해 신청을 미루실 필요는 없습니다.</p>
+        <p>가능합니다. 보유하고 계신 수준에서 시작하며, 부족한 부분은 Nooon&nbsp;Team이 함께 구성합니다. 자료 정리를 위해 신청을 미루실 필요는 없습니다.</p>
+      </details>
+      <details>
+        <summary>Simulation 결과를 그대로 믿어도 됩니까?</summary>
+        <p>결과물에는 실제 영상에서 관측된 내용(ACTUAL)과 제공해 주신 자료로 계산된 예상(SIMULATION)을 구분해 표시합니다. 이틀의 촬영으로 창고 전체를 판단할 수는 없으며, 어디까지가 관측이고 어디부터가 예측인지 명확히 구분해 설명드립니다.</p>
       </details>
       <details>
         <summary>촬영 자료가 외부로 나갈 가능성은 없습니까?</summary>
         <p>제3자 제공 및 외부 반출을 하지 않습니다. 홍보·영업 자료에 사용하는 경우에도 사전 서면 동의를 받습니다. 저장 위치와 폐기 시점은 신청 접수 시 문서로 안내합니다.</p>
       </details>
       <details>
-        <summary>현장 운영을 멈춰야 합니까?</summary>
-        <p>필요하지 않습니다. 현장은 평소대로 운영하시면 되며, 작업 방식을 변경하실 필요가 없습니다.</p>
+        <summary>체험을 받으면 도입해야 합니까?</summary>
+        <p>아닙니다. 도입 여부를 판단하기 위한 절차이며, 결과 확인 후 진행하지 않으셔도 됩니다. 체험 단계에서 발생하는 비용도 없습니다.</p>
       </details>
     </div>
   </div>
@@ -636,6 +810,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
     </div>
   </div>
 </footer>
+
 
 <script>
 (function(){
@@ -693,6 +868,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   });
 })();
 </script>
+
 
 </body>
 </html>
