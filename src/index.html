@@ -31,10 +31,8 @@
 
   [v7 → v8]
   · 중심 메시지: 제품 소개가 아니라 "내 창고 기준의 검증"
-  · 서사 구조 — 갈등 비트(.tension)를 HERO 직후에 신설
-    발단(HERO) → 갈등(창고는 늘 지나간 뒤에 알게 됩니다)
-    → 전환(이틀만 찍습니다) → 확인(4항목) → 결과(SAMPLE)
-    → 완화(준비물) → 결말(3종 산출물 + 여기서 멈추셔도 됩니다)
+  · 구성 — HERO → 방법(이틀만 찍습니다) → 확인(4항목) → 결과(SAMPLE)
+    → 근거 구분 → 준비물 → 산출물 → 대상 → 절차 → 신청
 
   [의도적으로 제외] AI 모델 상세 / 카메라 사양 / Edge Computing /
     WMS 전체 기능 / OCR / API·Connector / Architecture / 전체 모듈 / POC 세부정책
@@ -313,12 +311,6 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 .flow .st .or{display:block;font-size:11.5px;font-weight:800;letter-spacing:.06em;
   color:var(--orange-soft);margin:5px 0}
 
-/* 갈등 비트 */
-.tension{background:var(--navy-900);color:#fff;padding:76px 0;text-align:center}
-.tension p{font-size:clamp(16.5px,2vw,19.5px);color:rgba(255,255,255,.76);line-height:1.9;max-width:58ch;margin:0 auto}
-.tension .punch{margin-top:28px;font-size:clamp(22px,3.1vw,33px);font-weight:900;color:#fff;
-  letter-spacing:-.042em;line-height:1.35;max-width:none}
-
 /* 절정 마무리 문장 */
 
 /* 각주 */
@@ -339,7 +331,6 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   .flow{flex-direction:column;gap:0}
   .flow .ar{transform:rotate(90deg);padding:7px 0;justify-content:center}
   .who{grid-template-columns:1fr}
-  .tension{padding:56px 0}
 }
 @media (max-width:640px){
   .hero .sub br,.lead br{display:none}
@@ -377,25 +368,13 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   </div>
 </div>
 
-<!-- ══════ 갈등 — 왜 이 체험이 필요한가 ══════ -->
-<div class="tension">
-  <div class="wrap">
-    <p>
-      지금 이 순간에도 창고 안에서는 파렛트가 움직이고 있습니다.<br>
-      누가 무엇을 어디로 옮겼는지, 그 대부분은 기록되지 않습니다.<br>
-      그래서 내일 A Zone이 꽉 차는지, 모레 오후에 작업이 몰리는지는 닥쳐봐야 압니다.
-    </p>
-    <div class="punch">창고는 늘, 지나간 뒤에 알게 됩니다.</div>
-  </div>
-</div>
-
 <!-- ══════ 2. HOW IT WORKS ══════ -->
 <section id="how">
   <div class="wrap">
     <span class="eyebrow">HOW IT WORKS</span>
     <h2>이틀만 찍습니다</h2>
     <p class="lead">
-      그래서 순서를 바꿔 봅니다. 이틀의 영상과 보유하신 자료면 충분합니다.<br>
+      이틀의 영상과 보유하신 자료면 충분합니다.<br>
       Nooon이 그 안에서 무엇을 읽어내는지, 귀사 화면으로 직접 확인하십니다.
     </p>
 
