@@ -187,6 +187,12 @@ section{padding:78px 0}
   letter-spacing:.08em;padding:5px 11px;border-radius:5px}
 
 /* 도입 프로모션 */
+.promo-badge{display:inline-flex;align-items:center;gap:9px;background:var(--orange);color:#fff;
+  font-size:14.5px;font-weight:900;letter-spacing:-.02em;padding:10px 20px;border-radius:999px;
+  margin-bottom:18px;box-shadow:0 8px 20px rgba(255,106,19,.32)}
+.promo-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;flex:0 0 auto}
+#promo .lead b{color:var(--orange-dark);font-weight:800}
+
 .promo-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:30px}
 .promo-flow .s{background:#fff;border:1px solid var(--line);border-radius:999px;padding:11px 22px;
   font-size:14.5px;font-weight:800;color:var(--ink-3);letter-spacing:-.02em}
@@ -205,18 +211,13 @@ section{padding:78px 0}
 .plan li{font-size:14.5px;color:var(--ink-2);padding-left:20px;position:relative}
 .plan li::before{content:"✓";position:absolute;left:0;top:0;font-size:12px;font-weight:900;color:var(--orange)}
 .plan.alt li::before{color:var(--navy-700)}
-.plan .price{margin-top:auto;padding-top:20px;border-top:1px solid var(--line)}
-.plan .was{font-size:14.5px;color:var(--ink-3);text-decoration:line-through}
-.plan .now{font-size:clamp(30px,4vw,38px);font-weight:900;letter-spacing:-.045em;
-  color:var(--ink);line-height:1.15;margin-top:5px}
-.plan .now small{font-size:14px;font-weight:700;color:var(--ink-3);letter-spacing:0;margin-left:8px}
-.plan .save{display:inline-block;margin-top:14px;background:var(--orange);color:#fff;
-  font-size:14px;font-weight:800;letter-spacing:-.02em;padding:9px 16px;border-radius:7px}
-.plan .ask{font-size:24px;font-weight:900;letter-spacing:-.04em;color:var(--ink);margin-top:5px}
-.plan .ask-note{margin-top:8px;font-size:13.5px;color:var(--ink-3);line-height:1.6}
-.promo-note{margin-top:18px;font-size:13px;color:var(--ink-3);line-height:1.65}
-.promo-cta{margin-top:28px;text-align:center}
-
+.plan-cta{margin-top:auto;padding-top:22px;border-top:1px solid var(--line)}
+.plan-cta .tagline{font-size:13.5px;font-weight:700;color:var(--ink-3);margin-bottom:12px;text-align:center}
+.plan.hi .plan-cta .tagline{color:var(--orange-dark)}
+.plan-cta .btn{width:100%}
+.btn-line{background:#fff;color:var(--navy-900);border:1.5px solid var(--navy-900)}
+.btn-line:hover{background:var(--navy-900);color:#fff}
+.promo-note{margin-top:20px;font-size:13px;color:var(--ink-3);line-height:1.65}
 
 /* CTA · 폼 · FAQ */
 .cta{background:linear-gradient(155deg,var(--navy-800),var(--navy-700));color:#fff;text-align:center;padding:86px 0}
@@ -573,16 +574,17 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 </section>
 
 <!-- ══════ 도입 프로모션 ══════ -->
-<!--  주의: 확정된 정보만 표기한다.
-      BASIC 3억 → 2억(1억 할인)만 확정. PREMIUM 가격과 프로모션 기간은 미확정이므로
-      임의의 금액·마감일을 만들지 말 것. PREMIUM 을 열등한 상품으로 표현하지 말 것.  -->
+<!--  주의: 가격은 노출하지 않는다.
+      BASIC 정상가·프로모션가, PREMIUM 가격, 프로모션 기간 모두
+      페이지에 표기하지 않으며 임의의 금액·마감일을 만들지 말 것.
+      두 카드 모두 CTA 는 #apply(무료 체험 신청)로 연결한다.  -->
 <section class="sec-alt" id="promo">
   <div class="wrap">
-    <span class="eyebrow">PROMOTION</span>
-    <h2>먼저 검증하고,<br>확신이 생기면 도입하십시오.</h2>
+    <div class="promo-badge">선착순 기업 한정</div>
+    <h2>먼저 검증하고,<br>프로모션으로 도입하십시오.</h2>
     <p class="lead">
-      무료 체험으로 현장 적용 가능성을 확인하신 뒤,
-      Nooon BASIC을 프로모션 가격으로 도입하실 수 있습니다.
+      무료 체험으로 현장 적용 가능성을 확인하신 기업 중
+      <b>선착순으로 도입 프로모션을 적용</b>해 드립니다.
     </p>
 
     <div class="promo-flow">
@@ -606,10 +608,9 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
           <li>기본 대시보드</li>
           <li>사용자 · 권한 관리 · API</li>
         </ul>
-        <div class="price">
-          <div class="was">정상가 3억원</div>
-          <div class="now">2억원<small>프로모션가</small></div>
-          <div class="save">1억원 도입 지원</div>
+        <div class="plan-cta">
+          <div class="tagline">도입 프로모션 적용 대상</div>
+          <a class="btn" href="#apply">무료 체험 신청하기</a>
         </div>
       </div>
 
@@ -625,16 +626,17 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
           <li>AI 모델 관리</li>
           <li>AI 모델 상태 점검</li>
         </ul>
-        <div class="price">
-          <div class="ask">별도 상담</div>
-          <div class="ask-note">현장 규모와 적용 범위에 따라 구성이 달라집니다.</div>
+        <div class="plan-cta">
+          <div class="tagline">구성 · 조건 별도 협의</div>
+          <a class="btn btn-line" href="#apply">무료 체험 신청하기</a>
         </div>
       </div>
     </div>
 
-    <p class="promo-note">프로모션 적용 범위 및 세부 조건은 현장 적용 범위와 계약 조건에 따라 달라질 수 있습니다.</p>
-
-    <div class="promo-cta"><a class="btn btn-lg" href="#apply">무료 체험으로 먼저 확인하기</a></div>
+    <p class="promo-note">
+      프로모션은 선착순으로 마감되며, 적용 범위 및 세부 조건은
+      현장 적용 범위와 계약 조건에 따라 달라질 수 있습니다.
+    </p>
   </div>
 </section>
 
