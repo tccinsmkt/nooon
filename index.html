@@ -43,7 +43,7 @@
   [v7 → v8]
   · 중심 메시지: 제품 소개가 아니라 "내 창고 기준의 검증"
   · 구성 — HERO → 방법(이틀만 찍습니다) → 확인(4항목) → 결과(SAMPLE)
-    → 근거 구분 → 준비물 → 산출물 → 대상 → 절차 → 신청
+    → 준비물 → 산출물 → 절차 → WHY → 신청
 
   [의도적으로 제외] AI 모델 상세 / 카메라 사양 / Edge Computing /
     WMS 전체 기능 / OCR / API·Connector / Architecture / 전체 모듈 / POC 세부정책
@@ -193,30 +193,16 @@ section{padding:78px 0}
   font-size:16.5px;font-weight:700;letter-spacing:-.02em;text-align:center;line-height:1.6}
 .need-note span{display:block;font-size:14.5px;font-weight:500;color:rgba(255,255,255,.7);margin-top:7px;letter-spacing:0}
 
-/* 구분 */
-.split{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
-.split .b{border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px;background:#fff}
-.split .lbl{font-size:12px;font-weight:900;letter-spacing:.1em;margin-bottom:10px;color:var(--ink-3)}
-.split .b.a .lbl{color:var(--orange)}
-.split h3{font-size:16.5px;margin-bottom:8px}
-.split p{font-size:14.5px;color:var(--ink-2)}
-
-
 /* SAMPLE 배지 */
 .sample-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .badge-sample{display:inline-block;background:var(--orange);color:#fff;font-size:11.5px;font-weight:900;
   letter-spacing:.08em;padding:5px 11px;border-radius:5px}
 
-/* WHY / WHO */
+/* WHY */
 .why3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
 .why3 .w{padding:26px 24px;border:1px solid rgba(255,255,255,.16);border-radius:var(--radius);background:rgba(255,255,255,.04)}
 .why3 .k{font-size:13px;font-weight:900;letter-spacing:.14em;color:var(--orange-soft);margin-bottom:11px}
 .why3 p{font-size:15px;color:rgba(255,255,255,.82)}
-.who{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:32px}
-.who li{list-style:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:17px 20px;
-  font-size:15.5px;color:var(--ink);display:flex;gap:12px;align-items:flex-start}
-.who .ck{flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:var(--orange-tint);
-  display:flex;align-items:center;justify-content:center;margin-top:2px}
 
 /* CTA · 폼 · FAQ */
 .cta{background:linear-gradient(155deg,var(--navy-800),var(--navy-700));color:#fff;text-align:center;padding:86px 0}
@@ -278,7 +264,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   section{padding:56px 0}
   .hero{padding-top:62px}
   .hero-note{padding-bottom:66px}
-  .how,.split,.why3,.ways,.verify{grid-template-columns:1fr}
+  .how,.why3,.ways,.verify{grid-template-columns:1fr}
   .stages{grid-template-columns:1fr}
   .need{grid-template-columns:repeat(2,1fr)}
   .proc{grid-template-columns:repeat(2,1fr)}
@@ -341,7 +327,6 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 @media (max-width:860px){
   .flow{flex-direction:column;gap:0}
   .flow .ar{transform:rotate(90deg);padding:7px 0;justify-content:center}
-  .who{grid-template-columns:1fr}
 }
 @media (max-width:640px){
   .hero .sub br,.lead br{display:none}
@@ -530,35 +515,6 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   </div>
 </section>
 
-<!-- ══════ 5. 근거 구분 ══════ -->
-<section id="basis">
-  <div class="wrap">
-    <span class="eyebrow">결과의 근거 구분</span>
-    <h2>어디까지가 실측인지 밝힙니다</h2>
-    <p class="lead">
-      이틀의 촬영으로 창고 전체를 다 안다고 말하지 않습니다.<br>
-      실제로 관측된 것과 자료로 산출한 것을 결과물에 구분해 표시합니다.
-    </p>
-    <div class="split">
-      <div class="b a">
-        <div class="lbl">ACTUAL</div>
-        <h3>실제 관측</h3>
-        <p>현장 영상에서 AI가 실제로 인식하고 기록한 내용입니다.</p>
-      </div>
-      <div class="b">
-        <div class="lbl">ANALYSIS</div>
-        <h3>실적 기반 분석</h3>
-        <p>제공해 주신 생산 · 출하 실적과 운영 Rule을 대조해 산출한 운영 분석입니다.</p>
-      </div>
-      <div class="b">
-        <div class="lbl">FORECAST</div>
-        <h3>계획 기반 예측</h3>
-        <p>제공해 주신 생산 · 출하 계획을 반영해 산출한 향후 운영 상태입니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══════ 6. WHAT WE NEED ══════ -->
 <section class="sec-alt" id="need">
   <div class="wrap">
@@ -615,24 +571,8 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   </div>
 </section>
 
-<!-- ══════ 8. WHO SHOULD TRY ══════ -->
-<section class="sec-alt" id="who">
-  <div class="wrap">
-    <span class="eyebrow">WHO SHOULD TRY</span>
-    <h2>이런 창고에 맞습니다</h2>
-    <ul class="who">
-      <li><span class="ck">✓</span>지게차 중심으로 운영되는 창고</li>
-      <li><span class="ck">✓</span>PDA · 수기 입력이 많은 창고</li>
-      <li><span class="ck">✓</span>실제 위치와 시스템 재고가 자주 달라지는 창고</li>
-      <li><span class="ck">✓</span>평치 · 적층 · 블록 적치 비중이 높은 창고</li>
-      <li><span class="ck">✓</span>출고를 위해 재고를 자주 옮기는 창고</li>
-      <li><span class="ck">✓</span>WMS는 있지만 현장의 움직임까지는 보이지 않는 창고</li>
-    </ul>
-  </div>
-</section>
-
 <!-- ══════ 9. PROCESS ══════ -->
-<section id="flow">
+<section class="sec-alt" id="flow">
   <div class="wrap">
     <span class="eyebrow">PROCESS</span>
     <h2>진행 절차</h2>
@@ -814,7 +754,6 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   </div>
 </footer>
 
-
 <script>
 (function(){
   var form  = document.getElementById('applyForm');
@@ -871,7 +810,6 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   });
 })();
 </script>
-
 
 </body>
 </html>
