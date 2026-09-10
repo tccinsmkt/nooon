@@ -44,7 +44,7 @@
   [v7 → v8]
   · 중심 메시지: 제품 소개가 아니라 "내 창고 기준의 검증"
   · 구성 — HERO → 방법(현장 촬영으로 시작합니다) → 확인(4항목) → 결과(SAMPLE)
-    → 준비물 → 산출물 → 절차 → WHY → 신청
+    → 준비물 → 절차 → WHY → 프로모션 → 신청
 
   [의도적으로 제외] AI 모델 상세 / 카메라 사양 / Edge Computing /
     WMS 전체 기능 / OCR / API·Connector / Architecture / 전체 모듈 / POC 세부정책
@@ -168,19 +168,6 @@ section{padding:78px 0}
 .io strong{display:block;font-size:16.5px;font-weight:800;letter-spacing:-.02em;margin-bottom:5px}
 .io p{font-size:14.5px;color:var(--ink-2)}
 
-/* 산출물 */
-.get{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
-.get .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px}
-.get .tag{font-size:11.5px;font-weight:900;letter-spacing:.1em;color:var(--orange);margin-bottom:12px}
-.get h3{font-size:19px;letter-spacing:-.03em;margin-bottom:8px}
-.get .cap{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:10px}
-.get p{font-size:14.5px;color:var(--ink-2)}
-.get .shot{margin-top:18px;aspect-ratio:16/10;border-radius:9px;border:1px solid var(--line);background:var(--bg-2);
-  display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:12.5px;text-align:center;padding:14px}
-.export-note{margin-top:16px;padding:20px 24px;border:1px solid var(--line);border-left:3px solid var(--orange);
-  background:#fff;border-radius:9px;font-size:15.5px;color:var(--ink)}
-.export-note b{color:var(--orange-dark)}
-
 /* 준비물 */
 .need{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
 .need .box{background:#fff;border:1px solid var(--line);border-top:3px solid var(--orange);border-radius:var(--radius);padding:24px 22px}
@@ -293,7 +280,6 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 
 /* ── 태블릿 가로 ── */
 @media (max-width:1024px){
-  .get{grid-template-columns:repeat(2,1fr)}
   .proc{grid-template-columns:repeat(3,1fr)}
 }
 /* ── 태블릿 세로 ── */
@@ -311,7 +297,6 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 }
 /* ── 모바일 가로 · 작은 태블릿 ── */
 @media (max-width:700px){
-  .get{grid-template-columns:1fr}
   .hero .sub br{display:none}
   .hero .sub{max-width:none}
 }
@@ -373,7 +358,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   .plan{padding:24px 20px}
 }
 @media (max-width:560px){
-  .need,.get{grid-template-columns:1fr}
+  .need{grid-template-columns:1fr}
   .proc,.proc.p6{grid-template-columns:1fr}
 }
 </style>
@@ -574,43 +559,8 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   </div>
 </section>
 
-<!-- ══════ 7. WHAT YOU GET ══════ -->
-<section id="get">
-  <div class="wrap">
-    <span class="eyebrow">WHAT YOU GET</span>
-    <h2>세 가지가 남습니다</h2>
-    <p class="lead">체험이 끝나면 귀사 현장에서 나온 결과가 남습니다. 다른 현장의 예시 자료가 아닙니다.</p>
-
-    <div class="get">
-      <div class="card">
-        <div class="tag">01</div>
-        <h3>인식 검증 결과</h3>
-        <div class="cap">이 현장에서 무엇을 어디까지 인식할 수 있는지</div>
-        <p>실제 현장 조건에서의 인식 결과와 인식 가능한 범위 · 한계를 정리합니다.</p>
-      </div>
-      <div class="card">
-        <div class="tag">02</div>
-        <h3>운영 분석 리포트</h3>
-        <div class="cap">실제 운영 과정에서 무엇이 발생하고 있는지</div>
-        <p>재이동 · 대기 · 탐색 · 동선 낭비 등 기존 재고 시스템에서는 확인하기 어려웠던 움직임을 분석합니다.</p>
-      </div>
-      <div class="card">
-        <div class="tag">03</div>
-        <h3>도입 판단 근거</h3>
-        <div class="cap">본 구축이 가능한 범위는 어디까지인지</div>
-        <p>자동화 가능한 업무 범위와 필요한 카메라 구성 등 본 구축에 필요한 조건을 함께 제안합니다.</p>
-      </div>
-    </div>
-
-    <div class="export-note">
-      <b>그리고 여기서 멈추셔도 됩니다.</b>
-      비용도, 도입 의무도 없습니다. 결과를 확인하신 뒤 진행 여부는 자유롭게 판단하시면 됩니다.
-    </div>
-  </div>
-</section>
-
 <!-- ══════ 9. PROCESS ══════ -->
-<section class="sec-alt" id="flow">
+<section id="flow">
   <div class="wrap">
     <span class="eyebrow">PROCESS</span>
     <h2>진행 절차</h2>
