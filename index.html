@@ -15,11 +15,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NOOON 무료 체험 | 내 창고 데이터로 먼저 검증하세요 · TCC INS</title>
-<meta name="description" content="실제 현장 영상과 보유하신 생산·출하 계획 및 실적으로, AI CCTV가 내 창고에서 무엇을 인식하고 어디에서 로스가 생기는지 검증합니다. 비용도 도입 의무도 없습니다.">
+<meta name="description" content="실제 현장 영상과 보유 데이터로, AI CCTV가 우리 현장에서 무엇을 인식할 수 있고 재고 움직임을 어디까지 자동으로 기록할 수 있는지 먼저 검증합니다. 비용도 도입 의무도 없습니다.">
 
 <!--
 ════════════════════════════════════════════════════════════════
-  NOOON 무료 체험 랜딩 (v8.1)
+  NOOON 무료 체험 랜딩 (v8.2)
+
+  [v8.1 → v8.2 — 문구 정리 + 프로모션 섹션 추가]
+  · 기술용어를 고객 언어로. Detection → "안정적으로 인식",
+    Historical Data 축적 → "이동 이력 자동 기록"
+  · "로스" 반복을 걷어내고 재이동 · 대기 · 탐색 · 동선 낭비 ·
+    위치 불일치 등 실제 확인 가능한 현상으로 구체화
+  · 예측 표현 완화 — 계획 데이터는 "앞으로를 예측"이 아니라
+    "계획과 실제 흐름을 함께 확인". 확정되지 않은 성능을 말하지 않는다
+  · NOOON 의 핵심을 명시 — 단순 CCTV 모니터링이 아니라
+    현장의 물리적 움직임을 인식해 Digital Event 로 기록하는 것
+  · 도입 프로모션 섹션(#promo) 신설 — BASIC 3억 → 2억(1억 지원)만 확정.
+    PREMIUM 가격과 프로모션 기간은 미확정이므로 임의 표기 금지
 
   [v8 → v8.1 — 방향 수정]
   · "시뮬레이션 / 앞으로를 돌려봅니다" 표현 전면 삭제.
@@ -32,11 +44,11 @@
        "두 가지 방식 중 하나로 진행" 같은 표현은 쓰지 않는다.
   · 체험에서 확인시키는 것 — WHAT WE VERIFY 4항목
       ① AI CCTV의 재고·객체 인식 정확도
-      ② 실제 환경에서 Detection 성립 여부와 한계
+      ② 실제 현장 조건에서 안정적으로 인식 가능한 범위와 한계
       ③ 사람의 확인·기록 업무를 어디까지 대체하는가
-      ④ 물류 흐름에서 로스·비효율이 어디에 얼마나 발생하는가
+      ④ 재이동 · 대기 · 탐색 · 동선 낭비가 실제로 어떻게 발생하는가
   · 방법 설명 직후 SAMPLE RESULT 배치 —
-    영상 분석 → Historical Data 축적 → KPI·운영 분석 3단계 실제 화면
+    영상 분석 → 이동 이력 자동 기록 → KPI·운영 분석 3단계 실제 화면
   · 촬영 범위 등 과한 상세 설명 축소. 신청 섹션은 조건 나열 박스를 걷어내고
     신청 항목 + 연락 방법(전화 연락 · 이메일 안내) 중심으로 정리.
 
@@ -198,6 +210,37 @@ section{padding:78px 0}
 .badge-sample{display:inline-block;background:var(--orange);color:#fff;font-size:11.5px;font-weight:900;
   letter-spacing:.08em;padding:5px 11px;border-radius:5px}
 
+/* 도입 프로모션 */
+.promo-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.promo-flow .s{background:#fff;border:1px solid var(--line);border-radius:999px;padding:11px 22px;
+  font-size:14.5px;font-weight:800;color:var(--ink-3);letter-spacing:-.02em}
+.promo-flow .s.on{border-color:var(--orange);background:var(--orange-tint);color:var(--orange-dark)}
+.promo-flow .ar{padding:0 12px;color:var(--ink-3);font-size:17px;font-weight:900}
+
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 28px;display:flex;flex-direction:column}
+.plan.hi{border-color:var(--orange);box-shadow:0 14px 34px rgba(255,106,19,.13)}
+.plan .tier{font-size:12px;font-weight:900;letter-spacing:.1em;color:var(--orange);margin-bottom:9px}
+.plan.alt .tier{color:var(--navy-700)}
+.plan h3{font-size:21px;letter-spacing:-.035em;margin-bottom:7px}
+.plan .desc{font-size:14.5px;color:var(--ink-2);padding-bottom:20px;border-bottom:1px solid var(--line)}
+.plan ul{list-style:none;display:grid;gap:9px;margin:20px 0 26px}
+.plan li{font-size:14.5px;color:var(--ink-2);padding-left:20px;position:relative}
+.plan li::before{content:"✓";position:absolute;left:0;top:0;font-size:12px;font-weight:900;color:var(--orange)}
+.plan.alt li::before{color:var(--navy-700)}
+.plan .price{margin-top:auto;padding-top:20px;border-top:1px solid var(--line)}
+.plan .was{font-size:14.5px;color:var(--ink-3);text-decoration:line-through}
+.plan .now{font-size:clamp(30px,4vw,38px);font-weight:900;letter-spacing:-.045em;
+  color:var(--ink);line-height:1.15;margin-top:5px}
+.plan .now small{font-size:14px;font-weight:700;color:var(--ink-3);letter-spacing:0;margin-left:8px}
+.plan .save{display:inline-block;margin-top:14px;background:var(--orange);color:#fff;
+  font-size:14px;font-weight:800;letter-spacing:-.02em;padding:9px 16px;border-radius:7px}
+.plan .ask{font-size:24px;font-weight:900;letter-spacing:-.04em;color:var(--ink);margin-top:5px}
+.plan .ask-note{margin-top:8px;font-size:13.5px;color:var(--ink-3);line-height:1.6}
+.promo-note{margin-top:18px;font-size:13px;color:var(--ink-3);line-height:1.65}
+.promo-cta{margin-top:28px;text-align:center}
+
 /* WHY */
 .why3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
 .why3 .w{padding:26px 24px;border:1px solid rgba(255,255,255,.16);border-radius:var(--radius);background:rgba(255,255,255,.04)}
@@ -269,7 +312,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   section{padding:56px 0}
   .hero{padding-top:62px}
   .hero-note{padding-bottom:66px}
-  .how,.why3,.ways,.verify{grid-template-columns:1fr}
+  .how,.why3,.ways,.verify,.plans{grid-template-columns:1fr}
   .stages{grid-template-columns:1fr}
   .need{grid-template-columns:repeat(2,1fr)}
   .proc{grid-template-columns:repeat(2,1fr)}
@@ -335,6 +378,10 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 }
 @media (max-width:640px){
   .hero .sub br,.lead br{display:none}
+  .promo-flow{flex-direction:column;gap:8px}
+  .promo-flow .ar{transform:rotate(90deg);padding:2px 0}
+  .promo-flow .s{width:100%;text-align:center}
+  .plan{padding:24px 20px}
 }
 @media (max-width:560px){
   .need,.get{grid-template-columns:1fr}
@@ -355,10 +402,10 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 <div class="hero">
   <div class="wrap">
     <span class="eyebrow" style="color:var(--orange-soft)">NOOON FREE TRIAL</span>
-    <h1>당신의 창고 데이터로<br>Nooon을 먼저 검증하세요.</h1>
+    <h1>우리 현장에서 Nooon이<br>어디까지 가능한지 먼저 확인하세요.</h1>
     <p class="sub">
-      <b>실제 현장 영상</b>과 <b>보유하신 생산 · 출하 계획 및 실적</b>으로,<br>
-      AI CCTV가 이 현장에서 무엇을 인식하고 어디에서 로스가 생기는지 확인합니다.
+      <b>실제 현장 영상</b>과 <b>보유 데이터</b>를 바탕으로, AI CCTV가 무엇을 인식할 수 있는지,<br>
+      현장의 움직임을 어디까지 자동으로 기록할 수 있는지 확인합니다.
     </p>
 
     <div class="flow">
@@ -379,7 +426,10 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   <div class="wrap">
     <span class="eyebrow">HOW IT WORKS</span>
     <h2>현장 촬영으로 시작합니다</h2>
-    <p class="lead">촬영 영상과 보유 데이터를 분석해, 현장의 운영 현황과 개선 포인트를 확인합니다.</p>
+    <p class="lead">
+      촬영 영상과 보유 데이터를 함께 분석해,<br>
+      이 현장에서 확인 가능한 범위와 운영 데이터를 검증합니다.
+    </p>
 
     <div class="how">
       <div class="how-media">
@@ -393,17 +443,17 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
         <li>
           <div class="k">INPUT</div>
           <strong>현장 영상 · 운영 데이터 수집</strong>
-          <p>대상 구역을 촬영하고, 보유하고 계신 생산 · 입고 · 출하 등 자료를 함께 제공받습니다.</p>
+          <p>대상 구역을 촬영하고, 현재 재고와 생산 · 입고 · 출하 등 보유하고 계신 운영 자료를 함께 확인합니다.</p>
         </li>
         <li>
           <div class="k">VERIFY</div>
           <strong>인식 검증 · 운영 분석</strong>
-          <p>해당 현장에서의 인식 정확도를 검증하고, 물류 흐름상의 로스와 비효율 구간을 도출합니다.</p>
+          <p>실제 현장 조건에서 AI 인식 가능 범위를 검증하고, 재고 이동과 운영 흐름을 분석합니다.</p>
         </li>
         <li>
           <div class="k">OUTPUT</div>
           <strong>분석 결과 보고</strong>
-          <p>실적 자료로 지금까지의 운영을 분석하고, 계획 자료로 향후 운영 상태를 예측해 함께 보고드립니다.</p>
+          <p>현장에서 확인된 인식 결과와 운영 데이터를 바탕으로, 본 구축 시 적용 가능한 범위와 조건을 정리해 제공합니다.</p>
         </li>
       </ul>
     </div>
@@ -418,52 +468,55 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   <div class="wrap">
     <span class="eyebrow">WHAT WE VERIFY</span>
     <h2>데이터로 네 가지를 확인합니다</h2>
-    <p class="lead">기능 소개가 아니라, 이 현장에서 실제로 되는지를 검증하는 절차입니다.</p>
+    <p class="lead">
+      기능을 보여주는 데서 끝나지 않습니다.<br>
+      실제 현장에서 Nooon을 어디까지 적용할 수 있는지 검증합니다.
+    </p>
 
     <div class="verify">
       <div class="v">
         <div class="n">01</div>
         <h3>얼마나 정확하게 인식하는가</h3>
-        <p>AI CCTV가 이 현장의 재고와 객체를 어느 정도 정확도로 인식하는지 실제 영상으로 확인합니다.</p>
+        <p>AI CCTV가 실제 현장에서 재고와 객체를 어느 정도 정확하게 인식할 수 있는지 확인합니다.</p>
       </div>
       <div class="v">
         <div class="n">02</div>
-        <h3>이 환경에서 Detection이 되는가</h3>
-        <p>조도 · 적치 방식 · 사각지대 같은 실제 조건에서 인식이 성립하는지, 한계는 어디인지 짚습니다.</p>
+        <h3>이 현장에서 안정적으로 인식할 수 있는가</h3>
+        <p>조도 · 적치 방식 · 사각지대 등 실제 현장 조건에서 인식 가능한 범위와 한계를 확인합니다.</p>
       </div>
       <div class="v">
         <div class="n">03</div>
-        <h3>사람의 일을 어디까지 대신하는가</h3>
-        <p>지금 사람이 눈으로 확인하고 손으로 적는 업무 중, 어느 수준까지 자동 기록으로 대체되는지 봅니다.</p>
+        <h3>사람의 확인 · 기록을 어디까지 자동화할 수 있는가</h3>
+        <p>사람이 직접 확인하고 입력하던 과정 중 어디까지 자동으로 기록할 수 있는지 확인합니다.</p>
       </div>
       <div class="v">
         <div class="n">04</div>
-        <h3>어디에서 로스가 발생하는가</h3>
-        <p>불필요한 이동, 대기, 동선 낭비가 현장 물류 흐름에서 실제로 얼마나 생기는지 파악합니다.</p>
+        <h3>어떤 불필요한 이동이 발생하는가</h3>
+        <p>재이동 · 대기 · 탐색 · 동선 낭비 등 재고 시스템만으로 확인하기 어려웠던 실제 운영 과정을 분석합니다.</p>
       </div>
     </div>
 
-    <h3 class="sub-h">그리고 보유하신 자료에 따라, 두 방향으로 이어집니다</h3>
+    <h3 class="sub-h">보유하신 자료에 따라 확인 범위가 넓어집니다</h3>
 
     <div class="ways">
       <div class="way">
-        <div class="k">계획 데이터 → 예측</div>
-        <h3>앞으로의 운영 상태</h3>
-        <p>생산 · 입고 · 출하 <b>계획</b>을 반영해, 앞으로 어떤 상태가 될지 미리 확인합니다.</p>
+        <div class="k">계획 데이터</div>
+        <h3>계획과 실제 흐름을 함께 확인</h3>
+        <p>생산 · 입고 · 출하 <b>계획</b>과 실제 재고 흐름을 함께 확인합니다.</p>
         <ul>
-          <li>구역별 점유율 변화</li>
-          <li>작업 집중 구간</li>
-          <li>선행 이동 발생 지점</li>
+          <li>계획 대비 실제 입출고</li>
+          <li>구역별 재고 흐름</li>
+          <li>적치 · 출하 순서</li>
         </ul>
       </div>
       <div class="way">
-        <div class="k">실적 데이터 → 분석</div>
-        <h3>지금까지의 운영 상태</h3>
-        <p>생산 · 입고 · 출하 <b>실적</b>과 대조해, 실제로 무엇이 어떻게 돌아갔는지 분석합니다.</p>
+        <div class="k">실적 데이터</div>
+        <h3>운영 과정의 차이를 분석</h3>
+        <p>생산 · 입고 · 출하 <b>실적</b>과 실제 움직임을 비교해, 운영 과정에서 발생한 차이와 비효율을 분석합니다.</p>
         <ul>
-          <li>계획 대비 실제 흐름</li>
-          <li>반복되는 재이동 패턴</li>
-          <li>물류 로스 발생 구간</li>
+          <li>반복되는 재이동</li>
+          <li>대기 · 탐색 구간</li>
+          <li>위치 불일치 발생 지점</li>
         </ul>
       </div>
     </div>
@@ -482,35 +535,35 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       <span class="eyebrow" style="margin-bottom:0">SAMPLE RESULT</span>
       <span class="badge-sample">SAMPLE</span>
     </div>
-    <h2 style="margin-top:14px">영상이 데이터가 되고,<br>데이터가 지표가 됩니다</h2>
+    <h2 style="margin-top:14px">실제 움직임이 기록되고,<br>운영 데이터가 됩니다</h2>
     <p class="lead">체험에서 실제로 받아보시는 화면입니다. 아래는 이해를 돕기 위한 예시입니다.</p>
 
     <div class="stages">
       <div class="stage">
         <div class="n">01</div>
         <h3>영상 분석</h3>
-        <p>현장 영상에서 재고 · 사람 · 지게차를 인식하고, 입고 · 이동 · 적치 · 출고를 판별합니다.</p>
+        <p>현장 영상에서 재고 · 사람 · 지게차 등을 인식하고, 입고 · 이동 · 적치 · 출고 과정의 움직임을 확인합니다.</p>
         <div class="shot"><img src="assets/shot-01.jpg" alt="창고 영상에서 팔레트·지게차·작업자가 인식된 결과 화면" loading="lazy" width="1000" height="667"></div>
       </div>
       <div class="stage">
         <div class="n">02</div>
-        <h3>Historical Data 축적</h3>
-        <p>인식된 움직임이 시간 · 위치 · 수량을 가진 기록으로 쌓입니다. 사람이 적지 않아도 남습니다.</p>
+        <h3>이동 이력 자동 기록</h3>
+        <p>인식된 움직임이 시간 · 위치 · 대상 정보를 가진 재고 이벤트로 자동 기록됩니다.</p>
         <div class="shot"><img src="assets/shot-02.jpg" alt="인식 결과가 이동·적치 기록 데이터로 축적된 화면" loading="lazy" width="1000" height="667"></div>
       </div>
       <div class="stage">
         <div class="n">03</div>
         <h3>KPI · 운영 분석</h3>
-        <p>축적된 기록에서 로스와 비효율이 드러납니다. 계획 자료가 있으면 향후 상태까지 이어서 봅니다.</p>
+        <p>축적된 이동 이력을 바탕으로 재이동 · 대기 · 동선 · 재고 상태 등 운영 지표를 분석합니다.</p>
         <div class="shot"><img src="assets/shot-03.jpg" alt="재고·공간·작업량 KPI와 운영 분석 대시보드" loading="lazy" width="1000" height="667"></div>
       </div>
     </div>
 
     <div class="chips-head">확인하실 수 있는 지표</div>
     <div class="chips">
-      <span>불필요 재이동 발생량</span><span>공간 점유 · CAPA 변화</span><span>Handling 수</span>
-      <span>시간대별 작업 집중</span><span>출하 준비 이동량</span><span>동선 낭비 구간</span>
-      <span>FIFO / LOT Risk</span><span>지게차 작업량</span>
+      <span>반복 재이동 발생량</span><span>구역별 공간 점유</span><span>이동 · 적치 횟수</span>
+      <span>시간대별 작업 집중</span><span>출하 준비 이동량</span><span>동선 낭비 · 탐색 구간</span>
+      <span>선입선출 · LOT 관리 위험</span><span>지게차 작업량</span>
     </div>
     <p class="fn">지표 구성은 제공해 주시는 자료의 범위에 따라 달라집니다. 위 화면과 항목은 SAMPLE이며 실제 산출값이 아닙니다.</p>
   </div>
@@ -548,20 +601,20 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       <div class="card">
         <div class="tag">01</div>
         <h3>인식 검증 결과</h3>
-        <div class="cap">이 현장에서 무엇이 어디까지 인식되는가</div>
-        <p>재고 · 사람 · 지게차의 인식 정확도와, 사각지대 등 Detection 한계까지 있는 그대로 보고드립니다.</p>
+        <div class="cap">이 현장에서 무엇을 어디까지 인식할 수 있는지</div>
+        <p>실제 현장 조건에서의 인식 결과와 인식 가능한 범위 · 한계를 정리합니다.</p>
       </div>
       <div class="card">
         <div class="tag">02</div>
         <h3>운영 분석 리포트</h3>
-        <div class="cap">어디에서 로스가 생기는가</div>
-        <p>불필요한 재이동, 대기, 동선 낭비가 실제로 얼마나 발생하는지 데이터로 정리합니다.</p>
+        <div class="cap">실제 운영 과정에서 무엇이 발생하고 있는지</div>
+        <p>재이동 · 대기 · 탐색 · 동선 낭비 등 기존 재고 시스템에서는 확인하기 어려웠던 움직임을 분석합니다.</p>
       </div>
       <div class="card">
         <div class="tag">03</div>
         <h3>도입 판단 근거</h3>
-        <div class="cap">본 구축 시 무엇이 달라지는가</div>
-        <p>사람이 하던 확인 · 기록 업무 중 어디까지 대체 가능한지, 적정 카메라 배치와 함께 제안드립니다.</p>
+        <div class="cap">본 구축이 가능한 범위는 어디까지인지</div>
+        <p>자동화 가능한 업무 범위와 필요한 카메라 구성 등 본 구축에 필요한 조건을 함께 제안합니다.</p>
       </div>
     </div>
 
@@ -584,7 +637,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       <div class="p"><div class="no">02</div><div class="t">현장 확인</div><div class="d">구조와 보유 자료를 함께 확인합니다</div></div>
       <div class="p"><div class="no">03</div><div class="t">현장 촬영</div><div class="d">평소대로 운영하시면 됩니다</div></div>
       <div class="p"><div class="no">04</div><div class="t">자료 수집</div><div class="d">계획 · 실적 · 운영 Rule을 받습니다</div></div>
-      <div class="p"><div class="no">05</div><div class="t">인식 검증 · 운영 분석</div><div class="d">인식 정확도와 로스 지점을 산출합니다</div></div>
+      <div class="p"><div class="no">05</div><div class="t">인식 검증 · 운영 분석</div><div class="d">인식 결과와 실제 운영 데이터를 분석합니다</div></div>
       <div class="p"><div class="no">06</div><div class="t">결과 Review</div><div class="d">회의실에서 함께 보며 설명드립니다</div></div>
     </div>
   </div>
@@ -596,18 +649,84 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
     <span class="eyebrow">WHY NOOON</span>
     <h2>사람이 기록하던 창고에서<br>창고가 스스로 기록하는 창고로.</h2>
     <div class="why3">
-      <div class="w"><div class="k">SEE</div><p>AI Vision이 재고와 움직임을 인식합니다.</p></div>
-      <div class="w"><div class="k">RECORD</div><p>입고 · 이동 · 적치 · 출고가 자동으로 기록됩니다.</p></div>
-      <div class="w"><div class="k">UNDERSTAND</div><p>축적된 데이터를 통해 공간 · 동선 · 재고 · 운영을 분석합니다.</p></div>
+      <div class="w"><div class="k">SEE</div><p>AI CCTV가 재고와 실제 움직임을 인식합니다.</p></div>
+      <div class="w"><div class="k">RECORD</div><p>입고 · 이동 · 적치 · 출고가 Digital Event로 기록됩니다.</p></div>
+      <div class="w"><div class="k">UNDERSTAND</div><p>축적된 이동 이력을 바탕으로 재고 · 공간 · 동선 · 운영 상태를 분석합니다.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- ══════ 도입 프로모션 ══════ -->
+<!--  주의: 확정된 정보만 표기한다.
+      BASIC 3억 → 2억(1억 할인)만 확정. PREMIUM 가격과 프로모션 기간은 미확정이므로
+      임의의 금액·마감일을 만들지 말 것. PREMIUM 을 열등한 상품으로 표현하지 말 것.  -->
+<section class="sec-alt" id="promo">
+  <div class="wrap">
+    <span class="eyebrow">PROMOTION</span>
+    <h2>먼저 검증하고,<br>확신이 생기면 도입하십시오.</h2>
+    <p class="lead">
+      무료 체험으로 현장 적용 가능성을 확인하신 뒤,
+      Nooon BASIC을 프로모션 가격으로 도입하실 수 있습니다.
+    </p>
+
+    <div class="promo-flow">
+      <div class="s on">무료 체험</div>
+      <div class="ar">›</div>
+      <div class="s on">현장 검증</div>
+      <div class="ar">›</div>
+      <div class="s">프로모션 도입</div>
+    </div>
+
+    <div class="plans">
+      <div class="plan hi">
+        <div class="tier">NOOON BASIC</div>
+        <h3>Digital Mirror Platform</h3>
+        <p class="desc">현재 상황을 정확하게 보여주는 기본 구성</p>
+        <ul>
+          <li>CCTV 통합 모니터링</li>
+          <li>이벤트 · 알람 · 이력 관리</li>
+          <li>3D 재고 현황 Viewer</li>
+          <li>MES · WMS Connector Framework</li>
+          <li>기본 대시보드</li>
+          <li>사용자 · 권한 관리 · API</li>
+        </ul>
+        <div class="price">
+          <div class="was">정상가 3억원</div>
+          <div class="now">2억원<small>프로모션가</small></div>
+          <div class="save">1억원 도입 지원</div>
+        </div>
+      </div>
+
+      <div class="plan alt">
+        <div class="tier">NOOON PREMIUM</div>
+        <h3>Intelligence Platform</h3>
+        <p class="desc">운영 데이터를 분석해 개선까지 지원하는 확장 구성</p>
+        <ul>
+          <li>BASIC 전체 기능</li>
+          <li>Intelligence 대시보드</li>
+          <li>AI 이벤트 분석</li>
+          <li>3D 시뮬레이션</li>
+          <li>AI 모델 관리</li>
+          <li>AI 모델 상태 점검</li>
+        </ul>
+        <div class="price">
+          <div class="ask">별도 상담</div>
+          <div class="ask-note">현장 규모와 적용 범위에 따라 구성이 달라집니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="promo-note">프로모션 적용 범위 및 세부 조건은 현장 적용 범위와 계약 조건에 따라 달라질 수 있습니다.</p>
+
+    <div class="promo-cta"><a class="btn btn-lg" href="#apply">무료 체험으로 먼저 확인하기</a></div>
   </div>
 </section>
 
 <!-- ══════ 최종 CTA ══════ -->
 <div class="cta">
   <div class="wrap">
-    <h2>확인해 보고 결정하셔도<br>늦지 않습니다.</h2>
-    <p>이 현장에서 무엇이 인식되고 어디에서 로스가 생기는지,<br>귀사 데이터로 먼저 보십시오.</p>
+    <h2>본 구축 전에,<br>우리 현장에서 먼저 검증하십시오.</h2>
+    <p>AI CCTV가 무엇을 인식할 수 있고,<br>어디까지 자동화할 수 있는지 실제 현장 데이터로 확인해 보십시오.</p>
     <a class="btn btn-lg" href="#apply">Nooon 무료 체험 신청</a>
   </div>
 </div>
@@ -706,7 +825,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
     <div class="faq">
       <details open>
         <summary>무료 체험으로 정확히 무엇을 알게 됩니까?</summary>
-        <p>이 현장에서 AI CCTV가 재고와 객체를 얼마나 정확하게 인식하는지, 실제 환경에서 Detection이 성립하는지, 사람이 하던 확인·기록 업무를 어느 수준까지 대신할 수 있는지, 그리고 현장 물류 흐름에서 로스와 비효율이 어디에 얼마나 발생하는지를 확인하실 수 있습니다. 모두 귀사 영상과 데이터로 산출되며, 다른 현장의 예시 자료가 아닙니다.</p>
+        <p>이 현장에서 AI CCTV가 재고와 객체를 얼마나 정확하게 인식하는지, 조도·적치 방식·사각지대 같은 실제 조건에서 안정적으로 인식할 수 있는지, 사람이 직접 확인하고 입력하던 과정을 어디까지 자동으로 기록할 수 있는지, 그리고 재이동·대기·탐색·동선 낭비가 실제 운영에서 어떻게 발생하는지를 확인하실 수 있습니다. 모두 귀사 영상과 데이터로 산출되며, 다른 현장의 예시 자료가 아닙니다.</p>
       </details>
       <details>
         <summary>계획 자료와 실적 자료는 어떻게 다르게 쓰입니까?</summary>
@@ -714,7 +833,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       </details>
       <details>
         <summary>자료가 정리되어 있지 않은데 신청할 수 있습니까?</summary>
-        <p>가능합니다. 보유하고 계신 수준에서 시작하며, 부족한 부분은 Nooon&nbsp;Team이 함께 구성합니다. 자료가 적으면 확인 범위가 줄어들 뿐이고, 현장 영상만으로도 인식 정확도와 물류 흐름은 확인하실 수 있습니다.</p>
+        <p>가능합니다. 보유하고 계신 수준에서 시작하며, 부족한 부분은 Nooon&nbsp;Team이 함께 구성합니다. 자료가 적으면 확인 범위가 줄어들 뿐이고, 현장 영상만으로도 인식 정확도와 실제 이동 흐름은 확인하실 수 있습니다.</p>
       </details>
       <details>
         <summary>촬영을 위해 현장 운영을 멈춰야 합니까?</summary>
