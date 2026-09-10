@@ -3,7 +3,7 @@
 //  POST /api/apply
 //
 //  동작
-//   1. 입력값 검증 (필수 항목 · 스팸 차단)
+//   1. 입력값 검증 (필수 항목 · 답변 방법 · 스팸 차단)
 //   2. 사내 메일 API(insbox)로 접수 내용 전달 → sales@tccins.co.kr
 //   3. 서버 로그 기록 (Vercel 대시보드 > Logs 에서 확인 가능)
 //
@@ -33,6 +33,13 @@ const LABELS = {
   email: '이메일',
   msg: '기타',
 };
+
+// 신청자가 고른 답변 방법 — 배열로 오지만 단일 값으로 올 수도 있다
+const WAYS = ['전화', '이메일'];
+function pickWays(v) {
+  const list = Array.isArray(v) ? v : v ? [v] : [];
+  return list.map(String).filter((w) => WAYS.includes(w));
+}
 
 function esc(v = '') {
   return String(v).replace(
@@ -67,6 +74,15 @@ export default async function handler(req, res) {
     });
   }
 
+  // 답변 받을 방법
+  const ways = pickWays(body.contactWay);
+  if (!ways.length) {
+    return res.status(400).json({ message: '답변 받을 방법을 선택해 주십시오.' });
+  }
+  if (ways.includes('이메일') && !String(body.email || '').trim()) {
+    return res.status(400).json({ message: '이메일로 답변받으시려면 이메일 주소를 입력해 주십시오.' });
+  }
+
   const now = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 
   // 메일 본문 — insbox API는 HTML 문자열을 그대로 받는다
@@ -77,6 +93,10 @@ export default async function handler(req, res) {
   lines.push(`담당자명: ${esc(body.name)}`);
   lines.push(`연락처: ${esc(body.phone)}`);
   if (body.email) lines.push(`이메일: ${esc(body.email)}`);
+  lines.push('');
+
+  lines.push('[답변 받을 방법]');
+  lines.push(`<b>${ways.map(esc).join(' · ')}</b>`);
   lines.push('');
 
   if (String(body.msg || '').trim()) {
@@ -97,7 +117,7 @@ export default async function handler(req, res) {
 
   const payload = {
     domain: MAIL_DOMAIN,
-    title: `[NOOON 무료 체험 신청] ${body.company} · ${body.name}`,
+    title: `[NOOON 무료 체험 신청] ${body.company} · ${body.name} (${ways.join('·')} 답변)`,
     contents,
     sendEmail: '',
     toReceivers: MAIL_TO,
