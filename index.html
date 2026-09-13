@@ -19,7 +19,19 @@
 
 <!--
 ════════════════════════════════════════════════════════════════
-  NOOON 무료 체험 랜딩 (v8.2)
+  NOOON 무료 체험 랜딩 (v8.3)
+
+  [v8.2 → v8.3 — 전환 흐름 정리 · 신청 폼 간소화]
+  · HERO: 신청 CTA 는 HERO 맨 아래(INPUT → VERIFY → OUTPUT 흐름 다음)에 둔다
+  · 신청 CTA 문구를 전부 "NOOON 현장 무료체험 신청"으로 통일
+    (헤더 · HERO · 프로모션 카드 · 하단 CTA · 신청 폼 제목 · 제출 버튼)
+  · 고객 노출 영문 표기는 NOOON 으로 통일 (Nooon ✗)
+  · 신청 폼: 회사명 · 담당자명 · 연락처 · 이메일(모두 필수) + 개인정보 동의만 남김.
+    답변 방법 선택 · 기타 입력란 삭제. 개인정보 수집 항목도 같은 기준으로 정리
+  · 전송 성공 시 폼 자리에 완료 화면(#applyDone) 표시 — 페이지 이동 없음
+  ⚠️ 고객 노출 문구에 "디자인파트너 · 공동개발 · 제품 개발 참여" 류 표현 금지.
+     필요하면 "현장검증 파트너" 또는 "현장검증 참여기업"을 쓴다. NOOON 은
+     기술적으로 완성된 제품을 고객 현장 기준으로 체험 · 검증하는 프로그램이다.
 
   [v8.1 → v8.2 — 문구 정리 + 프로모션 섹션 추가]
   · 기술용어를 고객 언어로. Detection → "안정적으로 인식",
@@ -67,11 +79,15 @@
   · 화면 3종 외부 공개 가능 여부
 
   [SAMPLE 표기] #sample 화면·지표는 전부 SAMPLE. 실제 산출값 아님.
-  [개발 연동] #applyForm 전송 로직 / .shot 이미지 교체
+  [개발 연동] #applyForm → POST /api/apply. 필드 id/name = company · name · phone · email · agreeChk(agree)
+              전송 데이터 구성은 하단 <script> 의 collect() 참고. / .shot 이미지 교체
   [배포] GitHub → Vercel. 폼 전송은 /api/apply (Serverless Function).
   [메일] SMTP 미사용. /api/apply 가 사내 메일 API(insbox)로 전달 → sales@tccins.co.kr
          TCC INS 홈페이지(hp 프로젝트) 문의 폼과 동일 경로. 환경변수 불필요.
   [에셋] assets/intro.mp4 · assets/poster.jpg · assets/shot-01~03.jpg
+         intro.mp4 는 HERO 타이틀 바로 아래 전체 폭으로 노출된다 → 1920×1080 H.264 · faststart ·
+         50MB 이하로 인코딩해 교체. poster.jpg 도 같은 비율(16:9)로 맞출 것.
+         음소거 자동 재생 + "소리 켜고 처음부터 보기" 버튼(#heroSound). 소리 켠 자동 재생은 브라우저가 막는다.
 ════════════════════════════════════════════════════════════════
 -->
 
@@ -139,7 +155,7 @@ section[id],div[id]{scroll-margin-top:118px}
 
 /* HERO */
 .hero{background:linear-gradient(155deg,var(--navy-900) 0%,var(--navy-700) 100%);color:#fff;
-  padding:92px 0 0;position:relative;overflow:hidden;text-align:center}
+  padding:92px 0;position:relative;overflow:hidden;text-align:center}
 .hero::after{content:"";position:absolute;inset:0;opacity:.4;pointer-events:none;
   background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
                    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
@@ -149,7 +165,20 @@ section[id],div[id]{scroll-margin-top:118px}
 .hero .sub{margin:24px auto 0;font-size:clamp(16px,1.6vw,18.5px);color:rgba(255,255,255,.84);max-width:62ch;line-height:1.7}
 .hero .sub b{color:#fff;font-weight:700}
 .hero-cta{margin-top:36px}
-.hero-note{margin-top:16px;font-size:13.5px;color:rgba(255,255,255,.55);padding-bottom:92px}
+.hero-note{margin-top:16px;font-size:13.5px;color:rgba(255,255,255,.55)}
+/* HERO 대표 영상 — 타이틀 바로 아래 · 1920×1080 원본 기준 */
+.hero-video{margin-top:40px}
+.hero-video .frame{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);
+  background:#000;line-height:0;box-shadow:0 30px 70px rgba(0,0,0,.4)}
+.hero-video video{width:100%;height:auto;aspect-ratio:16/9;display:block;background:#000}
+/* 음소거 자동 재생 중에만 보이는 소리 켜기 버튼 */
+.sound-btn{position:absolute;top:16px;left:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px 10px 13px;border:1px solid rgba(255,255,255,.28);border-radius:999px;
+  background:rgba(11,31,53,.72);backdrop-filter:blur(6px);color:#fff;font:inherit;font-size:14px;
+  font-weight:800;letter-spacing:-.02em;line-height:1;cursor:pointer;transition:background .15s ease}
+.sound-btn:hover{background:var(--orange);border-color:var(--orange)}
+.sound-btn[hidden]{display:none}
+.sound-btn svg{width:18px;height:18px;flex:0 0 auto}
 
 /* 프로세스 */
 .proc{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:34px}
@@ -192,11 +221,7 @@ section[id],div[id]{scroll-margin-top:118px}
 .stages .shot img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* HOW */
-.how{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;margin-top:36px}
-.how-media{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#000;line-height:0;
-  box-shadow:0 16px 40px rgba(11,31,53,.14)}
-.how-media video{width:100%;height:auto;aspect-ratio:16/9;display:block;background:#000}
-.io{list-style:none;display:grid;gap:12px}
+.io{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
 .io li{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
 .io .k{font-size:11.5px;font-weight:900;letter-spacing:.1em;color:var(--orange);margin-bottom:8px}
 .io strong{display:block;font-size:16.5px;font-weight:800;letter-spacing:-.02em;margin-bottom:5px}
@@ -273,10 +298,10 @@ section[id],div[id]{scroll-margin-top:118px}
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13.5px;font-weight:700;margin-bottom:7px}
 .field label .req{color:var(--orange)}
-.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;
-  padding:12px 13px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;transition:border-color .15s ease}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--orange)}
-.field textarea{min-height:190px;resize:vertical;line-height:1.65}
+/* 입력란 글자가 16px 미만이면 iOS 가 입력할 때 화면을 확대한다 */
+.field input{width:100%;border:1px solid var(--line);border-radius:8px;
+  padding:12px 13px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;transition:border-color .15s ease}
+.field input:focus{outline:none;border-color:var(--orange)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .agree input{width:16px;height:16px;margin-top:2px;flex:0 0 auto;accent-color:var(--orange)}
 .agree-block{margin:20px 0}
@@ -298,13 +323,16 @@ section[id],div[id]{scroll-margin-top:118px}
 .contact-box{margin-top:22px;padding:20px 22px;background:#fff;border:1px solid var(--line);
   border-radius:var(--radius);font-size:14.5px;line-height:1.75;
   text-align:center;font-weight:700;color:var(--ink)}
-.choice{display:flex;gap:10px;flex-wrap:wrap}
-.choice .opt{flex:1 1 0;min-width:130px;display:flex;align-items:center;gap:10px;margin:0;
-  border:1px solid var(--line);border-radius:8px;padding:13px 16px;background:#fff;
-  font-size:15px;font-weight:700;color:var(--ink);cursor:pointer;
-  transition:border-color .15s ease,background .15s ease}
-.choice .opt input{width:17px;height:17px;flex:0 0 auto;accent-color:var(--orange);margin:0}
-.choice .opt.on{border-color:var(--orange);background:var(--orange-tint)}
+/* 신청 완료 — 전송 성공 시 폼 자리에 표시 */
+.form-card.apply-done{padding:46px 32px;text-align:center}
+.apply-done:focus{outline:none}
+.done-icon{width:58px;height:58px;margin:0 auto 18px;border-radius:50%;background:var(--orange-tint);
+  color:var(--orange);display:flex;align-items:center;justify-content:center}
+.done-icon svg{width:28px;height:28px}
+.apply-done h3{font-size:clamp(18px,2.4vw,21px);letter-spacing:-.03em;line-height:1.45}
+.apply-done p{margin-top:10px;font-size:15px;color:var(--ink-2);line-height:1.7}
+.apply-done .done-note{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--ink-3)}
 .faq{margin-top:28px;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
 .faq summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;position:relative;font-weight:700;font-size:16px;letter-spacing:-.02em}
@@ -324,13 +352,12 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 /* ── 태블릿 세로 ── */
 @media (max-width:980px){
   section{padding:56px 0}
-  .hero{padding-top:62px}
-  .hero-note{padding-bottom:66px}
-  .how,.ways,.verify,.plans{grid-template-columns:1fr}
+  .hero{padding-top:62px;padding-bottom:66px}
+  .hero-video{margin-top:30px}
+  .io,.ways,.verify,.plans{grid-template-columns:1fr}
   .stages{grid-template-columns:1fr}
   .need{grid-template-columns:repeat(2,1fr)}
   .proc{grid-template-columns:repeat(2,1fr)}
-  .how{gap:30px}
   .cta{padding:64px 0}
   .form-card{padding:26px 20px}
 }
@@ -345,9 +372,12 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   .wrap{padding:0 18px}
   section{padding:44px 0}
   .need,.proc,.row2{grid-template-columns:1fr}
-  .hero{padding-top:48px}
+  .hero{padding-top:48px;padding-bottom:52px}
   .hero-cta{margin-top:28px}
-  .hero-note{padding-bottom:52px}
+  .hero-video{margin-top:24px}
+  .hero-video .frame{border-radius:10px}
+  .sound-btn{top:10px;left:10px;font-size:12.5px;padding:8px 12px 8px 10px;gap:6px}
+  .sound-btn svg{width:16px;height:16px}
   .cta{padding:52px 0}
   .topbar .wrap{height:56px}
   .promo-bar{top:56px;font-size:13px;padding:10px 14px;gap:8px}
@@ -356,7 +386,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   .btn{padding:11px 16px;font-size:14px}
   .btn-lg{font-size:16px;padding:16px 26px}
   .form-card{padding:22px 16px}
-  .field textarea{min-height:150px}
+  .form-card.apply-done{padding:34px 18px}
   .faq summary{font-size:15.5px;padding-right:34px}
   footer .wrap{gap:22px}
 }
@@ -402,6 +432,11 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   .need{grid-template-columns:1fr}
   .proc,.proc.p6{grid-template-columns:1fr}
 }
+/* ── 좁은 휴대폰 (≤400px) — 헤더 CTA 문구가 길어 로고 옆 보조 표기를 숨긴다 ── */
+@media (max-width:400px){
+  .logo small{display:none}
+  .topbar .btn{font-size:13px;padding:12px 12px}
+}
 </style>
 </head>
 <body>
@@ -409,7 +444,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 <div class="topbar">
   <div class="wrap">
     <div class="logo"><img src="assets/nooon-logo.svg" alt="NOOON" width="110" height="24"><small>· TCC INS</small></div>
-    <a class="btn" href="#apply">무료 체험 신청</a>
+    <a class="btn" href="#apply">NOOON 현장 무료체험 신청</a>
   </div>
 </div>
 
@@ -426,7 +461,22 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 <div class="hero">
   <div class="wrap">
     <span class="eyebrow" style="color:var(--orange-soft)">NOOON FREE TRIAL</span>
-    <h1>우리 현장에서 Nooon이<br>어디까지 가능한지 먼저 확인하세요.</h1>
+    <h1>우리 현장에서 NOOON이<br>어디까지 가능한지 먼저 확인하세요.</h1>
+
+    <div class="hero-video">
+      <div class="frame">
+        <!-- 브라우저 정책상 자동 재생은 음소거일 때만 허용된다 -->
+        <video id="heroVideo" autoplay muted controls preload="metadata" playsinline poster="assets/poster.jpg">
+          <source src="assets/intro.mp4" type="video/mp4">
+          브라우저가 영상 재생을 지원하지 않습니다.
+        </video>
+        <button type="button" class="sound-btn" id="heroSound" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m23 9-6 6M17 9l6 6"/></svg>
+          소리 켜고 처음부터 보기
+        </button>
+      </div>
+    </div>
+
     <p class="sub">
       <b>실제 현장 영상</b>과 <b>보유 데이터</b>를 바탕으로, AI CCTV가 무엇을 인식할 수 있는지,<br>
       현장의 움직임을 어디까지 자동으로 기록할 수 있는지 확인합니다.
@@ -440,7 +490,8 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       <div class="st"><div class="n">OUTPUT</div><div class="l">검증 결과<span class="or">＋</span>운영 인사이트</div></div>
     </div>
 
-    <div class="hero-cta"><a class="btn btn-lg" href="#apply">무료 체험 신청하기</a></div>
+    <!-- 모든 신청 CTA 문구는 "NOOON 현장 무료체험 신청"으로 통일 -->
+    <div class="hero-cta"><a class="btn btn-lg" href="#apply">NOOON 현장 무료체험 신청</a></div>
     <p class="hero-note">비용은 발생하지 않으며, 결과 확인 후 도입 여부는 자유롭게 결정하실 수 있습니다.</p>
   </div>
 </div>
@@ -455,32 +506,23 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       이 현장에서 확인 가능한 범위와 운영 데이터를 검증합니다.
     </p>
 
-    <div class="how">
-      <div class="how-media">
-        <video controls preload="metadata" playsinline poster="assets/poster.jpg">
-          <source src="assets/intro.mp4" type="video/mp4">
-          브라우저가 영상 재생을 지원하지 않습니다.
-        </video>
-      </div>
-
-      <ul class="io">
-        <li>
-          <div class="k">INPUT</div>
-          <strong>현장 영상 · 운영 데이터 수집</strong>
-          <p>대상 구역을 촬영하고, 현재 재고와 생산 · 입고 · 출하 등 보유하고 계신 운영 자료를 함께 확인합니다.</p>
-        </li>
-        <li>
-          <div class="k">VERIFY</div>
-          <strong>인식 검증 · 운영 분석</strong>
-          <p>실제 현장 조건에서 AI 인식 가능 범위를 검증하고, 재고 이동과 운영 흐름을 분석합니다.</p>
-        </li>
-        <li>
-          <div class="k">OUTPUT</div>
-          <strong>분석 결과 보고</strong>
-          <p>현장에서 확인된 인식 결과와 운영 데이터를 바탕으로, 본 구축 시 적용 가능한 범위와 조건을 정리해 제공합니다.</p>
-        </li>
-      </ul>
-    </div>
+    <ul class="io">
+      <li>
+        <div class="k">INPUT</div>
+        <strong>현장 영상 · 운영 데이터 수집</strong>
+        <p>대상 구역을 촬영하고, 현재 재고와 생산 · 입고 · 출하 등 보유하고 계신 운영 자료를 함께 확인합니다.</p>
+      </li>
+      <li>
+        <div class="k">VERIFY</div>
+        <strong>인식 검증 · 운영 분석</strong>
+        <p>실제 현장 조건에서 AI 인식 가능 범위를 검증하고, 재고 이동과 운영 흐름을 분석합니다.</p>
+      </li>
+      <li>
+        <div class="k">OUTPUT</div>
+        <strong>분석 결과 보고</strong>
+        <p>현장에서 확인된 인식 결과와 운영 데이터를 바탕으로, 본 구축 시 적용 가능한 범위와 조건을 정리해 제공합니다.</p>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -494,7 +536,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
     <h2>현장 적용 가능성을 구체적으로 검증합니다.</h2>
     <p class="lead">
       기능을 보여주는 데서 끝나지 않습니다.<br>
-      실제 현장에서 Nooon의 적용 가능 범위와 운영 효과를 확인합니다.
+      실제 현장에서 NOOON의 적용 가능 범위와 운영 효과를 확인합니다.
     </p>
 
     <div class="verify">
@@ -547,7 +589,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 
     <div class="note-bar">
       계획과 실적 중 보유하고 계신 자료를 함께 활용하며, 어느 범위까지 확인해 드릴 수 있는지는
-      현장과 자료를 확인한 뒤 Nooon&nbsp;Team이 협의드립니다.
+      현장과 자료를 확인한 뒤 NOOON&nbsp;Team이 협의드립니다.
     </div>
   </div>
 </section>
@@ -608,7 +650,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 
     <div class="need-note">
       자료가 완벽하지 않아도 됩니다.
-      <span>보유하고 계신 수준에서 Nooon&nbsp;Team이 함께 구성합니다.</span>
+      <span>보유하고 계신 수준에서 NOOON&nbsp;Team이 함께 구성합니다.</span>
     </div>
   </div>
 </section>
@@ -635,7 +677,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 <!--  주의: 가격은 노출하지 않는다.
       BASIC 정상가·프로모션가, PREMIUM 가격, 프로모션 기간 모두
       페이지에 표기하지 않으며 임의의 금액·마감일을 만들지 말 것.
-      두 카드 모두 CTA 는 #apply(무료 체험 신청)로 연결한다.  -->
+      두 카드 모두 CTA 는 #apply 로 연결하며 문구는 "NOOON 현장 무료체험 신청".  -->
 <section class="sec-alt" id="promo">
   <div class="wrap">
     <div class="promo-badge">선착순 기업 한정</div>
@@ -672,7 +714,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
         </ul>
         <div class="plan-cta">
           <div class="tagline">도입 프로모션 적용 대상</div>
-          <a class="btn" href="#apply">무료 체험 신청하기</a>
+          <a class="btn" href="#apply">NOOON 현장 무료체험 신청</a>
         </div>
       </div>
 
@@ -691,7 +733,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
         </ul>
         <div class="plan-cta">
           <div class="tagline">구성 · 조건 별도 협의</div>
-          <a class="btn btn-line" href="#apply">무료 체험 신청하기</a>
+          <a class="btn btn-line" href="#apply">NOOON 현장 무료체험 신청</a>
         </div>
       </div>
     </div>
@@ -708,47 +750,39 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
   <div class="wrap">
     <h2>본 구축 전에,<br>우리 현장에서 먼저 검증하십시오.</h2>
     <p>AI CCTV가 무엇을 인식할 수 있고,<br>어디까지 자동화할 수 있는지 실제 현장 데이터로 확인해 보십시오.</p>
-    <a class="btn btn-lg" href="#apply">Nooon 무료 체험 신청</a>
+    <a class="btn btn-lg" href="#apply">NOOON 현장 무료체험 신청</a>
   </div>
 </div>
 
 <!-- ══════ 신청 폼 ══════ -->
+<!--  이탈을 줄이기 위해 신청 항목은 회사명 · 담당자명 · 연락처 · 이메일(모두 필수)
+      + 개인정보 동의만 둔다. 창고 정보 등은 담당자가 연락해 확인한다.
+      input 의 id / name 은 관리대장 연동 기준 키이므로 바꾸지 말 것
+      → 전송 데이터는 하단 <script> 의 collect() 참고  -->
 <section class="form-sec" id="apply">
   <div class="wrap">
     <span class="eyebrow">APPLY</span>
-    <h2>체험 신청</h2>
+    <h2>NOOON 현장 무료체험 신청</h2>
     <form class="form-card" id="applyForm" method="post" action="#">
       <div class="row2">
         <div class="field">
           <label for="company">회사명 <span class="req">*</span></label>
-          <input type="text" id="company" name="company" required placeholder="예) TCC INS">
+          <input type="text" id="company" name="company" required autocomplete="organization" placeholder="예) TCC INS">
         </div>
         <div class="field">
           <label for="name">담당자명 <span class="req">*</span></label>
-          <input type="text" id="name" name="name" required placeholder="예) 홍길동">
+          <input type="text" id="name" name="name" required autocomplete="name" placeholder="예) 홍길동">
         </div>
       </div>
       <div class="row2">
         <div class="field">
           <label for="phone">연락처 <span class="req">*</span></label>
-          <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000">
+          <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="010-0000-0000">
         </div>
         <div class="field">
-          <label for="email">이메일</label>
-          <input type="email" id="email" name="email" placeholder="name@company.co.kr">
+          <label for="email">이메일 <span class="req">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="name@company.co.kr">
         </div>
-      </div>
-      <div class="field">
-        <label>답변 받을 방법 <span class="req">*</span></label>
-        <div class="choice">
-          <label class="opt"><input type="checkbox" name="contactWay" value="전화"><span>전화</span></label>
-          <label class="opt"><input type="checkbox" name="contactWay" value="이메일"><span>이메일</span></label>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="msg">기타</label>
-        <textarea id="msg" name="msg" placeholder="창고 유형과 규모, 주요 적재 품목, 지게차 운용 대수, 촬영을 원하시는 구역, 보유하고 계신 자료, 현재 겪고 계신 문제 등 자유롭게 기재해 주십시오."></textarea>
       </div>
 
       <!-- 스팸 방지용 숨김 필드 — 사람은 보이지 않음 -->
@@ -765,16 +799,15 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
           <summary>내용보기</summary>
           <div class="privacy-body">
             <p class="t">개인정보 수집 및 이용 동의</p>
-            <p>(주)TCC INS는 귀하의 무료 체험 신청에 대한 원활한 상담 및 답변 제공을 위해
+            <p>(주)TCC INS는 NOOON 현장 무료체험 신청의 접수 및 상담을 위해
                아래와 같이 개인정보를 수집 및 이용합니다.</p>
 
             <p class="h">1. 개인정보 수집 항목</p>
-            <p><b>필수항목:</b> 회사명, 담당자명, 연락처</p>
-            <p><b>선택항목:</b> 이메일, 기타 기재 내용</p>
+            <p><b>필수항목:</b> 회사명, 담당자명, 연락처, 이메일</p>
 
             <p class="h">2. 수집 및 이용 목적</p>
-            <p>무료 체험 신청 접수 및 상담, 현장 확인 일정 협의</p>
-            <p>상담을 위한 본인 식별 및 원활한 의사소통 경로 확보</p>
+            <p>NOOON 현장 무료체험 신청 접수 및 상담</p>
+            <p>현장 확인 및 일정 협의를 위한 연락</p>
 
             <p class="h">3. 개인정보의 보유 및 이용 기간</p>
             <p>원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.</p>
@@ -789,11 +822,21 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
         </details>
       </div>
 
-      <button class="btn btn-lg" type="submit" disabled>체험 신청</button>
+      <button class="btn btn-lg" type="submit" disabled>NOOON 현장 무료체험 신청</button>
     </form>
 
-    <div class="contact-box">
-      선택하신 연락 방법으로 담당자가 연락드립니다.
+    <!-- 신청 완료 — 전송 성공 시 폼 대신 이 화면을 보여 준다 (페이지 이동 없음) -->
+    <div class="form-card apply-done" id="applyDone" tabindex="-1" hidden>
+      <div class="done-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </div>
+      <h3>NOOON 현장 무료체험 신청이 완료되었습니다.</h3>
+      <p>신청이 정상적으로 접수되었습니다.<br>담당자가 확인 후 연락드리겠습니다.</p>
+      <p class="done-note">담당자가 현장 환경과 일정을 확인한 후 안내드립니다.</p>
+    </div>
+
+    <div class="contact-box" id="applyContact">
+      입력하신 연락처로 담당자가 확인 후 연락드립니다.
     </div>
   </div>
 </section>
@@ -814,7 +857,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       </details>
       <details>
         <summary>자료가 정리되어 있지 않은데 신청할 수 있습니까?</summary>
-        <p>가능합니다. 보유하고 계신 수준에서 시작하며, 부족한 부분은 Nooon&nbsp;Team이 함께 구성합니다. 자료가 적으면 확인 범위가 줄어들 뿐이고, 현장 영상만으로도 인식 정확도와 실제 이동 흐름은 확인하실 수 있습니다.</p>
+        <p>가능합니다. 보유하고 계신 수준에서 시작하며, 부족한 부분은 NOOON&nbsp;Team이 함께 구성합니다. 자료가 적으면 확인 범위가 줄어들 뿐이고, 현장 영상만으로도 인식 정확도와 실제 이동 흐름은 확인하실 수 있습니다.</p>
       </details>
       <details>
         <summary>촬영을 위해 현장 운영을 멈춰야 합니까?</summary>
@@ -853,82 +896,120 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 </footer>
 
 <script>
+/* ── 신청 폼 ─────────────────────────────────────────────────
+   전송: POST /api/apply (api/apply.js → 사내 메일 API → sales@tccins.co.kr)
+   성공(2xx) → 폼을 숨기고 #applyDone 완료 화면 표시
+   실패      → 폼 아래에 오류 안내 (서버가 준 message 우선)
+   ─────────────────────────────────────────────────────────── */
 (function(){
-  var form  = document.getElementById('applyForm');
-  var btn   = form.querySelector('button[type=submit]');
-  var agree = document.getElementById('agreeChk');
-  var ways  = form.querySelectorAll('input[name=contactWay]');
-  var email = document.getElementById('email');
+  var form    = document.getElementById('applyForm');
+  var btn     = form.querySelector('button[type=submit]');
+  var agree   = document.getElementById('agreeChk');
+  var done    = document.getElementById('applyDone');
+  var contact = document.getElementById('applyContact');
 
   // 개인정보 수집·이용에 동의해야 신청 버튼이 활성화됩니다
   function syncBtn(){ btn.disabled = !agree.checked; }
   agree.addEventListener('change', syncBtn);
   syncBtn();
 
-  // 답변 방법 — 선택 표시, 이메일을 고르면 이메일 항목이 필수가 됩니다
-  function syncWays(){
-    var wantEmail = false;
-    Array.prototype.forEach.call(ways, function(w){
-      w.parentNode.classList.toggle('on', w.checked);
-      if(w.checked && w.value === '이메일') wantEmail = true;
-    });
-    email.required = wantEmail;
-    email.previousElementSibling.innerHTML = wantEmail
-      ? '이메일 <span class="req">*</span>' : '이메일';
+  // 전송 데이터 — 각 값이 어느 input 에서 오는지 드러나도록 하나씩 모은다.
+  // 관리대장 등 외부 연동은 이 객체의 키(= input 의 name)를 기준으로 매핑하면 된다.
+  function collect(){
+    return {
+      company: document.getElementById('company').value.trim(), // 회사명   #company  name="company"
+      name:    document.getElementById('name').value.trim(),    // 담당자명 #name     name="name"
+      phone:   document.getElementById('phone').value.trim(),   // 연락처   #phone    name="phone"
+      email:   document.getElementById('email').value.trim(),   // 이메일   #email    name="email"
+      agree:   agree.checked,                                   // 개인정보 동의 #agreeChk name="agree"
+      website: form.elements.website.value                      // 스팸 방지 숨김 필드 — 사람은 항상 빈 값
+    };
   }
-  Array.prototype.forEach.call(ways, function(w){ w.addEventListener('change', syncWays); });
-  syncWays();
 
-  function notice(msg, ok){
+  function notice(msg){
     var n = document.getElementById('formNotice');
     if(!n){
       n = document.createElement('div');
       n.id = 'formNotice';
+      n.setAttribute('role', 'alert');
+      n.style.cssText = 'margin-top:14px;padding:14px 16px;border-radius:8px;font-size:14.5px;font-weight:700;'
+        + 'text-align:center;line-height:1.6;background:#FFF3EC;color:#E45A08;';
       form.appendChild(n);
     }
-    n.style.cssText = 'margin-top:14px;padding:14px 16px;border-radius:8px;font-size:14.5px;font-weight:700;'
-      + 'text-align:center;line-height:1.6;'
-      + (ok ? 'background:#EAF6EF;color:#1E7A4B;' : 'background:#FFF3EC;color:#E45A08;');
     n.innerHTML = msg;
+  }
+
+  function clearNotice(){
+    var n = document.getElementById('formNotice');
+    if(n) n.parentNode.removeChild(n);
+  }
+
+  // 완료 화면 — 같은 자리에서 폼과 교체하고, 신청 영역 제목부터 보이도록 스크롤합니다
+  function showDone(){
+    form.hidden = true;
+    if(contact) contact.hidden = true;
+    done.hidden = false;
+    form.closest('section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    done.focus({ preventScroll: true });
   }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(btn.disabled) return;
+    clearNotice();
 
-    var fd = new FormData(form);
-    var data = Object.fromEntries(fd.entries());
-    data.contactWay = fd.getAll('contactWay');
-
-    if(!data.contactWay.length){
-      notice('답변 받을 방법을 선택해 주십시오.', false);
-      return;
-    }
-
-    btn.disabled = true;
     var label = btn.textContent;
+    btn.disabled = true;
     btn.textContent = '접수 중…';
 
     fetch('/api/apply', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify(collect())
     })
-    .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, body: j }; }); })
+    .then(function(r){
+      // 응답이 JSON 이 아니어도(예: 404 페이지) 실패로 처리할 수 있게 한다
+      return r.json().catch(function(){ return {}; })
+        .then(function(j){ return { ok: r.ok, body: j }; });
+    })
     .then(function(res){
       if(res.ok){
         form.reset();
-        notice('신청이 접수되었습니다.<br>담당자가 확인 후 연락드리겠습니다.', true);
-        btn.textContent = '접수 완료';
-      }else{
-        notice((res.body && res.body.message) || '전송에 실패했습니다. 잠시 후 다시 시도해 주십시오.', false);
-        syncBtn(); btn.textContent = label;
+        showDone();
+        return;
       }
+      notice((res.body && res.body.message)
+        || '신청이 접수되지 않았습니다.<br>잠시 후 다시 시도해 주시거나 sales@tccins.co.kr · 02-2639-1756으로 연락 주십시오.');
+      syncBtn(); btn.textContent = label;
     })
     .catch(function(){
-      notice('전송에 실패했습니다.<br>sales@tccins.co.kr 또는 02-2639-1756으로 연락 주십시오.', false);
+      notice('인터넷 연결이 원활하지 않아 신청이 전송되지 않았습니다.<br>잠시 후 다시 시도해 주시거나 sales@tccins.co.kr · 02-2639-1756으로 연락 주십시오.');
       syncBtn(); btn.textContent = label;
     });
+  });
+})();
+
+(function(){
+  var video = document.getElementById('heroVideo');
+  var sound = document.getElementById('heroSound');
+  if(!video || !sound) return;
+
+  // 움직임 줄이기를 설정한 방문자에게는 자동 재생하지 않습니다
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    video.removeAttribute('autoplay');
+    video.pause();
+    return;
+  }
+
+  // 음소거로 재생되는 동안만 소리 켜기 버튼을 보여 줍니다
+  video.addEventListener('playing', function(){ if(video.muted) sound.hidden = false; });
+  video.addEventListener('volumechange', function(){ if(!video.muted) sound.hidden = true; });
+
+  // 소리를 켜면 내레이션을 놓치지 않도록 처음부터 다시 재생합니다
+  sound.addEventListener('click', function(){
+    video.muted = false;
+    video.currentTime = 0;
+    video.play();
   });
 })();
 </script>

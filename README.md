@@ -115,6 +115,25 @@ TCC INS 홈페이지(`tccins/hp`)의 문의 폼과 동일한 경로입니다.
 SMTP 계정 · 앱 비밀번호 · 환경변수가 **일절 필요하지 않습니다.**
 발송 경로가 회사 인프라 안에서 끝나므로 담당자가 바뀌어도 영향이 없습니다.
 
+### 신청 폼 항목 (모두 필수)
+
+| 항목 | id | name |
+|---|---|---|
+| 회사명 | `company` | `company` |
+| 담당자명 | `name` | `name` |
+| 연락처 | `phone` | `phone` |
+| 이메일 | `email` | `email` |
+| 개인정보 수집·이용 동의 | `agreeChk` | `agree` |
+
+`/api/apply` 로 보내는 JSON (`src/index.html` 하단 `collect()` 가 만듭니다):
+
+```json
+{ "company": "…", "name": "…", "phone": "…", "email": "…", "agree": true, "website": "" }
+```
+
+`website` 는 스팸 방지용 숨김 필드입니다. 값이 있으면 봇으로 보고 조용히 무시합니다.
+신청 정보 저장 · 관리대장 연동은 `api/apply.js` 의 `data` 객체를 기준으로 추가하면 됩니다.
+
 ### 받는 주소를 바꾸려면
 
 Vercel → Settings → Environment Variables 에 아래를 등록하고 **Redeploy** 합니다. (선택 사항)
