@@ -14,12 +14,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NOOON 무료 체험 | 내 창고 데이터로 먼저 검증하세요 · TCC INS</title>
-<meta name="description" content="실제 현장 영상과 보유 데이터로, AI CCTV가 우리 현장에서 무엇을 인식할 수 있고 재고 움직임을 어디까지 자동으로 기록할 수 있는지 먼저 검증합니다. 비용도 도입 의무도 없습니다.">
+<title>NOOON 현장검증 파트너 모집 | 정부지원사업 연계 특별 프로모션 · TCC INS</title>
+<meta name="description" content="정부지원사업과 특별 프로모션을 활용해 구축비 · 운영비 부담을 낮추고, AI CCTV 재고관리 NOOON을 우리 현장에서 먼저 무료로 체험해 보세요. 현장검증 파트너 6개사를 모집합니다.">
 
 <!--
 ════════════════════════════════════════════════════════════════
-  NOOON 무료 체험 랜딩 (v8.3)
+  NOOON 무료 체험 랜딩 (v8.4)
+
+  [v8.3 → v8.4 — 기획 방향 전환: 정부지원사업 연계 특별 프로모션]
+  · 메일 홍보 템플릿과 메시지를 맞춘다 — "정부지원사업과 특별 프로모션을 활용해
+    구축비 · 운영비 부담을 낮추고, AI CCTV 재고관리를 먼저 체험"
+  · 선착순 → 무료체험 기업 중 현장검증 파트너 6개사 선정
+    (선정 기준: 현장 적용성 · 추진 의지 · 정부사업 연계 가능성)
+  · BASIC / PREMIUM 요금제 카드 삭제 → 파트너 혜택 4가지 카드
+    ⚠️ 혜택은 항목만 표기한다. 금액 · 할인율은 페이지에 쓰지 않는다
+  · "정부지원사업의 시행과 선정은 보장되지 않습니다" 문구는 빼지 않는다
+  · 신청 폼을 #promo 안으로 옮김 (#apply = 폼 영역 div). 하단 CTA 는 버튼 없이
+    문구만 두고, 바로 아래에 FAQ
 
   [v8.2 → v8.3 — 전환 흐름 정리 · 신청 폼 간소화]
   · HERO: 영상 → 설명 → 신청 CTA → 한 줄 진행 흐름(INPUT › VERIFY › OUTPUT) 순서.
@@ -30,9 +41,9 @@
   · 신청 폼: 회사명 · 담당자명 · 연락처 · 이메일(모두 필수) + 개인정보 동의만 남김.
     답변 방법 선택 · 기타 입력란 삭제. 개인정보 수집 항목도 같은 기준으로 정리
   · 전송 성공 시 폼 자리에 완료 화면(#applyDone) 표시 — 페이지 이동 없음
-  ⚠️ 고객 노출 문구에 "디자인파트너 · 공동개발 · 제품 개발 참여" 류 표현 금지.
-     필요하면 "현장검증 파트너" 또는 "현장검증 참여기업"을 쓴다. NOOON 은
-     기술적으로 완성된 제품을 고객 현장 기준으로 체험 · 검증하는 프로그램이다.
+  ⚠️ 고객 노출 문구에 "공동개발 · 제품 개발 참여" 류 표현 금지. 기본 명칭은 "현장검증 파트너".
+     (v8.4 부터 "선정된 현장검증 파트너를 NOOON 디자인파트너로 운영" 문장은 메일과 동일하게 쓴다)
+     NOOON 은 기술적으로 완성된 제품을 고객 현장 기준으로 체험 · 검증하는 프로그램이다.
 
   [v8.1 → v8.2 — 문구 정리 + 프로모션 섹션 추가]
   · 기술용어를 고객 언어로. Detection → "안정적으로 인식",
@@ -165,6 +176,7 @@ section[id],div[id]{scroll-margin-top:118px}
 .hero h1{font-size:clamp(30px,4.4vw,50px);font-weight:900;letter-spacing:-.045em;line-height:1.22}
 .hero .sub{margin:24px auto 0;font-size:clamp(16px,1.6vw,18.5px);color:rgba(255,255,255,.84);max-width:62ch;line-height:1.7}
 .hero .sub b{color:#fff;font-weight:700}
+.hero h1 .hl{color:var(--orange)}
 .hero-cta{margin-top:36px}
 /* HERO 대표 영상 — 타이틀 바로 아래 · 1920×1080 원본 기준 */
 .hero-video{margin-top:40px}
@@ -207,7 +219,7 @@ section[id],div[id]{scroll-margin-top:118px}
 .verify h3{font-size:18px;letter-spacing:-.03em;margin-bottom:8px}
 .verify p{font-size:14.5px;color:var(--ink-2)}
 .sub-h{margin-top:44px;font-size:19px;letter-spacing:-.03em;color:var(--ink)}
-.sub-h + .ways,.sub-h + .plans{margin-top:16px}
+.sub-h + .ways{margin-top:16px}
 
 /* 결과 단계 */
 .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
@@ -253,47 +265,38 @@ section[id],div[id]{scroll-margin-top:118px}
 .promo-badge::before{content:"";flex:0 0 auto;width:9px;height:9px;border-radius:50%;
   background:var(--orange);animation:pbPulse 2.4s ease-out infinite}
 @media (prefers-reduced-motion:reduce){ .promo-badge::before{animation:none} }
+#promo .lead{max-width:none}
 #promo .lead b{color:#000;font-weight:800}
 
-.promo-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:30px}
-.promo-flow .s{background:#fff;border:1px solid var(--line);border-radius:999px;padding:11px 22px;
-  font-size:14.5px;font-weight:800;color:var(--ink-3);letter-spacing:-.02em}
-.promo-flow .s.on{border-color:var(--orange);background:var(--orange-tint);color:var(--orange-dark)}
-.promo-flow .ar{padding:0 12px;color:var(--ink-3);font-size:17px;font-weight:900}
+/* 진행 흐름 — 테두리 없이 왼쪽 정렬 텍스트 (진행된 단계만 주황) */
+.promo-flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0;margin-top:26px}
+.promo-flow .s{font-size:15.5px;font-weight:800;color:var(--ink-3);letter-spacing:-.02em}
+.promo-flow .s.on{color:var(--orange-dark)}
+.promo-flow .ar{padding:0 14px;color:var(--ink-3);font-size:17px;font-weight:900}
 
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
-.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  padding:30px 28px;display:flex;flex-direction:column}
-.plan.hi{border-color:var(--orange);box-shadow:0 14px 34px rgba(255,106,19,.13)}
-.plan .tier{font-size:12px;font-weight:900;letter-spacing:.1em;color:var(--orange);margin-bottom:9px}
-.plan.alt .tier{color:var(--navy-700)}
-.plan .role{font-size:12.5px;font-weight:800;letter-spacing:.05em;color:var(--ink-3);margin-bottom:10px}
-.plan.alt .role{color:var(--navy-700)}
-.plan h3{font-size:21px;letter-spacing:-.035em;margin-bottom:7px}
-.plan .desc{font-size:14.5px;color:var(--ink-2);padding-bottom:20px;border-bottom:1px solid var(--line)}
-.plan .desc b{color:var(--ink);font-weight:700}
-.plan .incl{display:inline-block;margin-top:20px;padding:7px 13px;border-radius:6px;
-  background:var(--navy-900);color:#fff;font-size:12.5px;font-weight:800;letter-spacing:-.01em}
-.plan .incl + ul{margin-top:14px}
-.plan ul{list-style:none;display:grid;gap:9px;margin:20px 0 26px}
-.plan li{font-size:14.5px;color:var(--ink-2);padding-left:20px;position:relative}
-.plan li::before{content:"✓";position:absolute;left:0;top:0;font-size:12px;font-weight:900;color:var(--orange)}
-.plan.alt li::before{color:var(--navy-700)}
-.plan-cta{margin-top:auto;padding-top:22px;border-top:1px solid var(--line)}
-.plan-cta .tagline{font-size:13.5px;font-weight:700;color:var(--ink-3);margin-bottom:12px;text-align:center}
-.plan.hi .plan-cta .tagline{color:var(--orange-dark)}
-.plan-cta .btn{width:100%}
-.btn-line{background:#fff;color:var(--navy-900);border:1.5px solid var(--navy-900)}
-.btn-line:hover{background:var(--navy-900);color:#fff}
-.promo-note{margin-top:20px;font-size:13px;color:var(--ink-3);line-height:1.65}
+/* 현장검증 파트너 — 메일의 파트너 모집 블록처럼 설명 · 혜택 · 유의사항을 한 패널에 */
+.partner-panel{margin-top:30px;background:var(--navy-900);color:#fff;border-radius:16px;padding:36px 36px 28px}
+.pp-desc{font-size:15.5px;line-height:1.75;color:rgba(255,255,255,.8)}
+.pp-desc b{color:var(--orange-soft);font-weight:700}
+.pp-label{margin:28px 0 14px;font-size:15px;font-weight:800;letter-spacing:-.02em;color:#fff}
+/* 혜택 2×2 — 메일과 같은 표 형태. 항목만 표기 (금액 · 할인율 X).
+   1px 간격 사이로 배경이 비쳐 표 선처럼 보인다 */
+.perks{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.16)}
+.perk{display:flex;flex-direction:column;gap:6px;background:var(--navy-900);padding:18px 20px}
+.perk .n{font-size:13.5px;font-weight:800;color:var(--orange)}
+.perk strong{font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.5;color:#fff}
+.promo-note{margin-top:16px;font-size:13px;color:var(--ink-3);line-height:1.65}
+.partner-panel .promo-note{color:rgba(255,255,255,.5)}
 
 /* CTA · 폼 · FAQ */
 .cta{background:linear-gradient(155deg,var(--navy-800),var(--navy-700));color:#fff;text-align:center;padding:86px 0}
 .cta h2{font-size:clamp(26px,3.6vw,40px);letter-spacing:-.04em;line-height:1.28}
 .cta p{margin-top:20px;font-size:17.5px;color:rgba(255,255,255,.8);line-height:1.65}
 .cta .btn{margin-top:34px}
-.form-sec{background:var(--bg-2);border-top:1px solid var(--line)}
-.form-sec .wrap{max-width:868px}
+/* 신청 폼 — #promo(현장검증 파트너 모집) 안에 둔다 */
+.apply-wrap{margin-top:56px}
+.apply-title{font-size:clamp(22px,2.6vw,28px);font-weight:900;letter-spacing:-.035em;line-height:1.3}
 .form-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:34px 32px;margin-top:22px}
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13.5px;font-weight:700;margin-bottom:7px}
@@ -359,7 +362,7 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
   section{padding:56px 0}
   .hero{padding-top:62px;padding-bottom:66px}
   .hero-video{margin-top:30px}
-  .io,.ways,.verify,.plans{grid-template-columns:1fr}
+  .io,.ways,.verify{grid-template-columns:1fr}
   .stages{grid-template-columns:1fr}
   .need{grid-template-columns:repeat(2,1fr)}
   .proc{grid-template-columns:repeat(2,1fr)}
@@ -425,19 +428,18 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
 }
 @media (max-width:640px){
   .hero .sub br,.lead br{display:none}
-  .promo-flow{flex-direction:column;gap:8px}
-  .promo-flow .ar{transform:rotate(90deg);padding:2px 0}
-  .promo-flow .s{width:100%;text-align:center}
-  .plan{padding:24px 20px}
+  .promo-flow{flex-direction:column;align-items:flex-start;gap:2px}
+  .promo-flow .ar{transform:rotate(90deg);padding:0 0 0 6px}
 }
 @media (max-width:560px){
-  .need{grid-template-columns:1fr}
+  .need,.perks{grid-template-columns:1fr}
+  .partner-panel{padding:26px 18px 22px;border-radius:14px}
+  .pp-desc{font-size:15px}
+  .perk{padding:15px 16px}
+  .apply-wrap{margin-top:40px}
+  .hero h1{font-size:27px}
+  .hero h1 br{display:none}
   .proc,.proc.p6{grid-template-columns:1fr}
-}
-/* ── 좁은 휴대폰 (≤400px) — 헤더 CTA 문구가 길어 로고 옆 보조 표기를 숨긴다 ── */
-@media (max-width:400px){
-  .logo small{display:none}
-  .topbar .btn{font-size:13px;padding:12px 12px}
 }
 </style>
 </head>
@@ -446,24 +448,24 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
 <div class="topbar">
   <div class="wrap">
     <div class="logo"><img src="assets/nooon-logo.svg" alt="NOOON" width="110" height="24"><small>· TCC INS</small></div>
-    <a class="btn" href="#apply">NOOON 현장 무료체험 신청</a>
   </div>
 </div>
 
 <!-- 헤더 아래 고정 프로모션 바 — 클릭 시 #promo 로 이동 -->
 <a class="promo-bar" href="#promo">
   <span class="dot" aria-hidden="true"></span>
-  <b>선착순 프로모션 진행중</b>
+  <b>정부지원사업 연계 특별 프로모션</b>
   <span class="sep" aria-hidden="true">·</span>
-  <span class="txt">무료 체험 후 도입을 결정하신 기업 대상</span>
+  <span class="txt">현장검증 파트너 6개사 모집</span>
   <span class="go">자세히 보기 ›</span>
 </a>
 
 <!-- ══════ 1. HERO ══════ -->
 <div class="hero">
   <div class="wrap">
-    <span class="eyebrow" style="color:var(--orange-soft)">NOOON FREE TRIAL</span>
-    <h1>우리 현장에서 NOOON이<br>어디까지 가능한지 먼저 확인하세요.</h1>
+    <span class="eyebrow" style="color:var(--orange-soft)">NOOON 현장검증 파트너 6개사 모집</span>
+    <!-- 모바일에서는 <br> 을 숨기므로 줄바꿈 앞에 띄어쓰기를 둔다 -->
+    <h1>정부지원사업과 특별 프로모션을 활용해 <br><span class="hl">구축비 및 운영비 부담을 낮추고,</span> <br>AI CCTV 재고관리를 먼저 체험해 보세요.</h1>
 
     <div class="hero-video">
       <div class="frame">
@@ -480,8 +482,8 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
     </div>
 
     <p class="sub">
-      <b>실제 현장 영상</b>과 <b>보유 데이터</b>를 바탕으로, AI CCTV가 무엇을 인식할 수 있는지,<br>
-      현장의 움직임을 어디까지 자동으로 기록할 수 있는지 확인합니다.
+      TCC INS는 기술적으로 완성된 NOOON을 실제 제조창고에 적용해 인식 정확도와 재고 이동 자동기록,
+      운영 개선 효과를 확인할 <b>현장검증 파트너 6개사</b>를 모집합니다.
     </p>
 
     <!-- 모든 신청 CTA 문구는 "NOOON 현장 무료체험 신청"으로 통일 -->
@@ -675,173 +677,146 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
   </div>
 </section>
 
-<!-- ══════ 도입 프로모션 ══════ -->
-<!--  주의: 가격은 노출하지 않는다.
-      BASIC 정상가·프로모션가, PREMIUM 가격, 프로모션 기간 모두
-      페이지에 표기하지 않으며 임의의 금액·마감일을 만들지 말 것.
-      두 카드 모두 CTA 는 #apply 로 연결하며 문구는 "NOOON 현장 무료체험 신청".  -->
+<!-- ══════ 현장검증 파트너 모집 · 정부지원사업 연계 특별 프로모션 ══════ -->
+<!--  주의: 혜택은 항목만 표기한다. 금액 · 할인율 · 프로모션 기간은 쓰지 않으며
+      임의의 금액 · 마감일을 만들지 말 것.
+      "정부지원사업의 시행과 선정은 보장되지 않습니다" 문구를 빼지 말 것.
+      상단 프로모션 바가 #promo 로 연결되므로 id 를 바꾸지 말 것.  -->
 <section class="sec-alt" id="promo">
   <div class="wrap">
-    <div class="promo-badge">선착순 기업 한정</div>
-    <h2>검증은 무료로.<br>도입 혜택은 선착순으로.</h2>
+    <div class="promo-badge">현장검증 파트너 6개사 모집</div>
+    <h2>정부지원사업과 특별 프로모션으로 구축 부담을 낮춥니다.</h2>
     <p class="lead">
-      무료 체험으로 현장 적용 가능성을 먼저 확인하십시오.<br>
-      도입을 결정한 기업 중 <b>선착순에 한해 특별 프로모션을 적용</b>합니다.
+      무료체험으로 우리 현장의 적용 가능성을 먼저 확인하십시오.<br>
+      무료체험 기업 중 <b>현장 적용성 · 추진 의지 · 정부사업 연계 가능성</b>을 검토해 현장검증 파트너 6개사를 선정합니다.
     </p>
 
     <div class="promo-flow">
-      <div class="s on">무료 체험</div>
+      <div class="s on">무료체험</div>
       <div class="ar">›</div>
-      <div class="s on">현장 검증</div>
+      <div class="s on">현장검증 파트너 선정</div>
       <div class="ar">›</div>
-      <div class="s">프로모션 도입</div>
+      <div class="s">정부지원 연계 · 본 구축</div>
     </div>
 
-    <h3 class="sub-h">도입 구성은 두 가지입니다</h3>
+    <!-- 현장검증 파트너 — 메일의 파트너 모집 블록처럼 설명 · 혜택 · 유의사항을 한 패널에 -->
+    <div class="partner-panel">
+      <p class="pp-desc">
+        현장검증 파트너는 NOOON의 현장 검증용 파일럿을 실제 제조창고에서 운영하며
+        <b>인식 정확도 · 재고 이동 자동기록 · 운영 개선 효과를 확인</b>하는 초기 적용기업입니다.
+        검증 결과를 바탕으로 정부지원사업 연계와 본 구축을 준비하며,
+        TCC INS는 선정된 현장검증 파트너를 ‘NOOON 디자인파트너’로 운영합니다.
+      </p>
 
-    <div class="plans">
-      <div class="plan hi">
-        <div class="tier">NOOON BASIC</div>
-        <div class="role">Monitor &amp; Digitize</div>
-        <h3>Digital Mirror Platform</h3>
-        <p class="desc">공장의 실제 움직임을 디지털화해, <b>현재 재고와 운영 상황을 한눈에</b> 보여줍니다.</p>
-        <ul>
-          <li>CCTV 통합 모니터링</li>
-          <li>이벤트 · 알람 · 이력 관리</li>
-          <li>3D Digital Mirror · 재고 현황</li>
-          <li>MES · WMS 연동</li>
-          <li>현장 모바일 알림</li>
-          <li>기본 대시보드</li>
-          <li>사용자 · 권한 관리 / 외부 시스템 연동</li>
-        </ul>
-        <div class="plan-cta">
-          <div class="tagline">도입 프로모션 적용 대상</div>
-          <a class="btn" href="#apply">NOOON 현장 무료체험 신청</a>
-        </div>
+      <h3 class="pp-label">현장검증 파트너 선정 혜택</h3>
+      <div class="perks">
+        <div class="perk"><span class="n">01</span><strong>초기 도입비 할인</strong></div>
+        <div class="perk"><span class="n">02</span><strong>2년 차 유지보수 무상</strong></div>
+        <div class="perk"><span class="n">03</span><strong>추가 창고 소프트웨어 할인</strong></div>
+        <div class="perk"><span class="n">04</span><strong>정부지원사업 연계 구축비 절감 지원</strong></div>
       </div>
 
-      <div class="plan alt">
-        <div class="tier">NOOON PREMIUM</div>
-        <div class="role">Analyze &amp; Optimize</div>
-        <h3>Intelligence Platform</h3>
-        <p class="desc">축적된 운영 데이터를 분석해, <b>무엇을 어떻게 개선할지</b>까지 제시합니다.</p>
-        <div class="incl">BASIC 전 기능 포함</div>
-        <ul>
-          <li>Intelligence 대시보드</li>
-          <li>AI 이벤트 분석</li>
-          <li>3D 시뮬레이션</li>
-          <li>AI 성능 모니터링 · 리포트</li>
-          <li>운영 데이터 기반 AI 모델 업데이트</li>
-        </ul>
-        <div class="plan-cta">
-          <div class="tagline">구성 · 조건 별도 협의</div>
-          <a class="btn btn-line" href="#apply">NOOON 현장 무료체험 신청</a>
-        </div>
-      </div>
+      <p class="promo-note">
+        할인 규모 등 혜택의 세부 조건은 상담 시 안내드립니다.
+        정부지원사업의 시행과 선정은 보장되지 않습니다.
+      </p>
     </div>
 
-    <p class="promo-note">
-      프로모션은 선착순으로 마감되며, 적용 범위 및 세부 조건은
-      현장 적용 범위와 계약 조건에 따라 달라질 수 있습니다.
-    </p>
+    <!-- ══════ 신청 폼 — 현장검증 파트너 모집 영역 안에 둔다 ══════ -->
+    <!--  이탈을 줄이기 위해 신청 항목은 회사명 · 담당자명 · 연락처 · 이메일(모두 필수)
+          + 개인정보 동의만 둔다. 창고 정보 등은 담당자가 연락해 확인한다.
+          input 의 id / name 은 관리대장 연동 기준 키이므로 바꾸지 말 것
+          → 전송 데이터는 하단 <script> 의 collect() 참고.
+          페이지의 모든 신청 CTA 는 #apply(이 div)로 연결된다.  -->
+    <div class="apply-wrap" id="apply">
+      <span class="eyebrow">APPLY</span>
+      <h3 class="apply-title">NOOON 현장 무료체험 신청</h3>
+      <form class="form-card" id="applyForm" method="post" action="#">
+        <div class="row2">
+          <div class="field">
+            <label for="company">회사명 <span class="req">*</span></label>
+            <input type="text" id="company" name="company" required autocomplete="organization" placeholder="예) TCC INS">
+          </div>
+          <div class="field">
+            <label for="name">담당자명 <span class="req">*</span></label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="예) 홍길동">
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="phone">연락처 <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="010-0000-0000">
+          </div>
+          <div class="field">
+            <label for="email">이메일 <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="name@company.co.kr">
+          </div>
+        </div>
+
+        <!-- 스팸 방지용 숨김 필드 — 사람은 보이지 않음 -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off"
+               style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+
+        <div class="agree-block">
+          <label class="agree">
+            <input type="checkbox" id="agreeChk" name="agree" required>
+            <span>개인정보 수집 및 이용에 동의합니다. <span class="req">*</span></span>
+          </label>
+
+          <details class="privacy">
+            <summary>내용보기</summary>
+            <div class="privacy-body">
+              <p class="t">개인정보 수집 및 이용 동의</p>
+              <p>(주)TCC INS는 NOOON 현장 무료체험 신청의 접수 및 상담을 위해
+                 아래와 같이 개인정보를 수집 및 이용합니다.</p>
+
+              <p class="h">1. 개인정보 수집 항목</p>
+              <p><b>필수항목:</b> 회사명, 담당자명, 연락처, 이메일</p>
+
+              <p class="h">2. 수집 및 이용 목적</p>
+              <p>NOOON 현장 무료체험 신청 접수 및 상담</p>
+              <p>현장 확인 및 일정 협의를 위한 연락</p>
+
+              <p class="h">3. 개인정보의 보유 및 이용 기간</p>
+              <p>원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.</p>
+              <p>단, 관계법령 및 내부 방침에 의해 보존할 필요가 있는 경우 아래 기간 동안 보관합니다.</p>
+              <p><b>보존 항목:</b> 신청 기록 및 상담 내용</p>
+              <p><b>보존 기간:</b> 3년</p>
+
+              <p class="h">4. 동의 거부 권리 및 불이익</p>
+              <p>귀하는 개인정보 수집 및 이용에 거부할 권리가 있습니다.
+                 단, 필수항목 수집에 거부하실 경우 신청 및 서비스 이용이 제한될 수 있습니다.</p>
+            </div>
+          </details>
+        </div>
+
+        <button class="btn btn-lg" type="submit" disabled>NOOON 현장 무료체험 신청</button>
+      </form>
+
+      <!-- 신청 완료 — 전송 성공 시 폼 대신 이 화면을 보여 준다 (페이지 이동 없음) -->
+      <div class="form-card apply-done" id="applyDone" tabindex="-1" hidden>
+        <div class="done-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        </div>
+        <h3>NOOON 현장 무료체험 신청이 완료되었습니다.</h3>
+        <p>신청이 정상적으로 접수되었습니다.<br>담당자가 확인 후 연락드리겠습니다.</p>
+        <p class="done-note">담당자가 현장 환경과 일정을 확인한 후 안내드립니다.</p>
+      </div>
+
+      <div class="contact-box" id="applyContact">
+        입력하신 연락처로 담당자가 확인 후 연락드립니다.
+      </div>
+    </div><!-- /#apply -->
   </div>
 </section>
 
-<!-- ══════ 최종 CTA ══════ -->
+<!-- ══════ 최종 CTA — 버튼 없이 마무리 문구만 (바로 아래 FAQ) ══════ -->
 <div class="cta">
   <div class="wrap">
-    <h2>본 구축 전에,<br>우리 현장에서 먼저 검증하십시오.</h2>
-    <p>AI CCTV가 무엇을 인식할 수 있고,<br>어디까지 자동화할 수 있는지 실제 현장 데이터로 확인해 보십시오.</p>
-    <a class="btn btn-lg" href="#apply">NOOON 현장 무료체험 신청</a>
+    <h2>구축 부담은 낮추고,<br>우리 현장에서 먼저 검증하십시오.</h2>
+    <p>무료체험 기업 중 현장검증 파트너 6개사를 선정해<br>정부지원사업 연계를 지원하고 특별 프로모션 혜택을 드립니다.</p>
   </div>
 </div>
-
-<!-- ══════ 신청 폼 ══════ -->
-<!--  이탈을 줄이기 위해 신청 항목은 회사명 · 담당자명 · 연락처 · 이메일(모두 필수)
-      + 개인정보 동의만 둔다. 창고 정보 등은 담당자가 연락해 확인한다.
-      input 의 id / name 은 관리대장 연동 기준 키이므로 바꾸지 말 것
-      → 전송 데이터는 하단 <script> 의 collect() 참고  -->
-<section class="form-sec" id="apply">
-  <div class="wrap">
-    <span class="eyebrow">APPLY</span>
-    <h2>NOOON 현장 무료체험 신청</h2>
-    <form class="form-card" id="applyForm" method="post" action="#">
-      <div class="row2">
-        <div class="field">
-          <label for="company">회사명 <span class="req">*</span></label>
-          <input type="text" id="company" name="company" required autocomplete="organization" placeholder="예) TCC INS">
-        </div>
-        <div class="field">
-          <label for="name">담당자명 <span class="req">*</span></label>
-          <input type="text" id="name" name="name" required autocomplete="name" placeholder="예) 홍길동">
-        </div>
-      </div>
-      <div class="row2">
-        <div class="field">
-          <label for="phone">연락처 <span class="req">*</span></label>
-          <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="010-0000-0000">
-        </div>
-        <div class="field">
-          <label for="email">이메일 <span class="req">*</span></label>
-          <input type="email" id="email" name="email" required autocomplete="email" placeholder="name@company.co.kr">
-        </div>
-      </div>
-
-      <!-- 스팸 방지용 숨김 필드 — 사람은 보이지 않음 -->
-      <input type="text" name="website" tabindex="-1" autocomplete="off"
-             style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
-
-      <div class="agree-block">
-        <label class="agree">
-          <input type="checkbox" id="agreeChk" name="agree" required>
-          <span>개인정보 수집 및 이용에 동의합니다. <span class="req">*</span></span>
-        </label>
-
-        <details class="privacy">
-          <summary>내용보기</summary>
-          <div class="privacy-body">
-            <p class="t">개인정보 수집 및 이용 동의</p>
-            <p>(주)TCC INS는 NOOON 현장 무료체험 신청의 접수 및 상담을 위해
-               아래와 같이 개인정보를 수집 및 이용합니다.</p>
-
-            <p class="h">1. 개인정보 수집 항목</p>
-            <p><b>필수항목:</b> 회사명, 담당자명, 연락처, 이메일</p>
-
-            <p class="h">2. 수집 및 이용 목적</p>
-            <p>NOOON 현장 무료체험 신청 접수 및 상담</p>
-            <p>현장 확인 및 일정 협의를 위한 연락</p>
-
-            <p class="h">3. 개인정보의 보유 및 이용 기간</p>
-            <p>원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.</p>
-            <p>단, 관계법령 및 내부 방침에 의해 보존할 필요가 있는 경우 아래 기간 동안 보관합니다.</p>
-            <p><b>보존 항목:</b> 신청 기록 및 상담 내용</p>
-            <p><b>보존 기간:</b> 3년</p>
-
-            <p class="h">4. 동의 거부 권리 및 불이익</p>
-            <p>귀하는 개인정보 수집 및 이용에 거부할 권리가 있습니다.
-               단, 필수항목 수집에 거부하실 경우 신청 및 서비스 이용이 제한될 수 있습니다.</p>
-          </div>
-        </details>
-      </div>
-
-      <button class="btn btn-lg" type="submit" disabled>NOOON 현장 무료체험 신청</button>
-    </form>
-
-    <!-- 신청 완료 — 전송 성공 시 폼 대신 이 화면을 보여 준다 (페이지 이동 없음) -->
-    <div class="form-card apply-done" id="applyDone" tabindex="-1" hidden>
-      <div class="done-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-      </div>
-      <h3>NOOON 현장 무료체험 신청이 완료되었습니다.</h3>
-      <p>신청이 정상적으로 접수되었습니다.<br>담당자가 확인 후 연락드리겠습니다.</p>
-      <p class="done-note">담당자가 현장 환경과 일정을 확인한 후 안내드립니다.</p>
-    </div>
-
-    <div class="contact-box" id="applyContact">
-      입력하신 연락처로 담당자가 확인 후 연락드립니다.
-    </div>
-  </div>
-</section>
 
 <!-- ══════ FAQ ══════ -->
 <section>
@@ -876,6 +851,14 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
       <details>
         <summary>체험을 받으면 도입해야 합니까?</summary>
         <p>아닙니다. 도입 여부를 판단하기 위한 절차이며, 결과 확인 후 진행하지 않으셔도 됩니다. 체험 단계에서 발생하는 비용도 없습니다.</p>
+      </details>
+      <details>
+        <summary>현장검증 파트너는 어떻게 선정합니까?</summary>
+        <p>무료체험을 신청하신 기업 중 현장 적용성, 추진 의지, 정부사업 연계 가능성을 검토해 6개사를 선정합니다. 선정된 기업에는 초기 도입비 할인, 2년 차 유지보수 무상, 추가 창고 소프트웨어 할인, 정부지원사업 연계 구축비 절감 지원 혜택을 드리며, 세부 조건은 상담 시 안내드립니다.</p>
+      </details>
+      <details>
+        <summary>정부지원사업 지원은 확정입니까?</summary>
+        <p>정부지원사업의 시행과 선정은 보장되지 않습니다. 현장검증 결과를 바탕으로 연계 가능한 정부지원사업을 검토하고, 본 구축과 함께 준비를 지원합니다.</p>
       </details>
     </div>
   </div>
@@ -952,7 +935,7 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
     form.hidden = true;
     if(contact) contact.hidden = true;
     done.hidden = false;
-    form.closest('section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('apply').scrollIntoView({ behavior: 'smooth', block: 'start' });
     done.focus({ preventScroll: true });
   }
 

@@ -30,7 +30,7 @@ nooon-landing/
 | 고칠 곳 | 파일 |
 |---|---|
 | 히어로 문구 · 각 섹션 내용 · 신청 폼 | `src/index.html` |
-| 상단 고정 헤더 (로고 · 신청 버튼) | `src/partials/header.html` |
+| 상단 고정 헤더 (로고) · 프로모션 바 | `src/partials/header.html` |
 | 자주 묻는 질문 | `src/partials/faq.html` |
 | 하단 푸터 (주소 · 연락처) | `src/partials/footer.html` |
 | 디자인 · 색상 | `src/index.html` 상단 `<style>` 의 `:root` |
