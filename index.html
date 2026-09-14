@@ -344,6 +344,11 @@ footer{background:var(--navy-900);color:rgba(255,255,255,.6);padding:50px 0 40px
 footer .wrap{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;line-height:1.8}
 footer .brand{font-weight:900;color:#fff;font-size:18px;margin-bottom:8px}
 footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
+/* 회사 홈페이지 바로가기 — 새 탭으로 연다 */
+footer .home-link{display:flex;align-items:center;gap:6px;width:fit-content;margin-top:16px;padding:9px 16px;
+  border:1px solid rgba(255,255,255,.24);border-radius:999px;color:#fff;font-size:13.5px;font-weight:700;
+  text-decoration:none;transition:border-color .15s ease,color .15s ease}
+footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)}
 
 /* ── 태블릿 가로 ── */
 @media (max-width:1024px){
@@ -882,6 +887,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       <div class="brand">TCC INS</div>
       <div class="slogan">Connect. Reveal. Simplify.</div>
       스마트팩토리 · NOOON · 안전보건환경 · 그룹웨어
+      <a class="home-link" href="https://www.tccins.co.kr/" target="_blank" rel="noopener">TCC INS 홈페이지 바로가기 <span aria-hidden="true">›</span></a>
     </div>
     <div>
       sales@tccins.co.kr<br>
