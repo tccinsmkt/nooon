@@ -188,27 +188,26 @@ section[id],div[id]{scroll-margin-top:118px}
 .proc .t{font-size:15.5px;font-weight:800;letter-spacing:-.025em;line-height:1.35}
 .proc .d{font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.55}
 
-/* 검증 방식 */
-.ways{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
-.way{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px}
-.way .k{font-size:11.5px;font-weight:900;letter-spacing:.1em;color:var(--orange);margin-bottom:11px}
-.way h3{font-size:19px;letter-spacing:-.03em;margin-bottom:9px}
-.way p{font-size:15px;color:var(--ink-2)}
-.way ul{list-style:none;margin-top:14px;display:grid;gap:7px}
-.way li{font-size:14.5px;color:var(--ink-2);padding-left:15px;position:relative}
-.way li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--orange)}
-.note-bar{margin-top:16px;padding:18px 22px;background:var(--navy-900);color:rgba(255,255,255,.9);
-  border-radius:var(--radius);font-size:15.5px}
-.note-bar b{color:#FFB483}
-
-/* 확인 항목 */
-.verify{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:34px}
-.verify .v{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px}
-.verify .n{font-size:11.5px;font-weight:900;letter-spacing:.1em;color:var(--orange);margin-bottom:9px}
-.verify h3{font-size:18px;letter-spacing:-.03em;margin-bottom:8px}
-.verify p{font-size:14.5px;color:var(--ink-2)}
+/* 검증 항목 · 자료별 확인 범위 — 표 형태 (모바일은 행마다 블록으로 쌓인다) */
+.vtable-wrap{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.vtable{width:100%;border-collapse:collapse;text-align:left}
+.vtable thead th{background:#EEF1F4;padding:12px 20px;border-bottom:1px solid var(--line);
+  font-size:12.5px;font-weight:800;letter-spacing:.04em;color:var(--ink-3)}
+.vtable tbody tr + tr > *{border-top:1px solid var(--line)}
+.vtable td,.vtable tbody th{padding:18px 20px;vertical-align:top;font-size:15px;line-height:1.6;color:var(--ink-2)}
+.vtable tbody th{width:36%;font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.vtable .c-no{width:72px;font-size:13px;font-weight:900;letter-spacing:.06em;color:var(--orange)}
+.vtable b{color:var(--ink);font-weight:700}
+/* 자료별 확인 범위 표 — 보유 자료 | 확인 방식 | 확인 항목 */
+.vtable-data tbody th{width:150px;color:var(--orange-dark)}
+.vtable-data td strong{display:block;margin-bottom:4px;font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.vtable-data td[data-label]{width:34%}
+.vtable-data ul{list-style:none;display:grid;gap:5px}
+.vtable-data li{position:relative;padding-left:14px}
+.vtable-data li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--orange)}
+.vtable-note{margin-top:14px;font-size:14.5px;line-height:1.65;color:var(--ink-2)}
 .sub-h{margin-top:44px;font-size:19px;letter-spacing:-.03em;color:var(--ink)}
-.sub-h + .ways{margin-top:16px}
+.sub-h + .vtable-wrap{margin-top:16px}
 
 /* 결과 단계 */
 .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
@@ -228,15 +227,16 @@ section[id],div[id]{scroll-margin-top:118px}
 .io strong{display:block;font-size:16.5px;font-weight:800;letter-spacing:-.02em;margin-bottom:5px}
 .io p{font-size:14.5px;color:var(--ink-2)}
 
-/* 준비물 */
-.need{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
-.need .box{background:#fff;border:1px solid var(--line);border-top:3px solid var(--orange);border-radius:var(--radius);padding:24px 22px}
-.need .box h3{font-size:16px;margin-bottom:11px}
-.need .box ul{list-style:none;display:grid;gap:7px}
-.need .box li{font-size:14.5px;color:var(--ink-2);padding-left:15px;position:relative}
-.need .box li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--orange)}
-.need .box li.use{color:var(--orange-dark);font-weight:700;margin-top:2px}
-.need .box li.use::before{background:transparent}
+/* 준비물 — 박스 대신 줄 단위 리스트 (항목명 | 내용) */
+.need-list{margin-top:30px;border-top:1px solid var(--line)}
+.need-list .row{display:grid;grid-template-columns:170px 1fr;gap:6px 24px;align-items:baseline;
+  padding:18px 4px;border-bottom:1px solid var(--line)}
+.need-list dt{display:flex;align-items:center;gap:10px;font-size:16.5px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.need-list dt::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.need-list dd{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 20px;font-size:15.5px;color:var(--ink-2)}
+.need-list dd b{color:var(--ink);font-weight:700}
+.need-list .use{font-size:14.5px;font-weight:700;color:var(--orange-dark)}
+.need-list .use::before{content:"→ "}
 /* 준비물 아래 보조 문구 — 박스 없이 텍스트만 */
 .need-note{margin-top:16px;font-size:14.5px;color:var(--ink-2);line-height:1.65}
 
@@ -350,9 +350,8 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
   section{padding:56px 0}
   .hero{padding-top:62px;padding-bottom:66px}
   .hero-video{margin-top:30px}
-  .io,.ways,.verify{grid-template-columns:1fr}
+  .io{grid-template-columns:1fr}
   .stages{grid-template-columns:1fr}
-  .need{grid-template-columns:repeat(2,1fr)}
   .proc{grid-template-columns:repeat(2,1fr)}
   .cta{padding:64px 0}
   .form-card{padding:26px 20px}
@@ -367,7 +366,8 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
 @media (max-width:560px){
   .wrap{padding:0 18px}
   section{padding:44px 0}
-  .need,.proc,.row2{grid-template-columns:1fr}
+  .proc,.row2{grid-template-columns:1fr}
+  .need-list .row{grid-template-columns:1fr;padding:16px 2px}
   .hero{padding-top:48px;padding-bottom:52px}
   .hero-cta{margin-top:28px}
   .hero-video{margin-top:24px}
@@ -420,7 +420,7 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
   .promo-flow .ar{transform:rotate(90deg);padding:0 0 0 6px}
 }
 @media (max-width:560px){
-  .need,.perks{grid-template-columns:1fr}
+  .perks{grid-template-columns:1fr}
   .partner-panel{padding:26px 18px 22px;border-radius:14px}
   .pp-desc{font-size:15px}
   .perk{padding:15px 16px}
@@ -428,6 +428,20 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
   .hero h1{font-size:27px}
   .hero h1 br{display:none}
   .proc,.proc.p6{grid-template-columns:1fr}
+}
+/* ── 검증 표 — 좁은 화면에서는 행마다 블록으로 쌓는다 ── */
+@media (max-width:640px){
+  .vtable thead{display:none}
+  .vtable,.vtable tbody,.vtable tr,.vtable td,.vtable tbody th{display:block;width:auto}
+  .vtable tbody tr{padding:16px 18px}
+  .vtable tbody tr + tr{border-top:1px solid var(--line)}
+  .vtable tbody tr + tr > *{border-top:0}
+  .vtable td,.vtable tbody th{padding:0}
+  .vtable .c-no{margin-bottom:4px}
+  .vtable tbody th{margin-bottom:6px}
+  .vtable-data td[data-label]{width:auto;margin-top:12px}
+  .vtable td[data-label]::before{content:attr(data-label);display:block;margin-bottom:5px;
+    font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--ink-3)}
 }
 </style>
 </head>
@@ -518,58 +532,61 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
       실제 현장에서 NOOON의 적용 가능 범위와 운영 효과를 확인합니다.
     </p>
 
-    <div class="verify">
-      <div class="v">
-        <div class="n">01</div>
-        <h3>재고와 객체를 얼마나 정확하게 인식하는가</h3>
-        <p>실제 재고 · 사람 · 지게차 등을 어느 정도 정확하게 인식하는지, 귀사 영상에서 나온 결과로 확인합니다.</p>
-      </div>
-      <div class="v">
-        <div class="n">02</div>
-        <h3>어떤 현장 조건까지 대응할 수 있는가</h3>
-        <p>조도 · 적치 방식 · 사각지대 등 현장 조건에 따라 인식이 가능한 범위와 한계를 확인합니다.</p>
-      </div>
-      <div class="v">
-        <div class="n">03</div>
-        <h3>사람의 확인 · 기록을 어디까지 자동화할 수 있는가</h3>
-        <p>사람이 직접 확인하고 입력하던 과정 중 어디까지 자동으로 기록할 수 있는지 확인합니다.</p>
-      </div>
-      <div class="v">
-        <div class="n">04</div>
-        <h3>눈에 보이지 않던 운영 낭비는 어디에서 발생하는가</h3>
-        <p>재이동 · 대기 · 탐색 · 불필요한 동선 등 기존 재고 데이터만으로는 알기 어려웠던 실제 현장의 비효율을 확인합니다.</p>
-      </div>
+    <!-- 검증 항목 — 표 형태 (모바일은 행마다 블록으로 쌓인다) -->
+    <div class="vtable-wrap">
+      <table class="vtable">
+        <thead>
+          <tr><th scope="col" class="c-no">No.</th><th scope="col">검증 항목</th><th scope="col">확인 내용</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="c-no">01</td>
+            <th scope="row">재고와 객체를 얼마나 정확하게 인식하는가</th>
+            <td>실제 재고 · 사람 · 지게차 등을 어느 정도 정확하게 인식하는지, 귀사 영상에서 나온 결과로 확인합니다.</td>
+          </tr>
+          <tr>
+            <td class="c-no">02</td>
+            <th scope="row">어떤 현장 조건까지 대응할 수 있는가</th>
+            <td>조도 · 적치 방식 · 사각지대 등 현장 조건에 따라 인식이 가능한 범위와 한계를 확인합니다.</td>
+          </tr>
+          <tr>
+            <td class="c-no">03</td>
+            <th scope="row">사람의 확인 · 기록을 어디까지 자동화할 수 있는가</th>
+            <td>사람이 직접 확인하고 입력하던 과정 중 어디까지 자동으로 기록할 수 있는지 확인합니다.</td>
+          </tr>
+          <tr>
+            <td class="c-no">04</td>
+            <th scope="row">눈에 보이지 않던 운영 낭비는 어디에서 발생하는가</th>
+            <td>재이동 · 대기 · 탐색 · 불필요한 동선 등 기존 재고 데이터만으로는 알기 어려웠던 실제 현장의 비효율을 확인합니다.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <h3 class="sub-h">보유하신 자료에 따라 확인 범위가 넓어집니다</h3>
 
-    <div class="ways">
-      <div class="way">
-        <div class="k">계획 데이터</div>
-        <h3>계획과 실제 흐름을 함께 확인</h3>
-        <p>생산 · 입고 · 출하 <b>계획</b>과 실제 재고 흐름을 함께 확인합니다.</p>
-        <ul>
-          <li>계획 대비 실제 입출고</li>
-          <li>구역별 재고 흐름</li>
-          <li>적치 · 출하 순서</li>
-        </ul>
-      </div>
-      <div class="way">
-        <div class="k">실적 데이터</div>
-        <h3>운영 과정의 차이를 분석</h3>
-        <p>생산 · 입고 · 출하 <b>실적</b>과 실제 움직임을 비교해, 운영 과정에서 발생한 차이와 비효율을 분석합니다.</p>
-        <ul>
-          <li>반복되는 재이동</li>
-          <li>대기 · 탐색 구간</li>
-          <li>위치 불일치 발생 지점</li>
-        </ul>
-      </div>
+    <!-- 자료별 확인 범위 — 계획 · 실적은 택 1이 아니라 보유 자료를 함께 활용한다 -->
+    <div class="vtable-wrap">
+      <table class="vtable vtable-data">
+        <thead>
+          <tr><th scope="col">보유 자료</th><th scope="col">확인 방식</th><th scope="col">확인 항목</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">계획 데이터</th>
+            <td><strong>계획과 실제 흐름을 함께 확인</strong>생산 · 입고 · 출하 <b>계획</b>과 실제 재고 흐름을 함께 확인합니다.</td>
+            <td data-label="확인 항목"><ul><li>계획 대비 실제 입출고</li><li>구역별 재고 흐름</li><li>적치 · 출하 순서</li></ul></td>
+          </tr>
+          <tr>
+            <th scope="row">실적 데이터</th>
+            <td><strong>운영 과정의 차이를 분석</strong>생산 · 입고 · 출하 <b>실적</b>과 실제 움직임을 비교해, 운영 과정에서 발생한 차이와 비효율을 분석합니다.</td>
+            <td data-label="확인 항목"><ul><li>반복되는 재이동</li><li>대기 · 탐색 구간</li><li>위치 불일치 발생 지점</li></ul></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="note-bar">
-      계획과 실적 중 보유하고 계신 자료를 함께 활용하며, 어느 범위까지 확인해 드릴 수 있는지는
-      현장과 자료를 확인한 뒤 NOOON&nbsp;Team이 협의드립니다.
-    </div>
+    <p class="vtable-note">계획과 실적 중 보유하고 계신 자료를 함께 활용하며, 어느 범위까지 확인해 드릴 수 있는지는 현장과 자료를 확인한 뒤 NOOON&nbsp;Team이 협의드립니다.</p>
   </div>
 </section>
 
@@ -620,12 +637,12 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
     <h2>보유하신 자료면 충분합니다</h2>
     <p class="lead">별도의 시스템 개발이나 데이터 가공은 필요하지 않습니다. 현장 운영도 멈추지 않습니다.</p>
 
-    <div class="need">
-      <div class="box"><h3>현장</h3><ul><li>대상 구역 촬영 협조</li><li>출입 협조</li></ul></div>
-      <div class="box"><h3>기본 자료</h3><ul><li>창고 Layout</li><li>현재 재고 및 위치</li></ul></div>
-      <div class="box"><h3>계획 자료</h3><ul><li>생산 · 입고 · 출하 <b>계획</b></li><li class="use">→ 계획 대비 운영 흐름 확인</li></ul></div>
-      <div class="box"><h3>실적 자료</h3><ul><li>생산 · 입고 · 출하 <b>실적</b></li><li class="use">→ 실제 운영 분석</li></ul></div>
-    </div>
+    <dl class="need-list">
+      <div class="row"><dt>현장</dt><dd><span>대상 구역 촬영 협조 · 출입 협조</span></dd></div>
+      <div class="row"><dt>기본 자료</dt><dd><span>창고 Layout · 현재 재고 및 위치</span></dd></div>
+      <div class="row"><dt>계획 자료</dt><dd><span>생산 · 입고 · 출하 <b>계획</b></span><span class="use">계획 대비 운영 흐름 확인</span></dd></div>
+      <div class="row"><dt>실적 자료</dt><dd><span>생산 · 입고 · 출하 <b>실적</b></span><span class="use">실제 운영 분석</span></dd></div>
+    </dl>
 
     <p class="need-note">자료가 완벽하지 않아도 됩니다. 보유하고 계신 수준에서 NOOON&nbsp;Team이 함께 구성합니다.</p>
   </div>
