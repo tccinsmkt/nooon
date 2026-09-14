@@ -11,7 +11,8 @@
   NOOON 무료 체험 랜딩 (v8.3)
 
   [v8.2 → v8.3 — 전환 흐름 정리 · 신청 폼 간소화]
-  · HERO: 신청 CTA 는 HERO 맨 아래(INPUT → VERIFY → OUTPUT 흐름 다음)에 둔다
+  · HERO: 영상 → 설명 → 신청 CTA → 한 줄 진행 흐름(INPUT › VERIFY › OUTPUT) 순서.
+    흐름은 요약만 두고 상세는 HOW IT WORKS 에서 설명한다. 비용 안내 문구(hero-note)는 삭제
   · 신청 CTA 문구를 전부 "NOOON 현장 무료체험 신청"으로 통일
     (헤더 · HERO · 프로모션 카드 · 하단 CTA · 신청 폼 제목 · 제출 버튼)
   · 고객 노출 영문 표기는 NOOON 으로 통일 (Nooon ✗)
@@ -154,7 +155,6 @@ section[id],div[id]{scroll-margin-top:118px}
 .hero .sub{margin:24px auto 0;font-size:clamp(16px,1.6vw,18.5px);color:rgba(255,255,255,.84);max-width:62ch;line-height:1.7}
 .hero .sub b{color:#fff;font-weight:700}
 .hero-cta{margin-top:36px}
-.hero-note{margin-top:16px;font-size:13.5px;color:rgba(255,255,255,.55)}
 /* HERO 대표 영상 — 타이틀 바로 아래 · 1920×1080 원본 기준 */
 .hero-video{margin-top:40px}
 .hero-video .frame{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);
@@ -381,16 +381,13 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 }
 
 /* ══ v8 추가 ══════════════════════════════════════════ */
-/* HERO 4단계 흐름 */
-.flow{display:flex;align-items:stretch;justify-content:center;margin-top:40px}
-.flow .st{flex:1 1 0;min-width:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
-  border-radius:10px;padding:18px 12px;text-align:center}
-.flow .st .n{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--orange-soft);margin-bottom:7px}
-.flow .st .l{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.025em;line-height:1.4}
-.flow .ar{flex:0 0 auto;display:flex;align-items:center;padding:0 9px;color:var(--orange-soft);font-size:17px;font-weight:900}
-.flow .st.pick{background:rgba(255,106,19,.12);border-color:rgba(255,106,19,.5)}
-.flow .st .or{display:block;font-size:11.5px;font-weight:800;letter-spacing:.06em;
-  color:var(--orange-soft);margin:5px 0}
+/* HERO 진행 흐름 — 한 줄 요약 (상세는 HOW IT WORKS) */
+.flow{display:inline-flex;align-items:center;justify-content:center;gap:8px 16px;margin-top:32px;vertical-align:top;
+  padding:13px 26px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.05)}
+.flow .st{display:inline-flex;align-items:baseline;gap:9px;font-size:15px;font-weight:700;color:#fff;
+  letter-spacing:-.02em;white-space:nowrap}
+.flow .st b{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--orange-soft)}
+.flow .ar{color:var(--orange-soft);font-size:16px;font-weight:900;line-height:1}
 
 /* 각주 */
 .fn{margin-top:13px;font-size:13px;color:var(--ink-3);line-height:1.65}
@@ -407,8 +404,8 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 
 @media (max-width:1024px){ .proc.p6{grid-template-columns:repeat(3,1fr)} }
 @media (max-width:860px){
-  .flow{flex-direction:column;gap:0}
-  .flow .ar{transform:rotate(90deg);padding:7px 0;justify-content:center}
+  .flow{flex-direction:column;gap:5px;margin-top:26px;padding:14px 22px;border-radius:14px}
+  .flow .ar{transform:rotate(90deg)}
 }
 @media (max-width:640px){
   .hero .sub br,.lead br{display:none}
@@ -457,17 +454,17 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
       현장의 움직임을 어디까지 자동으로 기록할 수 있는지 확인합니다.
     </p>
 
-    <div class="flow">
-      <div class="st"><div class="n">INPUT</div><div class="l">현장 영상<br>계획 · 실적 데이터</div></div>
-      <div class="ar">›</div>
-      <div class="st pick"><div class="n">VERIFY</div><div class="l">AI 인식 검증<br>운영 분석</div></div>
-      <div class="ar">›</div>
-      <div class="st"><div class="n">OUTPUT</div><div class="l">검증 결과<span class="or">＋</span>운영 인사이트</div></div>
-    </div>
-
     <!-- 모든 신청 CTA 문구는 "NOOON 현장 무료체험 신청"으로 통일 -->
     <div class="hero-cta"><a class="btn btn-lg" href="#apply">NOOON 현장 무료체험 신청</a></div>
-    <p class="hero-note">비용은 발생하지 않으며, 결과 확인 후 도입 여부는 자유롭게 결정하실 수 있습니다.</p>
+
+    <!-- 진행 흐름 한 줄 요약 — 상세는 아래 HOW IT WORKS -->
+    <div class="flow">
+      <span class="st"><b>INPUT</b>현장 영상 · 데이터</span>
+      <span class="ar" aria-hidden="true">›</span>
+      <span class="st"><b>VERIFY</b>AI 인식 검증 · 운영 분석</span>
+      <span class="ar" aria-hidden="true">›</span>
+      <span class="st"><b>OUTPUT</b>검증 결과 · 운영 인사이트</span>
+    </div>
   </div>
 </div>
 
@@ -508,7 +505,7 @@ footer .slogan{font-weight:700;color:rgba(255,255,255,.85);font-size:15px}
 <section class="sec-alt" id="verify">
   <div class="wrap">
     <span class="eyebrow">WHAT WE VERIFY</span>
-    <h2>현장 적용 가능성을 구체적으로 검증합니다.</h2>
+    <h2>적용 가능성을 구체적으로 검증합니다.</h2>
     <p class="lead">
       기능을 보여주는 데서 끝나지 않습니다.<br>
       실제 현장에서 NOOON의 적용 가능 범위와 운영 효과를 확인합니다.
