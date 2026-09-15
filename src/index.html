@@ -198,16 +198,6 @@ section[id],div[id]{scroll-margin-top:118px}
 .vtable tbody th{width:36%;font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
 .vtable .c-no{width:72px;font-size:13px;font-weight:900;letter-spacing:.06em;color:var(--orange)}
 .vtable b{color:var(--ink);font-weight:700}
-/* 자료별 확인 범위 표 — 보유 자료 | 확인 방식 | 확인 항목 */
-.vtable-data tbody th{width:150px;color:var(--orange-dark)}
-.vtable-data td strong{display:block;margin-bottom:4px;font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
-.vtable-data td[data-label]{width:34%}
-.vtable-data ul{list-style:none;display:grid;gap:5px}
-.vtable-data li{position:relative;padding-left:14px}
-.vtable-data li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--orange)}
-.vtable-note{margin-top:14px;font-size:14.5px;line-height:1.65;color:var(--ink-2)}
-.sub-h{margin-top:44px;font-size:19px;letter-spacing:-.03em;color:var(--ink)}
-.sub-h + .vtable-wrap{margin-top:16px}
 
 /* 결과 단계 */
 .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
@@ -439,9 +429,6 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
   .vtable td,.vtable tbody th{padding:0}
   .vtable .c-no{margin-bottom:4px}
   .vtable tbody th{margin-bottom:6px}
-  .vtable-data td[data-label]{width:auto;margin-top:12px}
-  .vtable td[data-label]::before{content:attr(data-label);display:block;margin-bottom:5px;
-    font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--ink-3)}
 }
 </style>
 </head>
@@ -562,31 +549,6 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
         </tbody>
       </table>
     </div>
-
-    <h3 class="sub-h">보유하신 자료에 따라 확인 범위가 넓어집니다</h3>
-
-    <!-- 자료별 확인 범위 — 계획 · 실적은 택 1이 아니라 보유 자료를 함께 활용한다 -->
-    <div class="vtable-wrap">
-      <table class="vtable vtable-data">
-        <thead>
-          <tr><th scope="col">보유 자료</th><th scope="col">확인 방식</th><th scope="col">확인 항목</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">계획 데이터</th>
-            <td><strong>계획과 실제 흐름을 함께 확인</strong>생산 · 입고 · 출하 <b>계획</b>과 실제 재고 흐름을 함께 확인합니다.</td>
-            <td data-label="확인 항목"><ul><li>계획 대비 실제 입출고</li><li>구역별 재고 흐름</li><li>적치 · 출하 순서</li></ul></td>
-          </tr>
-          <tr>
-            <th scope="row">실적 데이터</th>
-            <td><strong>운영 과정의 차이를 분석</strong>생산 · 입고 · 출하 <b>실적</b>과 실제 움직임을 비교해, 운영 과정에서 발생한 차이와 비효율을 분석합니다.</td>
-            <td data-label="확인 항목"><ul><li>반복되는 재이동</li><li>대기 · 탐색 구간</li><li>위치 불일치 발생 지점</li></ul></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="vtable-note">계획과 실적 중 보유하고 계신 자료를 함께 활용하며, 어느 범위까지 확인해 드릴 수 있는지는 현장과 자료를 확인한 뒤 NOOON&nbsp;Team이 협의드립니다.</p>
   </div>
 </section>
 
