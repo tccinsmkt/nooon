@@ -228,16 +228,14 @@ section[id],div[id]{scroll-margin-top:118px}
 .io strong{display:block;font-size:16.5px;font-weight:800;letter-spacing:-.02em;margin-bottom:5px}
 .io p{font-size:14.5px;color:var(--ink-2)}
 
-/* 준비물 — 박스 대신 줄 단위 리스트 (항목명 | 내용) */
-.need-list{margin-top:30px;border-top:1px solid var(--line)}
-.need-list .row{display:grid;grid-template-columns:170px 1fr;gap:6px 24px;align-items:baseline;
-  padding:18px 4px;border-bottom:1px solid var(--line)}
-.need-list dt{display:flex;align-items:center;gap:10px;font-size:16.5px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
-.need-list dt::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--orange)}
-.need-list dd{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 20px;font-size:15.5px;color:var(--ink-2)}
-.need-list dd b{color:var(--ink);font-weight:700}
-.need-list .use{font-size:14.5px;font-weight:700;color:var(--orange-dark)}
-.need-list .use::before{content:"→ "}
+/* 준비물 — 구분 | 준비·협조 내용 표 (박스 없이 선만). 보조 문구는 한 줄로 길게 */
+#need .lead{max-width:none}
+.need-table{width:100%;margin-top:30px;border-collapse:collapse;text-align:left}
+.need-table thead th{padding:0 4px 12px;border-bottom:1px solid #C9D0D8;font-size:15px;font-weight:800;color:var(--ink)}
+.need-table tbody th,.need-table td{padding:18px 4px;border-bottom:1px solid var(--line);vertical-align:baseline}
+.need-table tbody tr:last-child > *{border-bottom:0}
+.need-table tbody th{width:40%;font-size:16.5px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.need-table td{font-size:15.5px;line-height:1.6;color:var(--ink-2)}
 /* 준비물 아래 보조 문구 — 박스 없이 텍스트만 */
 .need-note{margin-top:16px;font-size:14.5px;color:var(--ink-2);line-height:1.65}
 
@@ -368,7 +366,9 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
   .wrap{padding:0 18px}
   section{padding:44px 0}
   .proc,.row2{grid-template-columns:1fr}
-  .need-list .row{grid-template-columns:1fr;padding:16px 2px}
+  .need-table tbody th{width:32%;font-size:15.5px}
+  .need-table tbody th,.need-table td{padding:15px 4px}
+  .need-table td{font-size:15px}
   .hero{padding-top:48px;padding-bottom:52px}
   .hero-cta{margin-top:28px}
   .hero-video{margin-top:24px}
@@ -620,15 +620,20 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
 <section class="sec-alt" id="need">
   <div class="wrap">
     <span class="eyebrow">WHAT WE NEED</span>
-    <h2>보유하신 자료면 충분합니다</h2>
-    <p class="lead">별도의 시스템 개발이나 데이터 가공은 필요하지 않습니다. 현장 운영도 멈추지 않습니다.</p>
+    <h2>간단한 현장 정보와 촬영 협조면 충분합니다</h2>
+    <p class="lead">별도의 시스템 개발이나 대규모 데이터 정리는 필요하지 않습니다. 현장 운영도 중단하지 않습니다.</p>
 
-    <dl class="need-list">
-      <div class="row"><dt>현장</dt><dd><span>대상 구역 촬영 협조 · 출입 협조</span></dd></div>
-      <div class="row"><dt>기본 자료</dt><dd><span>창고 Layout · 현재 재고 및 위치</span></dd></div>
-      <div class="row"><dt>계획 자료</dt><dd><span>생산 · 입고 · 출하 <b>계획</b></span><span class="use">계획 대비 운영 흐름 확인</span></dd></div>
-      <div class="row"><dt>실적 자료</dt><dd><span>생산 · 입고 · 출하 <b>실적</b></span><span class="use">실제 운영 분석</span></dd></div>
-    </dl>
+    <table class="need-table">
+      <thead>
+        <tr><th scope="col">구분</th><th scope="col">준비·협조 내용</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">현장 협조</th><td>대상 구역 촬영 및 현장 출입 협조</td></tr>
+        <tr><th scope="row">창고 정보</th><td>대상 구역 도면 또는 Layout · 주요 작업 동선</td></tr>
+        <tr><th scope="row">재고 정보</th><td>주요 재고 유형 · 식별 기준 · 샘플 재고정보</td></tr>
+        <tr><th scope="row">운영 정보</th><td>물류 운영 Process 및 주요 Rule</td></tr>
+      </tbody>
+    </table>
 
     <p class="need-note">자료가 완벽하지 않아도 됩니다. 보유하고 계신 수준에서 NOOON&nbsp;Team이 함께 구성합니다.</p>
   </div>
@@ -643,10 +648,10 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
 
     <div class="proc p6">
       <div class="p"><div class="no">01</div><div class="t">신청</div><div class="d">연락처만 남겨 주시면 됩니다</div></div>
-      <div class="p"><div class="no">02</div><div class="t">현장 확인</div><div class="d">구조와 보유 자료를 함께 확인합니다</div></div>
-      <div class="p"><div class="no">03</div><div class="t">현장 촬영</div><div class="d">평소대로 운영하시면 됩니다</div></div>
-      <div class="p"><div class="no">04</div><div class="t">자료 수집</div><div class="d">계획 · 실적 · 운영 기준을 받습니다</div></div>
-      <div class="p"><div class="no">05</div><div class="t">인식 검증 · 운영 분석</div><div class="d">인식 결과와 실제 운영 데이터를 분석합니다</div></div>
+      <div class="p"><div class="no">02</div><div class="t">현장 확인</div><div class="d">대상 구역과 주요 작업 동선을 함께 확인합니다</div></div>
+      <div class="p"><div class="no">03</div><div class="t">정보 공유</div><div class="d">창고 · 재고 · 운영 정보를 받습니다</div></div>
+      <div class="p"><div class="no">04</div><div class="t">현장 촬영</div><div class="d">평소대로 운영하시면 됩니다</div></div>
+      <div class="p"><div class="no">05</div><div class="t">인식 검증 · 운영 분석</div><div class="d">촬영 영상과 공유해 주신 정보로 인식 결과와 운영 흐름을 분석합니다</div></div>
       <div class="p"><div class="no">06</div><div class="t">결과 확인</div><div class="d">결과를 함께 확인하고 적용 가능 범위를 설명드립니다</div></div>
     </div>
   </div>
@@ -794,6 +799,8 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
 </div>
 
 <!-- ══════ FAQ ══════ -->
+<!--  순서는 방문자 흐름을 따른다:
+      무엇을 알게 되나 → 운영 중단 여부 → 촬영 자료 보안 → 결과 신뢰 → 도입 의무 → 파트너 선정 → 정부지원  -->
 <section>
   <div class="wrap">
     <span class="eyebrow">FAQ</span>
@@ -804,24 +811,16 @@ footer .home-link:hover{border-color:var(--orange-soft);color:var(--orange-soft)
         <p>이 현장에서 AI CCTV가 재고와 객체를 얼마나 정확하게 인식하는지, 조도·적치 방식·사각지대 같은 실제 조건에서 안정적으로 인식할 수 있는지, 사람이 직접 확인하고 입력하던 과정을 어디까지 자동으로 기록할 수 있는지, 그리고 재이동·대기·탐색·동선 낭비가 실제 운영에서 어떻게 발생하는지를 확인하실 수 있습니다. 모두 귀사 영상과 데이터로 산출되며, 다른 현장의 예시 자료가 아닙니다.</p>
       </details>
       <details>
-        <summary>계획 자료와 실적 자료는 어떻게 다르게 쓰입니까?</summary>
-        <p><b>계획</b> 자료가 있으면 계획 대비 실제 운영 흐름을 <b>확인</b>하고, <b>실적</b> 자료가 있으면 지금까지의 실제 운영 상태를 <b>분석</b>합니다. 둘 중 하나를 고르는 것이 아니라, 보유하고 계신 자료를 함께 활용합니다. 어느 쪽이든 없다고 해서 체험이 불가능하지는 않습니다.</p>
-      </details>
-      <details>
-        <summary>자료가 정리되어 있지 않은데 신청할 수 있습니까?</summary>
-        <p>가능합니다. 보유하고 계신 수준에서 시작하며, 부족한 부분은 NOOON&nbsp;Team이 함께 구성합니다. 자료가 적으면 확인 범위가 줄어들 뿐이고, 현장 영상만으로도 인식 정확도와 실제 이동 흐름은 확인하실 수 있습니다.</p>
-      </details>
-      <details>
         <summary>촬영을 위해 현장 운영을 멈춰야 합니까?</summary>
         <p>필요하지 않습니다. 현장은 평소대로 운영하시면 되며, 작업 방식을 변경하실 필요가 없습니다. 별도의 시스템 개발이나 PDA 도입도 필요하지 않습니다.</p>
       </details>
       <details>
-        <summary>결과를 그대로 믿어도 됩니까?</summary>
-        <p>결과물에는 실제 영상에서 관측된 내용과, 제공해 주신 자료로 산출한 내용을 구분해 표시합니다. 짧은 기간의 촬영으로 창고 전체를 판단할 수는 없으며, 어디까지가 관측이고 어디부터가 산출인지 명확히 구분해 설명드립니다.</p>
-      </details>
-      <details>
         <summary>촬영 자료가 외부로 나갈 가능성은 없습니까?</summary>
         <p>제3자 제공 및 외부 반출을 하지 않습니다. 홍보·영업 자료에 사용하는 경우에도 사전 서면 동의를 받습니다. 저장 위치와 폐기 시점은 신청 접수 시 문서로 안내합니다.</p>
+      </details>
+      <details>
+        <summary>결과를 그대로 믿어도 됩니까?</summary>
+        <p>결과물에는 실제 영상에서 관측된 내용과, 제공해 주신 자료로 산출한 내용을 구분해 표시합니다. 짧은 기간의 촬영으로 창고 전체를 판단할 수는 없으며, 어디까지가 관측이고 어디부터가 산출인지 명확히 구분해 설명드립니다.</p>
       </details>
       <details>
         <summary>체험을 받으면 도입해야 합니까?</summary>
